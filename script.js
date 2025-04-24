@@ -100,7 +100,7 @@ export function loadScene(scene) {
         document.getElementById("dialogue-box").classList.add("hidden");
     }
 
-    // 나레이션
+    // 나레이션 박스
     if (scene.narration) {
         document.getElementById("narration-box").textContent = scene.narration;
         document.getElementById("narration-box").classList.remove("hidden");
