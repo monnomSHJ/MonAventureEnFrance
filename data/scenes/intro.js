@@ -1,4 +1,4 @@
-import { state, loadScene, renderStatusBox, renderQuestBox } from "../../script.js";
+import { state, loadScene, renderStatusBox } from "../../script.js";
 import { intro2 } from "./intro2.js";
 
 export function renderIntro() {
@@ -19,19 +19,20 @@ export function renderIntro() {
     `;
 
     setTimeout(() => {
-        document.getElementById("start-btn")?.addEventListener("click", () => {
-            const input = document.getElementById("userName").value.trim();
-            if (!input) return alert("이름을 입력해주세요!");
+        const btn = document.getElementById("start-btn");
+        if (btn) {
+            btn.addEventListener("click", () => {
+                const input = document.getElementById("userName").value.trim();
+                if (!input) return alert("이름을 입력해주세요!");
 
-            state.userName = input;
+                state.userName = input;
+                document.getElementById("intro-contents").classList.add("hidden");
 
-            document.getElementById("intro-contents").classList.add("hidden");
-
-            renderStatusBox();
-            loadScene(intro2);
-    
-        });
-    });
+                renderStatusBox();
+                loadScene(intro2);
+            });
+        }
+    }, 0);
 
     return html;
 }

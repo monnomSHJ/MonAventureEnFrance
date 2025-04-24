@@ -112,7 +112,7 @@ export function loadScene(scene) {
     // 첫 대사 출력
     updateDialogue();
 }
-  
+
 function updateDialogue() {
     const line = currentScene.lines[currentLineIndex];
     const text = line.text;
