@@ -25,7 +25,7 @@ export function renderIntro() {
 
             state.userName = input;
 
-            document.getElementById("intro-contents").innerHTML = "";
+            document.getElementById("intro-contents").classList.add("hidden");
 
             renderStatusBox();
             loadScene(intro2);
