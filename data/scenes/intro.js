@@ -1,4 +1,4 @@
-import { state, loadScene, renderStatusBox } from "../../script.js";
+import { state, loadScene, renderStatusBox, currentScene } from "../../script.js";
 import { intro2 } from "./intro2.js";
 
 export function renderIntro() {
@@ -30,6 +30,7 @@ export function renderIntro() {
 
                 renderStatusBox();
                 loadScene(intro2);
+                console.log("씬 로딩됨:", currentScene);
             });
         }
     }, 0);

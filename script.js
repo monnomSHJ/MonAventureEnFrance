@@ -1,12 +1,13 @@
+console.log("✅ script.js 로드됨");
+
 import { renderIntro } from "./data/scenes/intro.js";
-import { intro2 } from "./data/scenes/intro2.js";
 
 import quests from "./quest.js";
 import { renderDictionaryCards, setupDictionarySearch } from "./dictionary.js";
 
 // 씬 관련 변수
-let currentLineIndex = 0;
-let currentScene = null;
+export let currentLineIndex = 0;
+export let currentScene = null;
 
 // 변수 설정
 export const state = {
@@ -96,6 +97,8 @@ export function loadScene(scene) {
     // 대사 박스
     if (scene.lines && scene.lines.length > 0) {
         document.getElementById("dialogue-box").classList.remove("hidden");
+        updateDialogue();
+
     } else {
         document.getElementById("dialogue-box").classList.add("hidden");
     }
@@ -108,27 +111,26 @@ export function loadScene(scene) {
         document.getElementById("narration-box").classList.add("hidden");
     }
 
+    document.addEventListener("click", (e) => {
+        if (e.target.id === "next-btn") {
+            currentLineIndex++;
 
-    // 첫 대사 출력
-    updateDialogue();
-}
+            if (currentScene && currentLineIndex < currentScene.lines.length) {
+                updateDialogue();
+            } else {
+                alert("🎉 이 장면이 끝났습니다!");
+            }
+        }
+    })
+};
 
 function updateDialogue() {
-    const line = currentScene.lines[currentLineIndex];
+    const line = currentScene.lines?.[currentLineIndex];
+    if (!line) return;
+  
     const text = line.text;
     const speaker = line.speaker || "";
-    
-    document.getElementById("dialogue-text").textContent = `${speaker ? speaker + ": " : ""}${text}`;
-}
-
-document.addEventListener("click", (e) => {
-    if (e.target.closest("#dialogue-box")) {
-      currentLineIndex++;
-      if (currentLineIndex < currentScene.lines.length) {
-        updateDialogue();
-      } else {
-        alert("🎉 이 장면이 끝났습니다!");
-        // 다음 scene 전환 등 처리
-      }
-    }
-});
+  
+    document.getElementById("dialogue-text").textContent =
+      `${speaker ? speaker + ": " : ""}${text}`;
+};
