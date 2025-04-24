@@ -1,6 +1,7 @@
 console.log("✅ script.js 로드됨");
 
 import { renderIntro } from "./data/scenes/intro.js";
+import { getIntro2Scene } from "./data/scenes/intro2.js";
 
 import quests from "./quest.js";
 import { renderDictionaryCards, setupDictionarySearch } from "./dictionary.js";
@@ -118,7 +119,11 @@ export function loadScene(scene) {
             if (currentScene && currentLineIndex < currentScene.lines.length) {
                 updateDialogue();
             } else {
-                alert("🎉 이 장면이 끝났습니다!");
+                if (typeof currentScene.nextScene === "function") {
+                    const next = currentScene.nextScene();
+                    loadScene(next);
+                    renderQuestBox(state.currentQuest);
+                }
             }
         }
 
@@ -154,5 +159,5 @@ function updateDialogue() {
     const speaker = line.speaker || "";
   
     document.getElementById("dialogue-text").textContent =
-      `${speaker ? speaker + ": " : ""}${text}`;
+      `${speaker ? speaker + " : " : ""}${text}`;
 };

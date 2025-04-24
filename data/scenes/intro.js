@@ -1,5 +1,5 @@
 import { state, loadScene, renderStatusBox, currentScene } from "../../script.js";
-import { intro2 } from "./intro2.js";
+import { getIntro2Scene } from "./intro2.js";
 
 export function renderIntro() {
     const html = `
@@ -29,7 +29,7 @@ export function renderIntro() {
                 document.getElementById("intro-contents").classList.add("hidden");
 
                 renderStatusBox();
-                loadScene(intro2);
+                loadScene(getIntro2Scene());
                 console.log("씬 로딩됨:", currentScene);
             });
         }
