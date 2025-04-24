@@ -1,7 +1,7 @@
 /* ===== 폰트 설정 ===== */
 @font-face {
     font-family: 'DungGeunMo';
-    src: url("@assets/fonts/DungGeunMo.woff") format("woff");
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -140,7 +140,7 @@ body {
     border-radius: 1.2vw;
     background: rgba(0, 0, 0, 0.6);
     color: white;
-    font-size: 1.4rem;
+    font-size: 16px;
     line-height: 1.8rem;
     z-index: 2;
 }
