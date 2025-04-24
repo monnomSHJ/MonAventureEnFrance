@@ -121,6 +121,28 @@ export function loadScene(scene) {
                 alert("🎉 이 장면이 끝났습니다!");
             }
         }
+
+        if (e.target.id === "reset-btn") {
+            // 확인 메시지 띄우고
+            if (confirm("정말 처음으로 돌아가시겠습니까?")) {
+                // 상태 초기화
+                state.userName = '-';
+                state.balance = 500;
+                state.score = 0;
+                state.currentQuest = '';
+                
+                // 초기 화면으로
+                document.getElementById("intro-contents").classList.remove("hidden");
+                document.getElementById("bg-container").classList.add("hidden");
+                document.getElementById("overlay-image").classList.add("hidden");
+                document.getElementById("dialogue-box").classList.add("hidden");
+                document.getElementById("narration-box").classList.add("hidden");
+    
+                document.getElementById("intro-contents").innerHTML = renderIntro();
+                renderStatusBox();
+                renderQuestBox('');
+            }
+        }
     })
 };
 

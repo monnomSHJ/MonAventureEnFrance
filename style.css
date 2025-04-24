@@ -275,6 +275,24 @@ background-color: #ddd;
 
 
 
+/* ===== 리셋 ===== */
+#reset-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'DungGeunMo';
+    z-index: 3;
+}
+
+#reset-btn:hover {
+    background-color: #444;
+}
+
+
 /* ===== 기타 ===== */
 
 /* 숨김 처리 */
