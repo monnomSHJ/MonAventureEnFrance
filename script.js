@@ -78,14 +78,36 @@ export function loadScene(scene) {
     currentScene = scene;
     currentLineIndex = 0;
 
-    document.getElementById("bg-container").style.backgroundImage = `url('${scene.background_img}')`;
-    document.getElementById("bg-container").classList.remove("hidden");
+    if (scene.background_img) {
+        document.getElementById("bg-container").style.backgroundImage = `url('${scene.background_img}')`;
+        document.getElementById("bg-container").classList.remove("hidden");
+    } else {
+        document.getElementById("bg-container").classList.add("hidden");
+    }
 
-    document.getElementById("overlay-image").src = scene.overlay_img;
-    document.getElementById("overlay-image").classList.remove("hidden");
+    // 오버레이 이미지
+    if (scene.overlay_img) {
+        document.getElementById("overlay-image").src = scene.overlay_img;
+        document.getElementById("overlay-image").classList.remove("hidden");
+    } else {
+        document.getElementById("overlay-image").classList.add("hidden");
+    }
 
-    document.getElementById("dialogue-box").classList.remove("hidden");
-    document.getElementById("narration-box").classList.remove("hidden");
+    // 대사 박스
+    if (scene.lines && scene.lines.length > 0) {
+        document.getElementById("dialogue-box").classList.remove("hidden");
+    } else {
+        document.getElementById("dialogue-box").classList.add("hidden");
+    }
+
+    // 나레이션
+    if (scene.narration) {
+        document.getElementById("narration-box").textContent = scene.narration;
+        document.getElementById("narration-box").classList.remove("hidden");
+    } else {
+        document.getElementById("narration-box").classList.add("hidden");
+    }
+
 
     // 첫 대사 출력
     updateDialogue();
