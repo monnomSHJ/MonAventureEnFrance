@@ -68,7 +68,11 @@ function setupReservationUI() {
 
             modal.dataset.selectedId = id;
             modalTitle.textContent = hotel.name;
-            modalDescription.textContent = hotel.description;
+
+            modalDescription.innerHTML = hotel.descriptionLines
+                .map(line => `<p>${line}</p>`)
+                .join("");
+
             modal.classList.add("show");
         });
     });    
