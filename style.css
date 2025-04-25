@@ -94,13 +94,13 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 64px 64px 64px 64px;
     background-color: #ffffff;
     border-radius: 1vw;
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
-    overflow-y:hidden;
-    color: #000;
+    overflow:hidden;
     box-sizing: border-box;
+    padding: 64px 64px 64px 64px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+    color: #000;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -184,6 +184,23 @@ body {
     color: #ff0;
 }
 
+/* 콘텐츠 UI */
+#content-container {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1;
+    padding: 4px 4px;
+    width: 100%;
+    height: 90%;
+    overflow-x: hidden;
+    overflow-x: scroll;
+    border-radius: 6px;
+    border: 4px solid #333232;
+    box-sizing: border-box;
+    padding: 12px 16px;
+}
 
 
 /* ===== 시작 화면 (인트로) ===== */
@@ -298,4 +315,104 @@ background-color: #ddd;
 /* 숨김 처리 */
 .hidden {
     display: none;
+}
+
+
+
+/* ===== 숙소 예약 콘텐츠 ===== */
+/* 숙소 예약 헤더 */
+.reservation-header {
+    position: relative;
+    background: #5e5a5a;
+    color: white;
+    padding: 4px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 12px;
+    overflow-x: scroll;
+}
+  
+/* 숙소 카드 목록 */
+.hotel-card-container {
+    background:#d0cece;
+    border-radius: 6px;
+    display: flex;
+    gap: 24px;
+    padding: 24px 24px;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+  
+.hotel-card {
+    background: white;
+    border: 4px solid #acacac;
+    border-radius: 12px;
+    padding: 32px 12px;
+    width: 100%;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+  
+.hotel-card.selected {
+    border: 3px solid green;
+    background-color: #f0fff0;
+}
+
+.view-details {
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color:rgba(192, 192, 192, 0.2);
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: 'DungGeunMo';
+}
+  
+/* 숙소 하단 버튼 */
+.reservation-actions {
+    margin-top: 4px;
+    text-align: center;
+}
+  
+.reservation-actions button {
+    padding: 12px 24px;
+    margin: 0 12px;
+    font-size: 16px;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 600px;
+    position: relative;
+    color: #000;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal.show {
+    display: flex; /* ← show 클래스 추가 시 flex로 보여지게 */
 }

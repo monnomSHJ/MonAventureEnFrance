@@ -112,6 +112,21 @@ export function loadScene(scene) {
         document.getElementById("narration-box").classList.add("hidden");
     }
 
+    // 콘텐츠 영역
+    if (scene.contentHTML) {
+        document.getElementById("content-container").innerHTML = scene.contentHTML;
+        document.getElementById("content-container").classList.remove("hidden");
+        if (typeof scene.setup === "funtion") {
+            scene.setup();
+        }
+    } else {
+        document.getElementById("content-container").classList.add("hidden");
+    }
+
+    if (typeof scene.onMount === "function") {
+        scene.onMount();
+      }
+
     document.addEventListener("click", (e) => {
         if (e.target.id === "next-btn") {
             currentLineIndex++;
