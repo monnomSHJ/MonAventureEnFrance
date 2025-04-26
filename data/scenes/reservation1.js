@@ -1,7 +1,6 @@
-import { state } from "../../script.js";
+import { state, renderStatusBox } from "../../script.js";
 
 import hotelData from "../hotelData.js";
-
 export function getReservation1Scene() {
     return {
         background_img: "",
@@ -36,6 +35,17 @@ export function getReservation1Scene() {
                     <div id="modal-description">상세 설명</div>
                 <button id="cancel-selection">다른 숙소 보기</button>
                 <button id="ok-selection">이 숙소로 선택하기</button>
+                </div>
+            </div>
+
+            <div id="reservation-popup" class="popup hidden">
+                <div class="popup-content">
+                <h2>✅ 예약이 완료되었습니다!</h2>
+                <div id="popup-hotel-name">호텔 이름</div>
+                <div id="popup-balance-deduct">차감 금액</div>
+                <div id="popup-score-add">추가 점수</div>
+                <div id="popup-condition-check">조건 충족 여부</div>
+                <button id="go-to-airplane">다음으로</button>
                 </div>
             </div>
         `,
@@ -92,7 +102,6 @@ function setupReservationUI() {
 
     // [4] 다른 숙소 보기
     cancelBtn.addEventListener("click", () => {
-        selectedHotel = null;
         modal.classList.remove("show");
       });
 
@@ -100,9 +109,34 @@ function setupReservationUI() {
     confirmBtn.addEventListener("click", () => {
         if (!selectedHotel) return;
 
-        alert(`${selectedHotel} 예약 완료!`);
-        // 다음 Scene 전환 로직 추가 예정
-    });
+        let deductedAmount = 0;
+        let addedScore = 0;
+        let hotelName = "";
+        let conditionPassed = "";
+
+        if (selectedHotel == "hotel1") {
+            deductedAmount = 95;
+            addedScore = 10;
+            hotelName = "Hôtel Soleil";
+        } else if (selectedHotel == "hotel2") {
+            deductedAmount = 85;
+            addedScore = 5;
+            hotelName = "Maison de Paris";
+        } else if (selectedHotel == "hotel3") {
+            deductedAmount = 105;
+            addedScore = 7;
+            hotelName = "Le Petit Palais";
+        }
+
+        state.score += addedScore;
+        state.balance -= deductedAmount;
+        renderStatusBox();
+
+        document.getElementById("popup-hotel-name").textContent = `🏨 ${hotelName}을(를) 예약했습니다!`;
+        document.getElementById("popup-balance-deduct").textContent = `💶 ${deductedAmount}유로 차감되었습니다.`;
+        document.getElementById("popup-score-add").textContent = `🌟 ${addedScore}점이 추가되었습니다.`;
+        document.getElementById("reservation-popup").classList.add("show");
+    })
 
     function highlightSelectedCard(id) {
         document.querySelectorAll(".hotel-card").forEach(card => {
