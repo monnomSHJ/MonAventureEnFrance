@@ -3,7 +3,7 @@ import { getIntro2Scene } from "./intro2.js";
 
 export function renderIntro() {
     const html = `
-        <h1 class="main-title">✈️ Mon Aventure en France</h1>
+        <h1 class="main-title">Mon Aventure en France</h1>
         <div class="description">
             이 게임은 프랑스 여행을 통해 언어와 문화를 체험할 수 있는 인터랙티브 학습 도구입니다.<br />
             다양한 상황 속에서 미션을 수행하고, 프랑스어 실력을 키워보세요!<br /><br />
