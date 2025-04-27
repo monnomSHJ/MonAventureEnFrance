@@ -110,13 +110,13 @@ html, body {
     display: flex;
     flex: 1;
     min-height: 0;
-    overflow: hidden;
+    overflow: auto;
     flex-direction: column;
     background: #ECD4AD;
     position: relative;
     box-sizing: border-box;
     z-index: 0;
-    margin-bottom: 140px;
+    margin-bottom: 100px;
     padding: 0 8px;
 }
 
