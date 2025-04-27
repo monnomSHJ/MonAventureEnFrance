@@ -20,6 +20,7 @@ html, body {
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     width: 100vw;
     height: 100vh;
@@ -27,6 +28,7 @@ html, body {
     min-width: 360px;
     background: #ECD4AD;
     overflow: hidden;
+    gap: 4px;
     font-family: 'Spoqa Han Sans Neo', sans-serif;
 }
 
@@ -109,13 +111,12 @@ html, body {
     display: flex;
     flex: 1;
     min-height: 0;
-    overflow: auto;
+    overflow: hidden;
     flex-direction: column;
     background: #ECD4AD;
     position: relative;
     box-sizing: border-box;
     z-index: 0;
-    margin-bottom: 100px;
     padding: 0 8px;
 }
 
@@ -142,7 +143,7 @@ html, body {
 }
 
 .text-box {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 8px;
@@ -172,7 +173,7 @@ html, body {
 
 .dialogue-container {
     display: flex;
-    width: 100%;
+    width: 90%;
     height: 100%;
     justify-content: space-between;
     align-items: center;
@@ -192,7 +193,7 @@ html, body {
     top: 50%;
     transform: translateX(-50%);
     transform: translateY(-50%);
-    width: 70%;
+    width: 80%;
     background: #fff;
     border: 4px solid #54575C;
     border-radius: 12px;
@@ -232,7 +233,7 @@ html, body {
 .popup-content-btn-group {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 8px;
   }
   
@@ -261,8 +262,6 @@ html, body {
     width: 100%;
     background: #ECD4AD;
     box-sizing: border-box;
-    bottom: 0;
-    position: absolute;
     z-index: 1;
 }
 
@@ -288,6 +287,7 @@ html, body {
     .container {
         min-width: 640px;
         max-width: 1960px;
+        gap: 12px;
     }
 
     .header {
@@ -336,7 +336,6 @@ html, body {
     .contents {
         max-width: 1024px;
         min-width: 640px;
-        margin-bottom: 120px;
         padding: 0 12px;
     }
     
