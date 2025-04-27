@@ -6,38 +6,66 @@
         <title>Mon Aventure en France</title>
         <link rel="stylesheet" href="style.css" />
     </head>
+
     <body>
-        <div id="app">
+        <div class="container">
 
-            <!-- 메인 콘텐츠 -->
-            <div id="main-content">
-                <div id="monitor" class="monitor">
-                    <div id="intro-contents"></div>
-                    <div id="bg-container" class="hidden"></div>
-                    <img id="overlay-image" src="" class="hidden" />
-                    
-                    <div id="narration-box" class="text-box narration hidden">
-                        <div id="narration-text"></div>
+            <header class="header">
+                <div class="header-logo">
+                    <div class="logo-icon">✈️</div>
+                    <div class="logo-text">Mon Aventure en France</div>
+                </div>
+
+                <section class="status-bar">
+                    <div class="status-item">
+                        <div class="name">👤 이름</div>
+                        <div class="value">Guest</div>
                     </div>
+                    <div class="status-item">
+                        <div class="name">💸 지갑</div>
+                        <div class="value">- 유로</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="name">🌟 점수</div>
+                        <div class="value">0</div>
+                    </div>
+                </section>
+            </header>
 
-                    <div id="dialogue-box" class="text-box dialogue hidden">
+            <main class="contents">
+                <div class="content-main">
+                    <div class="bg-container"></div>
+                    <div id="narration-box" class="text-box narration">example text</div>
+                    <div id="dialogue-box" class="text-box dialogue">
                         <div class="dialogue-container">
-                            <div id="dialogue-text"></div>
-                            <div class="next-btn" id="next-btn">▶</div>
+                            <div id="dialogue-text">example text</div>
+                            <div id="next-btn" id="next-btn">▶</div>
                         </div>
                     </div>
 
-                    <div id="content-container" class="hidden"></div>
-                </div>
-            </div>
+                    <div id="popup" class="popup">
+                        <div id="popup-header" class="popup-header">
+                            <div class="popup-header-title">exemple text</div>
+                            <div class="popup-header-close-btn">X</div>
+                        </div>
+                        <div id="popup-content" class="popup-content">
+                            <div class="popup-content-text">example text<br>exemple text<br>exemple text</div>
+                            <div class="popup-content-btn-group">
+                                <div id="popup-content-btn1" class="popup-content-btn">exemple</div>
+                                <div id="popup-content-btn2" class="popup-content-btn">exemple</div>
+                                <div id="popup-content-btn3" class="popup-content-btn">exemple</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- 사이드바(고정) -->
-            <div id="sidebar">
-                <div id="status-box" class="sidebar-card"></div>
-                <div id="quest-box" class="sidebar-card"></div>
-                <div id="dictionary-box" class="sidebar-card"></div>
-                <button id="reset-btn">🔄 처음부터 다시</button>
-            </div>
+                </div>
+            </main>
+
+            <section class="quest">
+                <div class="quest-title">📌 현재 퀘스트가 없습니다.</div>
+                <div class="quest-list">다음 퀘스트를 기다려주세요!</div>
+            </section>
         </div>
 
         <script type="module" src="script.js" defer></script>

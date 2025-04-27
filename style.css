@@ -8,461 +8,401 @@
 
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
+/* 기본 스타일 (모바일 기준) */
 
-
-/* ===== 기본 설정 ===== */
-body {
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
-    background: #ffffff;
-    height: 100vh;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    max-width: 640px;
+    min-width: 360px;
+    background: #ECD4AD;
+    overflow: hidden;
     font-family: 'Spoqa Han Sans Neo', sans-serif;
 }
 
-#app {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-
-
-/* ===== 전체 영역 구분 ===== */
-
-/* 메인 콘텐츠 */
-#main-content {
-    width: 70%;
-    height: 100%;
-    background-color: #F6E5C9;
-    padding-top: 3vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-bottom: 3vh;
-    box-sizing: border-box;
-    overflow-y: hidden;
-}
-
-/* 사이드바 영역 */
-#sidebar {
-    width:30%;
-    height: 100%;
-    background-color: #F6E5C9;
-    padding-top: 3vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-bottom: 3vh;
+.header {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    gap: 2vh;
-}
-
-
-
-/* ===== 사이드바 내부 요소 ===== */
-
-/* 사이드바 공통카드 스타일 */
-.sidebar-card {
-    background: #FFF0D2;
-    border-radius: 1vw;
-    padding: 0.8em 1em;
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    box-sizing: border-box;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: stretch;
     width: 100%;
-    border: 4px solid #595751;
-}
-
-/* 사이드바 제목 */
-.sidebar-card h3 {
-    font-size: 1.1em;
-    font-style: bold;
-    margin: 0;
-    color: #000000;
-}
-
-/* 사이드바 구분선 */
-.separator {
-    border-top: 0.02em solid #000;
-    width: 100%;
-    margin: 0.5vh 0;
-}
-
-/* 사이드바 텍스트 */
-.sidebar-line {
-    font-size: 1em;
-    color: #000000;
-    line-height: 1.2em;
-    word-wrap: break-word;
-}
-
-
-
-/* ===== 메인 콘텐츠 내부 - monitor 영역 ===== */
-
-/* 모니터 영역 */
-.monitor {
+    height: 120px;
+    max-width: 640px;
+    min-width: 360px;
+    background: #ECD4AD;
+    box-sizing: border-box;
+    padding: 8px;
     position: relative;
+    z-index: 1;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
     width: 100%;
-    aspect-ratio: 4 / 3;
-    background-image: url(./assets/images/monitor_bg.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: #ECD4AD;
+}
 
-    color: black;
-    font-size: 1em;
+.logo-icon {
+    font-size: 22px;
+    padding: 4px;
+}
 
-    overflow: hidden;
-    box-sizing: border-box;
-    padding-top: 2vh;
+.logo-text {
+    font-family: 'DungGeunMo';
+    font-size: 22px;
+    padding: 4px;
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 2px;
+    width: 100%;
+    background: #ECD4AD;
+}
+
+.status-item {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    align-items: left;
+    padding: 4px 14px;
+    gap: 2px;
+    background: #FFF1D4;
+    border-radius: 8px;
+    border: 2px solid #C7A880;
 }
 
+.name {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000;
+}
 
+.value {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #000;
+}
 
-/* ===== monitor 내부 요소 ===== */
+.contents {
+    max-width: 640px;
+    min-width: 360px;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    background: #ECD4AD;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 0;
+    margin-bottom: 100px;
+    padding: 0 8px;
+}
 
-/* 배경 이미지 */
-#bg-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+.content-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    height: 100%;
+    background: #FFF1D4;
+    border: 3px solid #C7A880;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+.bg-container {
+    background: #ECD4AD;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    pointer-events: none;
-}
-
-#overlay-image {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 50%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* 공통 텍스트 박스 스타일 */
-.text-box {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-    padding: 1.2vw 2vw;
-    border-radius: 1.2vw;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    font-size: 1em;
-    line-height: 1.8rem;
+    border-radius: 8px;
+    border: 3px solid #54575C;
     z-index: 3;
 }
 
-/* 나레이션 박스 (상단) */
-.narration {
-    position: absolute;
-    top: 5%;
-    text-align: center;
+.text-box {
+    width: 80%;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 대화 박스 (하단) */
+.narration {
+    position: absolute;
+    top: 40px;
+    height: 40px;
+}
+
 .dialogue {
     position: absolute;
-    bottom: 5%;
-    z-index: 4;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 80px;
 }
 
 .dialogue-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.2em;
-    z-index: 5;
-}
-
-/* 대화 next */
-.next-btn {
-    font-size: 1.2em;
-    color: #fff;
-    user-select: none;
-    cursor: pointer;
-    pointer-events: auto;
-    z-index: 6;
-}
-
-.next-btn:hover {
-    color: #ff0;
-}
-
-/* 콘텐츠 UI */
-#content-container {
-    position: relative;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -45%);
-    z-index: 1;
-    padding: 0.4em 0.4em;
-    width: 100%;
-    height: 90%;
-    overflow-x: hidden;
-    overflow-x: scroll;
-    border-radius: 0.3em;
-    border: 4px solid #333232;
-    box-sizing: border-box;
-    padding: 12px 16px;
-}
-
-
-/* ===== 시작 화면 (인트로) ===== */
-
-/* 메인 타이틀 */
-.main-title {
-    font-family: 'DungGeunMo';
-    text-align: center;
-    font-size: 3vw;
-    margin-top: 12vh;
-    margin-bottom: 6vh;
-    color: #222;
-}
-
-/* 설명문 */
-.description {
-    text-align: center;
-    font-size: 0.8em;
-    line-height: 1.6;
-    margin: 0 12vh;
-}
-
-.input-box {
-    text-align: center;
-    margin-top: 4vh;
-    margin-bottom: 2vh;
-    font-size: 1em;
-}
-  
-.input-box input {
-    font-size: 1em;
-    border-radius: 0.5em;
-    border: 1px solid #ccc;
-    height: 6vh;
-    margin-top: 1vh;
-    margin-bottom: 8vh;
-    padding-left: 1em;
-}
-  
-.input-box button {
-    font-size: 1em;
-    font-family: "DungGeunMo";
-    height: 6vh;
-    aspect-ratio: 9 / 3;
-    background-color: #FFF0D2;
-    background-image: url("./assets/images/enter_btn.png");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    border: none;
-    margin-top: 2vh;
-    color: black;
-    cursor: pointer;
-}
-  
-.input-box button:hover {
-    background-image: url("./assets/images/enter_btn_hovering.png");
-}
-
-
-
-/* ===== 단어장 영역 ===== */
-
-/* 단어장 박스 */
-#dictionary-box input {
-    width: 100%;
-    padding: 8px;
-    margin: 8px 0;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
-.dictionary-scroll {
-    max-height: 16vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
- }
-  
-.card {
-    background-color: #f5f5f5;
-    color: black;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 16px;
-  }
-
-.card:hover {
-background-color: #ddd;
-}
-
-
-
-/* ===== 리셋 ===== */
-#reset-btn {
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 6px;
-    background-color: #222;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    z-index: 3;
-}
-
-#reset-btn:hover {
-    background-color: #444;
-}
-
-
-/* ===== 기타 ===== */
-
-/* 숨김 처리 */
-.hidden {
-    display: none;
-}
-
-
-
-/* ===== 숙소 예약 콘텐츠 ===== */
-/* 숙소 예약 헤더 */
-.reservation-header {
-    position: relative;
-    background: #5e5a5a;
-    color: white;
-    padding: 4px;
-    border-radius: 6px;
-    text-align: center;
-    margin-bottom: 12px;
-    overflow-x: scroll;
-}
-  
-/* 숙소 카드 목록 */
-.hotel-card-container {
-    background:#d0cece;
-    border-radius: 6px;
-    display: flex;
-    gap: 24px;
-    padding: 24px 24px;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-  
-.hotel-card {
-    background: white;
-    border: 4px solid #acacac;
-    border-radius: 12px;
-    padding: 32px 12px;
-    width: 100%;
-    text-align: center;
-    transition: border-color 0.3s;
-}
-  
-.hotel-card.selected {
-    border: 3px solid green;
-    background-color: #f0fff0;
-}
-
-.view-details {
-    padding: 8px 12px;
-    margin-top: 8px;
-    font-size: 16px;
-    border-radius: 6px;
-    background-color:rgba(192, 192, 192, 0.2);
-    color: black;
-    border: 2px solid black;
-    cursor: pointer;
-}
-  
-/* 숙소 하단 버튼 */
-.reservation-actions {
-    margin-top: 4px;
-    text-align: center;
-}
-  
-.reservation-actions button {
-    padding: 12px 24px;
-    margin: 0 12px;
-    font-size: 16px;
-}
-
-.modal {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 10;
-    display: none;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-.modal-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 60%;
-    max-width: 600px;
-    position: relative;
-    color: #000;
-}
-
-.close-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+#next-btn {
     font-size: 24px;
     cursor: pointer;
 }
 
-.modal.show {
-    display: flex; /* ← show 클래스 추가 시 flex로 보여지게 */
+.hidden {
+    display: none;
 }
-
-
-
-/* ===== 팝업 모달 ===== */  
 
 .popup {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.6);
+    top: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    width: 70%;
+    background: #fff;
+    border: 4px solid #54575C;
+    border-radius: 12px;
+    overflow: hidden;
     z-index: 9999;
 }
 
-.popup-content {
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-.popup-content h2 {
-    margin-bottom: 20px;
-}
-
-.popup.show {
+.popup-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #ECD4AD;
+    border-bottom: 2px solid #C7A880;
+    font-size: 16px
+}
+
+.popup-header-title {
+    font-weight: 700;
+}
+  
+.popup-header-close-btn {
+    cursor: pointer;
+    font-weight: 700;
+}
+  
+.popup-content {
+    padding: 12px;
+    height: 100%;
+    background: #FFF1D4;
+}
+  
+.popup-content-text {
+    margin-bottom: 24px;
+}
+  
+.popup-content-btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 8px;
+  }
+  
+.popup-content-btn {
+    padding: 8px;
+    background: #C7A880;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    flex: 1
+}
+
+
+.quest {
+    display: flex;
+    max-width: 640px;
+    min-width: 360px;
+    flex-shrink: 0;
+    height: 100px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 24px;
+    gap: 2px;
+    width: 100%;
+    background: #ECD4AD;
+    box-sizing: border-box;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.quest-title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+}
+
+.quest-list {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #000;
+}
+
+
+/* 데스크탑 대응 (640px 이상) */
+@media (min-width: 640px) {
+
+    .container {
+        min-width: 640px;
+        max-width: 1960px;
+    }
+
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1960px;
+        min-width: 640px;
+        height: 80px;
+    }
+    
+    .header-logo {
+        align-items: center;
+    }
+    
+    .logo-icon {
+        font-size: 22px;
+        padding: 8px;
+    }
+    
+    .logo-text {
+        font-size: 22px;
+        padding: 8px 2px;
+    }
+
+    .status-bar {
+        border-radius: 8px;
+        justify-content: flex-end;
+        padding: 0 0;
+    }
+    
+    .status-item {
+        padding: 8px 18px;
+    }
+    
+    .name {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    
+    .value {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .contents {
+        max-width: 1024px;
+        min-width: 640px;
+        margin-bottom: 120px;
+        padding: 0 12px;
+    }
+    
+    .content-main {
+        padding: 12px 16px;
+        height: 100%;
+    }
+    
+    .bg-container {
+        border-radius: 12px;
+    }
+
+    .text-box {
+        width: 85%;
+        padding: 16px;
+        font-size: 20px;
+    }
+    
+    #next-btn {
+        font-size: 28px;
+    }
+
+    .popup {
+        width: 50%;
+    }
+    
+    .popup-header {
+        padding: 14px 18px;
+    }
+    
+    .popup-header-title {
+        font-size: 20px;
+    }
+      
+    .popup-header-close-btn {  
+        font-size: 20px;
+    }
+      
+    .popup-content {
+        padding: 16px;
+        height: 100%;
+        font-size: 18px;
+    }
+      
+    .popup-content-text {
+        margin-bottom: 28px;
+    }
+
+    .popup-content-btn {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .quest {
+        max-width: 1960px;
+        min-width: 640px;
+        height: 120px;
+        padding: 8px 24px;
+    }
+    
+    .quest-title {
+        font-size: 16px;
+    }
+    
+    .quest-list {
+        font-size: 14px;
+    }
 }
