@@ -1,3 +1,4 @@
+/*
 import { state, renderStatusBox } from "../../script.js";
 
 import hotelData from "../hotelData.js";
@@ -144,3 +145,4 @@ function setupReservationUI() {
         });
     }
 }
+*/

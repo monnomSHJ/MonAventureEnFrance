@@ -32,20 +32,20 @@
                 </section>
             </header>
 
-            <div class="overlay"></div>
-
             <main class="contents">
-                <div class="content-main">
-                    <div class="bg-container"></div>
-                    <div id="narration-box" class="text-box narration">example text</div>
-                    <div id="dialogue-box" class="text-box dialogue">
+                <div id="content-main" class="content-main">
+                    <div id="bg-container" class="bg-container hidden"></div>
+                    <div id="narration-box" class="text-box narration hidden">example text</div>
+                    <div id="dialogue-box" class="text-box dialogue hidden">
                         <div class="dialogue-container">
                             <div id="dialogue-text">example text</div>
-                            <div id="next-btn" id="next-btn">▶</div>
+                            <div id="next-btn" class="next-btn">▶</div>
                         </div>
                     </div>
 
-                    <div id="popup" class="popup">
+                    <div id="overlay-image" class="overlay-image hidden"></div>
+
+                    <div id="popup" class="popup hidden">
                         <div id="popup-header" class="popup-header">
                             <div class="popup-header-title">exemple text</div>
                             <div class="popup-header-close-btn"></div>
@@ -63,14 +63,14 @@
             </main>
 
             <footer class="quest">
-                <div class="quest-title">📌 현재 퀘스트가 없습니다.</div>
-                <div class="quest-list">다음 퀘스트를 기다려주세요!</div>
+                <div class="quest-title"></div>
+                <div class="quest-list"></div>
             </footer>
         </div>
 
         <div class="dictionary-panel">
             <div id="dictionary-panel-header" class="dictionary-panel-header">
-                <div class="dictionary-panel-haeder-text">📚 단어장</div>
+                <div class="dictionary-panel-header-text">📚 단어장</div>
                 <div class="dictionary-panel-header-arrow">▲</div>
             </div>
             <div id="dictionary-panel-content" class="dictionary-panel-content">
@@ -79,6 +79,9 @@
             </div>
         </div>
 
-        <script type="module" src="script.js" defer></script>
+        <div class="overlay"></div>
+        <div class="dictionary-overlay"></div>
+
+        <script type="module" src="script.js"></script>
     </body>
 </html>

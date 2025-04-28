@@ -1,10 +1,22 @@
+console.log("dictionary.js 로드됨");
+
 let dictionaryData = [];
 
-async function loadDictionary() {
-  const res = await fetch('./data/dictionary.json');
-  dictionaryData = await res.json();
-  renderDictionaryCards(dictionaryData);
-  setupDictionarySearch();
+export async function loadDictionary() {
+  console.log("loadDictionary() 호출됨");
+
+  try {
+    const res = await fetch('./data/dictionary.json');
+    if (!res.ok) throw new Error('dictionary.json fetch 실패!');
+
+    dictionaryData = await res.json();
+    console.log("불러온 dictionaryData:", dictionaryData);
+
+    renderDictionaryCards(dictionaryData);
+    setupDictionarySearch();
+  } catch (error) {
+    console.error("❌ dictionary.json 로딩 실패:", error);
+  }
 }
 
 export function renderDictionaryCards(data) {

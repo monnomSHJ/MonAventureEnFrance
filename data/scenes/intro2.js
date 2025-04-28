@@ -1,4 +1,4 @@
-import { state, renderQuestBox } from "../../script.js";
+/*import { state, renderQuestBox } from "../../script.js";
 import { getReservation1Scene } from "./reservation1.js";
 
 export function getIntro2Scene() {
@@ -17,3 +17,4 @@ export function getIntro2Scene() {
         }
     };
 }
+*/

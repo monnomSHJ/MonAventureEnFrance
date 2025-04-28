@@ -1,8 +1,9 @@
-console.log("✅ script.js 로드됨");
+console.log("script.js 로드됨");
 
 // 필요한 모듈 불러오기
-import quest from "./quest.js";
-import { renderDictionaryCards, setupDictionarySearch } from "./dictionary.js";
+import quests from "./quest.js";
+import { loadDictionary } from "./dictionary.js";
+import { renderIntro, setupIntroEvents } from "./data/scenes/intro.js";
 
 // 상태 관리
 export const state = {
@@ -11,19 +12,40 @@ export const state = {
   score: 0,
   currentQuest: '',
 };
+
+// Scene 관리
+export let currentLineIndex = 0;
+export let currentScene = null;
+
+
+
 /* ===== DOM 요소 캐싱 ===== */
 const overlay = document.querySelector('.overlay');
+
+const contentMain = document.getElementById("content-main");
+const bgContainer = document.getElementById("bg-container");
+const overlayImg = document.getElementById("overlay-image")
+const narrationBox  = document.getElementById("narration-box");
+const dialogueBox = document.getElementById("dialogue-box");
+
+const statusBar = document.querySelector('.status-bar');
+const questTitle = document.querySelector('.quest-title');
+const questList = document.querySelector('.quest-list');
+
+
 
 /* ===== 단어장 기능 ===== */
 // 단어장 토글
 const dictionaryPanel = document.querySelector('.dictionary-panel');
 const dictionaryPanelHeader = document.getElementById('dictionary-panel-header');
 const dictionaryPanelArrow = document.querySelector('.dictionary-panel-header-arrow');
+const dictionaryOverlay = document.querySelector('.dictionary-overlay');
 
 
 dictionaryPanelHeader.addEventListener('click', () => {
+  console.log("눌림");
   dictionaryPanel.classList.toggle('open');
-  overlay.classList.toggle('show');
+  dictionaryOverlay.classList.toggle('show');
 
   if (dictionaryPanel.classList.contains('open')) {
     dictionaryPanelArrow.textContent = '▼';
@@ -32,196 +54,131 @@ dictionaryPanelHeader.addEventListener('click', () => {
   }
 });
 
-overlay.addEventListener('click', () => {
+dictionaryOverlay.addEventListener('click', () => {
   dictionaryPanel.classList.remove('open');
   overlay.classList.remove('show');
   dictionaryPanelArrow.textContent = '▲';
 });
 
-/*
-// 필요한 모둘 불러오기
-import { renderIntro, setupIntroEvents } from "./data/scenes/intro.js";
-import quests from "./quest.js";
-import { renderDictionaryCards, setupDictionarySearch } from "./dictionary.js";
 
 
-export let currentLineIndex = 0;
-export let currentScene = null;
+/* ===== 렌더링 함수 ===== */
 
-// ===== DOM 요소 캐싱 =====
-const monitorBody = document.getElementById("monitor-body");
-const backgroundLayer = document.getElementById("background-layer");
-const overlayImage = document.getElementById("overlay-image");
-const narrationBox = document.getElementById("narration-box");
-const dialogueBox = document.getElementById("dialogue-box");
-const contentContainer = document.getElementById("content-container");
+// 상태창 렌더링
+export function renderStatusBar() {
+  if (!statusBar) return;
 
-// 사이드바 요소
-const statusBox = document.getElementById("status-box");
-const questBox = document.getElementById("quest-box");
-const dictionaryBox = document.getElementById("dictionary-box");
-const resetBtn = document.getElementById("reset-btn");
+  const statusItems = statusBar.querySelectorAll('.status-item');
+  statusItems[0].querySelector('.value').textContent = state.userName;
+  statusItems[1].querySelector('.value').textContent = `${state.balance} 유로`
+  statusItems[2].querySelector('.value').textContent = `${state.score} 점`;
+}
 
-// ==== 초기 화면 렌더링 ====
+// 퀘스트 렌더링
+export function renderQuest() {
+  const current = state.currentQuest;
+  const questData = quests[current];
+
+  if (!questData) {
+    questTitle.textContent = "📌 현재 퀘스트가 없습니다.";
+    questList.innerHTML = "다음 퀘스트를 기다려주세요!";
+    return;
+  }
+
+  questTitle.textContent = questData.title;
+  questList.innerHTML = questData.tasks.map(task => `<div>${task}</div>`).join('');
+}
+
+
+
+/* ===== 초기화면 렌더링 ===== */
 function init() {
-    renderStatusBox();
-    renderQuestBox(state.currentQuest);
-    renderDictionaryBox();
-    renderDictionaryCards();
-    setupDictionarySearch();
-    renderIntroScreen();
+  renderStatusBar();
+  renderQuest();
+  loadDictionary();
+  renderIntroScreen();
 }
 
+init();
+
+
+
+/* ===== 인트로 화면 렌더링 ===== */
 function renderIntroScreen() {
-    monitorBody.innerHTML = renderIntro();
-    setupIntroEvents();
-}
-
-// ==== 사이드바 박스 렌더링 ====
-export function renderStatusBox() {
-    statusBox.innerHTML = `
-      <h3>📜 Information</h3>
-      <div class="separator"></div>
-      <div class="sidebar-line">👤 이름: ${state.userName}</div>
-      <div class="sidebar-line">💰 소지금: ${state.balance} 유로</div>
-      <div class="sidebar-line">🌟 점수: ${state.score} 점</div>
-    `;
-}
-
-export function renderQuestBox(currentQuest) {
-    const quest = quests[currentQuest];
-  
-    if (!quest) {
-      questBox.innerHTML = `
-        <h3>📌 퀘스트</h3>
-        <hr class="separator">
-        <div class="sidebar-line">📭 현재 진행 중인 퀘스트가 없습니다.</div>`;
-      return;
-    }
-  
-    const tasksHTML = quest.tasks.map(task => `<li>${task}</li>`).join('');
-    questBox.innerHTML = `
-      <h3>${quest.title}</h3>
-      <hr class="separator">
-      <div class="sidebar-line"><ul>${tasksHTML}</ul></div>
-    `;
+  contentMain.innerHTML = renderIntro();
+  setupIntroEvents();
 }
 
 
+/* ===== 다음 텍스트 ===== */
+// 이벤트 
+contentMain.addEventListener("click", (e) => {
+  if (e.target.id === "next-btn") {
+    currentLineIndex++;
 
-// ==== 씬 로딩 및 업데이트 ====
-export function loadScene(scene) {
-    currentScene = scene;
-    currentLineIndex = 0;
-
-    monitorBody.innerHTML = `
-    <div id="background-layer"></div>
-    <img id="overlay-image" />
-    <div id="narration-box" class="text-box narration hidden"></div>
-    <div id="dialogue-box" class="text-box dialogue hidden">
-      <span id="dialogue-text"></span>
-    </div>
-    <div id="content-container" class="hidden"></div>
-    `;
-
-    const backgroundLayer = document.getElementById("background-layer");
-    const overlayImage = document.getElementById("overlay-image");
-    const narrationBox = document.getElementById("narration-box");
-    const dialogueBox = document.getElementById("dialogue-box");
-    const contentContainer = document.getElementById("content-container");
-  
-    // 배경 이미지
-    if (scene.background_img) {
-      backgroundLayer.style.backgroundImage = `url('${scene.background_img}')`;
-      backgroundLayer.classList.remove("hidden");
-    } else {
-      backgroundLayer.classList.add("hidden");
-    }
-  
-    // 오버레이 이미지
-    if (scene.overlay_img) {
-      overlayImage.src = scene.overlay_img;
-      overlayImage.style.display = "block";
-    } else {
-      overlayImage.style.display = "none";
-    }
-  
-    // 나레이션
-    if (scene.narration) {
-      narrationBox.textContent = scene.narration;
-      narrationBox.classList.remove("hidden");
-    } else {
-      narrationBox.classList.add("hidden");
-    }
-  
-    // 대화
-    if (scene.lines && scene.lines.length > 0) {
-      dialogueBox.classList.remove("hidden");
+    if (currentScene && currentLineIndex < currentScene.lines.length) {
       updateDialogue();
     } else {
-      dialogueBox.classList.add("hidden");
-    }
-  
-    // 콘텐츠 영역
-    if (scene.contentHTML) {
-      contentContainer.innerHTML = scene.contentHTML;
-      contentContainer.classList.remove("hidden");
-    } else {
-      contentContainer.classList.add("hidden");
-    }
-  
-    // 초기 설정 함수 호출
-    if (typeof scene.onMount === "function") {
-      scene.onMount();
-    }
-}
-
-function updateDialogue() {
-    const line = currentScene.lines?.[currentLineIndex];
-    if (!line) return;
-  
-    const text = line.text;
-    const speaker = line.speaker || "";
-  
-    document.getElementById("dialogue-text").textContent = `${speaker ? speaker + ": " : ""}${text}`;
-}
-
-// ==== 이벤트 바인딩 ====
-monitorBody.addEventListener("click", (e) => {
-    if (e.target.id === "next-btn") {
-      currentLineIndex++;
-  
-      if (currentScene && currentLineIndex < currentScene.lines.length) {
-        updateDialogue();
-      } else {
-        if (typeof currentScene.nextScene === "function") {
-          const next = currentScene.nextScene();
-          loadScene(next);
-          renderQuestBox(state.currentQuest);
-        }
+      if (typeof currentScene.nextScene === "function") {
+        const next = currentScene.nextScene();
+        loadScene(next);
+        renderQuest(state.currentQuest);
       }
     }
-});
+  }
+}); 
 
-resetBtn.addEventListener("click", () => {
-    if (confirm("정말 처음으로 돌아가시겠습니까?")) {
-      // 상태 초기화
-      state.userName = '-';
-      state.balance = 500;
-      state.score = 0;
-      state.currentQuest = '';
-  
-      renderStatusBox();
-      renderQuestBox('');
-      renderIntroScreen();
-  
-      backgroundLayer.classList.add("hidden");
-      overlayImage.style.display = "none";
-      dialogueBox.classList.add("hidden");
-      narrationBox.classList.add("hidden");
-    }
-});
 
-// ==== 시작 실행 ====
-init();
-*/
+
+/* ===== 씬 로딩 및 업데이트 ===== */
+export function loadScene(scene) {
+  currentScene = scene;
+  currentLineIndex = 0;
+
+  // 배경 이미지 
+  if (scene.background_img) {
+    bgContainer.style.backgroundImage = `url('${scene.background_img}')`;
+    bgContainer.classList.remove('hidden');
+  } else {
+    bgContainer.classList.add('hidden');
+  }
+
+  if (scene.lines && scene.lines.length > 0) {
+    dialogueBox.classList.remove("hidden");
+    updateDialogue();
+  } else {
+    dialogueBox.classList.add("hidden");
+  }
+
+  // 초기 설정 함수 호출
+  if (typeof scene.onMount === "function") {
+    scene.onMount();
+  }
+}
+
+
+
+// 디알로그 업데이트 
+function updateDialogue() {
+  const line = currentScene.lines?.[currentLineIndex];
+  if (!line) return;
+
+  const text = line.text;
+  const speaker = line.speaker || "";
+
+  document.getElementById("dialogue-text").textContent = `${speaker ? speaker + ": " : ""}${text}`;
+
+  if (line.overlayImg) {
+    overlayImg.style.backgroundImage = `url('${line.overlayImg}')`;
+    overlayImg.classList.remove('hidden');
+  } else {
+    overlayImg.classList.add('hidden');
+  }
+
+  if (line.narration) {
+    narrationBox.textContent = line.narration;
+    narrationBox.classList.remove('hidden');
+  } else {
+    narrationBox.classList.add('hidden');
+  }
+}

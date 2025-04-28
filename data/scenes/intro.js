@@ -1,5 +1,4 @@
-import { state, loadScene, renderStatusBox } from "../../script.js";
-import { getIntro2Scene } from "./intro2.js";
+import { state, renderStatusBar } from "../../script.js";;
 
 export function renderIntro() {
     return `
@@ -11,7 +10,7 @@ export function renderIntro() {
           2025-1 언어교육캡스톤디자인<br />
           기획 및 개발 : 불어교육과 지현선, 불어교육과 신홍준
         </div>
-        <div class="input-box">
+        <div class="name-input-box">
           <label for="userName">예약자 성함을 입력해주세요.</label><br />
           <input type="text" id="userName" placeholder="ex. Hongjun" />
           <button id="start-btn">입력 완료!</button>
@@ -33,10 +32,8 @@ export function setupIntroEvents() {
           }
   
           state.userName = input;
-          renderStatusBox();
-          loadScene(getIntro2Scene());
+          renderStatusBar();
         });
       }
     }, 0);
 }
-  
