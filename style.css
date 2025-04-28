@@ -409,11 +409,64 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding: 24px 24px;
 }
 
 .main-title {
-    font-size: 24px;
+    font-weight: 700;
+    font-size: 22px;
 }
+
+.description {
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+    padding: 0 24px;
+}
+
+.name-input-box {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name-input-box label {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.name-input-box-group {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.name-input-box-group input {
+    font-size: 14px;
+    padding: 4px 12px;
+    flex: 1;
+    border: 2px solid #C7A880;
+    border-radius: 6px;
+}
+
+.name-input-box-group button {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 4px 8px;
+    width: 100px;
+    flex-shrink: 0;
+    border: 2px solid #C7A880;
+    border-radius: 6px;
+    background: #ECD4AD;
+    cursor: pointer;
+}
+
+.name-input-box-group button:hover {
+    background: #C7A880;
+}
+
 
 
 /* 데스크탑 대응 (640px 이상) */

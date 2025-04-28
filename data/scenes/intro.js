@@ -2,7 +2,7 @@ import { state, renderStatusBar } from "../../script.js";;
 
 export function renderIntro() {
     return `
-      <div id="intro-screen">
+      <div id="intro-screen" class="intro-screen">
         <h1 class="main-title">Mon Aventure en France</h1>
         <div class="description">
           이 게임은 프랑스 여행을 통해 언어와 문화를 체험할 수 있는 인터랙티브 학습 도구입니다.<br />
@@ -12,8 +12,10 @@ export function renderIntro() {
         </div>
         <div class="name-input-box">
           <label for="userName">예약자 성함을 입력해주세요.</label><br />
-          <input type="text" id="userName" placeholder="ex. Hongjun" />
-          <button id="start-btn">입력 완료!</button>
+            <div class="name-input-box-group">
+              <input type="text" id="userName" placeholder="ex. Hongjun" />
+              <button id="start-btn">입력 완료!</button>
+            </div>
         </div>
       </div>
     `;
