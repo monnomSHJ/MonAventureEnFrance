@@ -11,22 +11,22 @@ export function getReservation1Scene() {
                 <div class="hotel-card-container">
                     ${hotelData.map(hotel => `
                         <div class="hotel-card" data-id="${hotel.id}">
+                            <img src="${hotel.image}" alt="${hotel.name}" />
                             <div class="hotel-card-content">
-                                <img src="${hotel.image}" alt="${hotel.name}" />
-                                    <div class="hotel-card-texts">
-                                        <h3>${hotel.name}</h3>
-                                        <p>${hotel.summary}</p>
-                                    </div>
+                                <div class="hotel-card-texts">
+                                    <h3>${hotel.name}</h3>
+                                    <p>${hotel.summary}</p>
                                 </div>
-                            <button class="view-details" data-id="${hotel.id}">자세히 보기</button>
+                                <button class="view-details button" data-id="${hotel.id}">자세히 보기</button>
+                            </div>
                         </div>
                     `).join("")}
                 </div>
 
-                            <div class="reservation-actions">
+                <div class="reservation-actions">
                 <button id="confirm-reservation" class="confirm-reservation button" disabled>예약 완료</button>
+                </div>
             </div>
-        </div>
         `,
         onMount: setupReservationUI,
     }
@@ -62,15 +62,18 @@ function setupReservationUI() {
             btn1.textContent = "이 숙소로 선택하기";
             btn2.textContent = "다른 숙소 보기";
             btn3.classList.add('hidden');
-            overlay.classList.remove('hidden');
+            overlay.classList.toggle("show");
 
             btn1.onclick = () => {
                 highlightSelectedCard(selectedHotel);
                 popup.classList.add("hidden");
+                overlay.classList.remove("show");
+                document.getElementById("${hotel.id}").style.borderColor = '#F19B0F';
             };
 
             btn2.onclick = () => {
                 popup.classList.add("hidden");
+                overlay.classList.remove("show");
             };
 
             popup.classList.remove("hidden");
