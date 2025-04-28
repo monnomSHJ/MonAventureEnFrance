@@ -10,7 +10,9 @@ const hotelData = [
         "🥐 Petit-déjeuner inclus",
         "🌐 Site web: www.hotelsoleil.fr"
       ],
-      "image": "assets/images/hotel1.jpg"
+      "image": "assets/images/hotel1.jpg",
+      "price": 95,
+      "score": 10
     },
     {
       "id": "hotel2",
@@ -23,7 +25,9 @@ const hotelData = [
         "🥐 Petit-déjeuner non inclus",
         "🌐 Site web: www.maisonparis.fr"
       ],
-      "image": "assets/images/hotel1.jpg"
+      "image": "assets/images/hotel1.jpg",
+      "price": 85,
+      "score": 5
     },
     {
       "id": "hotel3",
@@ -36,7 +40,9 @@ const hotelData = [
         "🥐 Petit-déjeuner inclus",
         "🌐 Site web: www.petitpalais.fr"
       ],
-      "image": "assets/images/hotel1.jpg"
+      "image": "assets/images/hotel1.jpg",
+      "price": 105,
+      "score": 7
     }
 ];
 

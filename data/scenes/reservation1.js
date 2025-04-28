@@ -1,4 +1,4 @@
-import { state, overlay } from "../../script.js";
+import { state, overlay, renderStatusBar } from "../../script.js";
 import hotelData from "../hotelData.js";
 
 export function getReservation1Scene() {
@@ -33,7 +33,7 @@ export function getReservation1Scene() {
 }
 
 function setupReservationUI() {
-    let selectedHotel = null;
+    let selectedHotelID = null;
 
     const popup = document.getElementById("popup");
     const popupHeaderTitle = document.querySelector(".popup-header-title");
@@ -53,63 +53,51 @@ function setupReservationUI() {
                 return;
             }
 
-            selectedHotel = id;
-            confirmBtn.disabled = false;
-
             popupHeaderTitle.textContent = hotel.name;
             popupContentText.innerHTML = hotel.descriptionLines.map(line => `<p>${line}</p>`).join("");
 
-            btn1.textContent = "이 숙소로 선택하기";
+            btn1.textContent = "숙소 선택하기";
             btn2.textContent = "다른 숙소 보기";
             btn3.classList.add('hidden');
+
+            popup.classList.remove("hidden");
             overlay.classList.toggle("show");
 
             btn1.onclick = () => {
-                highlightSelectedCard(selectedHotel);
+                selectedHotelID = id;
+                highlightSelectedCard(selectedHotelID);
+                confirmBtn.disabled = false;
                 popup.classList.add("hidden");
                 overlay.classList.remove("show");
-                document.getElementById("${hotel.id}").style.borderColor = '#F19B0F';
+                
             };
 
             btn2.onclick = () => {
                 popup.classList.add("hidden");
                 overlay.classList.remove("show");
             };
-
-            popup.classList.remove("hidden");
         });
     });
 
     confirmBtn.addEventListener("click", () => {
-        if (!selectedHotel) return;
+        if (!selectedHotelID) return;
+        const hotel = hotelData.find(h => h.id === selectedHotelID);
 
-        let deductedAmount = 0;
-        let addedScore = 0;
-        let hotelName = "";
-
-        if (selectedHotel === "hotel1") {
-            deductedAmount = 95;
-            addedScore = 10;
-            hotelName = "Hôtel Soleil";
-        } else if (selectedHotel === "hotel2") {
-            deductedAmount = 85;
-            addedScore = 5;
-            hotelName = "Maison de Paris";
-        } else if (selectedHotel === "hotel3") {
-            deductedAmount = 105;
-            addedScore = 7;
-            hotelName = "Le Petit Palais";
-        }
+        const deductedAmount = hotel.price || 0;
+        const addedScore = hotel.score || 0;
+        const hotelName = hotel.name;
 
         state.balance -= deductedAmount;
         state.score += addedScore;
-        renderStatusBar();
+        if (typeof renderStatusBar === 'function') {
+            renderStatusBar();
+        }
 
-        popupHeaderTitle.textContent = "✅ 예약 완료!";
+        popupHeaderTitle.textContent = "✅ 예약 완료";
         popupContentText.innerHTML = `
-            🏨 ${hotelName} 예약 완료!<br>
-            💶 ${deductedAmount}유로 차감<br>
-            🌟 ${addedScore}점 획득
+            <p><strong>${hotelName}</strong> 예약이 완료되었습니다.</p><br>
+            <p><strong>💸 ${deductedAmount}</strong> 유로가 차감되었습니다.</p><br>
+            <p><strong>🌟 ${addedScore}</strong-> 점을 획득했습니다.</p>
         `;
 
         btn1.textContent = "다음으로";
@@ -117,16 +105,20 @@ function setupReservationUI() {
         btn3.classList.add('hidden');
 
         btn1.onclick = () => {
-            console.log("비행기 타러 가자!"); 
-            // TODO: 다음 씬으로 이동하는 코드 추가
-        };
+            popup.classList.add("hidden");
+            overlay.classList.remove("show");
+        }
 
         popup.classList.remove("hidden");
+        overlay.classList.add("show");
     });
 
-    function highlightSelectedCard(id) {
+    function highlightSelectedCard(idToHighlight) {
         document.querySelectorAll(".hotel-card").forEach(card => {
-            card.classList.toggle("selected", card.dataset.id === id);
+            card.classList.remove("selected");
+            if (card.dataset.id === idToHighlight) {
+                card.classList.add("selected");
+            }
         });
     }
 }
