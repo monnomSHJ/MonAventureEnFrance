@@ -782,4 +782,43 @@ html, body {
     .card {
         padding: 10px 16px;
     }
+
+    .hotel-content-wrap {
+        padding: 32px 24px;
+    }
+    
+    .hotel-card-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 80%;
+        gap: 24px;
+    }
+    
+    .hotel-card {
+        height: 80%;
+        flex-direction: column;
+        padding: 12px;
+    }
+    
+    .hotel-card-texts {
+        text-align: center;
+    }
+    
+    .view-details {
+        font-size: 14px;
+    }
+    
+    .hotel-card-texts h3 {
+        font-size: 16px;
+    }
+    
+    .hotel-card-texts p {
+        font-size: 14px;
+        margin-top: 0;
+    }
+    
+    .hotel-card img {
+        width: 100%;
+        height: 60%;
+    }
 }
