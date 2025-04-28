@@ -17,6 +17,24 @@ html, body {
     padding: 0;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -180,7 +198,7 @@ html, body {
 }
 
 #next-btn {
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -253,11 +271,11 @@ html, body {
     max-width: 640px;
     min-width: 360px;
     flex-shrink: 0;
-    height: 100px;
+    height: 140px;
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
-    padding: 4px 24px;
+    padding: 4px 24px 80px;
     gap: 2px;
     width: 100%;
     background: #ECD4AD;
@@ -280,6 +298,83 @@ html, body {
     color: #000;
 }
 
+.dictionary-panel {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 90%;
+    height: 480px;
+    background: #fff;
+    border: 4px solid #C7A880;
+    border-radius: 12px 12px 0 0;
+    transform: translateX(-50%) translateY(calc(100% - 44px));
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-sizing: border-box;
+    z-index: 1101;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 12px rgba(0, 0, 0, 0.4);
+}
+
+.dictionary-panel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #C7A880;
+    height: 40px;
+    padding: 0 24px 4px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dictionary-panel.open {
+    transform: translateX(-50%) translateY(10%);;
+}
+
+.dictionary-panel-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+#dictionary-search {
+    width: 100%;
+    padding: 12px 8px;
+    margin-bottom: 12px;
+    border: 2px solid #C7A880;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.dictionary-list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.card {
+    background: #ECD4AD;
+    border: 2px solid #C7A880;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+  
+.card:hover {
+    background: #d5b382;
+}
+
 
 /* 데스크탑 대응 (640px 이상) */
 @media (min-width: 640px) {
@@ -296,6 +391,7 @@ html, body {
         width: 100%;
         max-width: 1960px;
         min-width: 640px;
+        padding-top: 32px;
         height: 80px;
     }
     
@@ -316,7 +412,7 @@ html, body {
     .status-bar {
         border-radius: 8px;
         justify-content: flex-end;
-        padding: 0 0;
+        padding: 0 8px 0 0;
     }
     
     .status-item {
@@ -351,11 +447,11 @@ html, body {
     .text-box {
         width: 85%;
         padding: 16px;
-        font-size: 20px;
+        font-size: 18px;
     }
     
     #next-btn {
-        font-size: 28px;
+        font-size: 20px;
     }
 
     .popup {
@@ -367,7 +463,7 @@ html, body {
     }
     
     .popup-header-title {
-        font-size: 20px;
+        font-size: 18px;
     }
       
     .popup-header-close-btn {  
@@ -377,7 +473,7 @@ html, body {
     .popup-content {
         padding: 16px;
         height: 100%;
-        font-size: 18px;
+        font-size: 16px;
     }
       
     .popup-content-text {
@@ -386,14 +482,14 @@ html, body {
 
     .popup-content-btn {
         padding: 12px;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .quest {
         max-width: 1960px;
         min-width: 640px;
         height: 120px;
-        padding: 8px 24px;
+        padding: 2px 24px 32px;
     }
     
     .quest-title {
@@ -402,5 +498,34 @@ html, body {
     
     .quest-list {
         font-size: 14px;
+    }
+
+    .dictionary-panel {
+        right: 0;
+        width: 40%;
+        transform: translateX(20%) translateY(calc(100% - 56px));
+    }
+    
+    .dictionary-panel-header {
+        height: 48px;
+        padding: 0 28px 6px;
+        font-size: 16px;
+    }
+    
+    .dictionary-panel.open {
+        transform: translateX(20%) translateY(10%);
+    }
+    
+    .dictionary-panel-content {
+        padding: 16px 18px;
+        font-size: 16px;
+    }
+    
+    #dictionary-search {
+        padding: 16px 18px;
+    }
+    
+    .card {
+        padding: 10px 16px;
     }
 }

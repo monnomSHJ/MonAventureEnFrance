@@ -32,6 +32,8 @@
                 </section>
             </header>
 
+            <div class="overlay"></div>
+
             <main class="contents">
                 <div class="content-main">
                     <div class="bg-container"></div>
@@ -46,7 +48,7 @@
                     <div id="popup" class="popup">
                         <div id="popup-header" class="popup-header">
                             <div class="popup-header-title">exemple text</div>
-                            <div class="popup-header-close-btn">X</div>
+                            <div class="popup-header-close-btn"></div>
                         </div>
                         <div id="popup-content" class="popup-content">
                             <div class="popup-content-text">example text<br>exemple text<br>exemple text</div>
@@ -64,6 +66,17 @@
                 <div class="quest-title">📌 현재 퀘스트가 없습니다.</div>
                 <div class="quest-list">다음 퀘스트를 기다려주세요!</div>
             </footer>
+        </div>
+
+        <div class="dictionary-panel">
+            <div id="dictionary-panel-header" class="dictionary-panel-header">
+                <div class="dictionary-panel-haeder-text">📚 단어장</div>
+                <div class="dictionary-panel-header-arrow">▲</div>
+            </div>
+            <div id="dictionary-panel-content" class="dictionary-panel-content">
+                <input type="text" id="dictionary-search" placeholder="단어 검색 (fr)" />
+                <div id="dictionary-list" class="dictionary-list"></div>
+            </div>
         </div>
 
         <script type="module" src="script.js" defer></script>

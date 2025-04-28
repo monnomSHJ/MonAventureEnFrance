@@ -1,17 +1,49 @@
 console.log("✅ script.js 로드됨");
 
+// 필요한 모듈 불러오기
+import quest from "./quest.js";
+import { renderDictionaryCards, setupDictionarySearch } from "./dictionary.js";
+
+// 상태 관리
+export const state = {
+  userName: "-",
+  balance: 500,
+  score: 0,
+  currentQuest: '',
+};
+/* ===== DOM 요소 캐싱 ===== */
+const overlay = document.querySelector('.overlay');
+
+/* ===== 단어장 기능 ===== */
+// 단어장 토글
+const dictionaryPanel = document.querySelector('.dictionary-panel');
+const dictionaryPanelHeader = document.getElementById('dictionary-panel-header');
+const dictionaryPanelArrow = document.querySelector('.dictionary-panel-header-arrow');
+
+
+dictionaryPanelHeader.addEventListener('click', () => {
+  dictionaryPanel.classList.toggle('open');
+  overlay.classList.toggle('show');
+
+  if (dictionaryPanel.classList.contains('open')) {
+    dictionaryPanelArrow.textContent = '▼';
+  } else {
+    dictionaryPanelArrow.textContent = '▲';
+  }
+});
+
+overlay.addEventListener('click', () => {
+  dictionaryPanel.classList.remove('open');
+  overlay.classList.remove('show');
+  dictionaryPanelArrow.textContent = '▲';
+});
+
+/*
 // 필요한 모둘 불러오기
 import { renderIntro, setupIntroEvents } from "./data/scenes/intro.js";
 import quests from "./quest.js";
 import { renderDictionaryCards, setupDictionarySearch } from "./dictionary.js";
 
-// 상태 관리
-export const state = {
-    userName: '-',
-    balance: 500,
-    score: 0,
-    currentQuest: '',
-};
 
 export let currentLineIndex = 0;
 export let currentScene = null;
@@ -75,13 +107,7 @@ export function renderQuestBox(currentQuest) {
     `;
 }
 
-function renderDictionaryBox() {
-    dictionaryBox.innerHTML = `
-      <h3>📚 단어장</h3>
-      <input type="text" id="dictionary-search" placeholder="단어 검색 (fr)" />
-      <div id="dictionary-list" class="dictionary-scroll"></div>
-    `;
-}
+
 
 // ==== 씬 로딩 및 업데이트 ====
 export function loadScene(scene) {
@@ -198,3 +224,4 @@ resetBtn.addEventListener("click", () => {
 
 // ==== 시작 실행 ====
 init();
+*/
