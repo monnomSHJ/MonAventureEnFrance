@@ -23,11 +23,6 @@ export let currentScene = null;
 const overlay = document.querySelector('.overlay');
 
 const contentMain = document.getElementById("content-main");
-const bgContainer = document.getElementById("bg-container");
-const overlayImg = document.getElementById("overlay-image")
-const narrationBox  = document.getElementById("narration-box");
-const dialogueBox = document.getElementById("dialogue-box");
-
 const statusBar = document.querySelector('.status-bar');
 const questTitle = document.querySelector('.quest-title');
 const questList = document.querySelector('.quest-list');
@@ -132,6 +127,16 @@ contentMain.addEventListener("click", (e) => {
 
 /* ===== 씬 로딩 및 업데이트 ===== */
 export function loadScene(scene) {
+  if (!scene) {
+    console.error("로드할 scene이 없습니다!", scene);
+    return;
+  }
+
+  console.log("씬 로딩", scene);
+
+  const bgContainer = document.getElementById("bg-container");
+  const dialogueBox = document.getElementById("dialogue-box");
+
   currentScene = scene;
   currentLineIndex = 0;
 
@@ -162,6 +167,9 @@ export function loadScene(scene) {
 function updateDialogue() {
   const line = currentScene.lines?.[currentLineIndex];
   if (!line) return;
+
+  const overlayImg = document.getElementById("overlay-image")
+  const narrationBox  = document.getElementById("narration-box");
 
   const text = line.text;
   const speaker = line.speaker || "";

@@ -1,4 +1,5 @@
-import { state, renderStatusBar } from "../../script.js";;
+import { state, renderStatusBar, loadScene } from "../../script.js";
+import { getIntro2Scene } from "./intro2.js";
 
 export function renderIntro() {
     return `
@@ -35,6 +36,37 @@ export function setupIntroEvents() {
   
           state.userName = input;
           renderStatusBar();
+
+          document.getElementById("content-main").innerHTML = `
+            <div id="bg-container" class="bg-container hidden"></div>
+            <div id="narration-box" class="text-box narration hidden"></div>
+            <div id="dialogue-box" class="text-box dialogue hidden">
+              <div class="dialogue-container">
+                <div id="dialogue-text"></div>
+                <div id="next-btn" class="next-btn">▶</div>
+              </div>
+            </div>
+
+            <div id="overlay-image" class="overlay-image hidden"></div>
+
+            <div id="popup" class="popup hidden">
+              <div id="popup-header" class="popup-header">
+                <div class="popup-header-title"></div>
+                <div class="popup-header-close-btn"></div>
+              </div>
+              <div id="popup-content" class="popup-content">
+                <div class="popup-content-text"></div>
+                <div class="popup-content-btn-group">
+                  <div id="popup-content-btn1" class="popup-content-btn></div>
+                  <div id="popup-content-btn2" class="popup-content-btn hidden"></div>
+                  <div id="popup-content-btn3" class="popup-content-btn hidden"></div>
+                </div>
+              </div>
+            </div>
+          `;
+          
+          loadScene(getIntro2Scene());
+          console.log("loadScene 호출");
         });
       }
     }, 0);
