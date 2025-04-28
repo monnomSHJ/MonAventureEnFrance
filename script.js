@@ -20,8 +20,7 @@ export let currentScene = null;
 
 
 /* ===== DOM 요소 캐싱 ===== */
-const overlay = document.querySelector('.overlay');
-
+export const overlay = document.querySelector('.overlay');
 const contentMain = document.getElementById("content-main");
 const statusBar = document.querySelector('.status-bar');
 const questTitle = document.querySelector('.quest-title');
@@ -136,23 +135,59 @@ export function loadScene(scene) {
 
   const bgContainer = document.getElementById("bg-container");
   const dialogueBox = document.getElementById("dialogue-box");
+  const narrationBox  = document.getElementById("narration-box");
 
   currentScene = scene;
   currentLineIndex = 0;
 
-  // 배경 이미지 
-  if (scene.background_img) {
-    bgContainer.style.backgroundImage = `url('${scene.background_img}')`;
-    bgContainer.classList.remove('hidden');
+  if (scene.contentHTML) {
+    contentMain.innerHTML = '';
+    contentMain.style = ''
+    contentMain.style.display = 'block';
+    contentMain.style.padding = '0'
+    
+    const container = document.createElement("div");
+    container.innerHTML = scene.contentHTML;
+    container.classList.add('content-html-container');
+    contentMain.appendChild(container);
   } else {
-    bgContainer.classList.add('hidden');
-  }
 
-  if (scene.lines && scene.lines.length > 0) {
-    dialogueBox.classList.remove("hidden");
-    updateDialogue();
-  } else {
-    dialogueBox.classList.add("hidden");
+    contentMain.style = '';
+    contentMain.style.display = 'flex';
+    contentMain.style.flexDirection = 'column';
+    contentMain.style.alignItems = 'center';
+    contentMain.style.justifyContent = 'center';
+    contentMain.style.padding = '8px 12px';
+    contentMain.style.background = '#FFF1D4';
+    contentMain.style.border = '3px solid #C7A880';
+    contentMain.style.borderRadius = '12px';
+    contentMain.style.zIndex = '2';
+
+    contentMain.appendChild(bgContainer);
+    contentMain.appendChild(narrationBox);
+    contentMain.appendChild(dialogueBox);
+
+    if (scene.background_img) {
+      bgContainer.style.backgroundImage = `url('${scene.background_img}')`;
+      bgContainer.classList.remove('hidden');
+    } else {
+      bgContainer.classList.add('hidden');
+    }
+
+    if (scene.lines && scene.lines.length > 0) {
+      dialogueBox.classList.remove("hidden");
+      updateDialogue();
+    } else {
+      dialogueBox.classList.add("hidden");
+    }
+
+    if (scene.narration) {
+      narrationBox.textContent = scene.narration;
+      narrationBox.classList.remove('hidden');
+    } else {
+      narrationBox.classList
+      .add('hidden');
+    }
   }
 
   // 초기 설정 함수 호출
@@ -169,24 +204,19 @@ function updateDialogue() {
   if (!line) return;
 
   const overlayImg = document.getElementById("overlay-image")
-  const narrationBox  = document.getElementById("narration-box");
 
   const text = line.text;
   const speaker = line.speaker || "";
 
-  document.getElementById("dialogue-text").textContent = `${speaker ? speaker + ": " : ""}${text}`;
+  document.getElementById("dialogue-text").innerHTML = `
+    <div class="speaker">${speaker}</div>
+    <div class="text">${text}</div>
+  `;
 
   if (line.overlayImg) {
     overlayImg.style.backgroundImage = `url('${line.overlayImg}')`;
     overlayImg.classList.remove('hidden');
   } else {
     overlayImg.classList.add('hidden');
-  }
-
-  if (line.narration) {
-    narrationBox.textContent = line.narration;
-    narrationBox.classList.remove('hidden');
-  } else {
-    narrationBox.classList.add('hidden');
   }
 }

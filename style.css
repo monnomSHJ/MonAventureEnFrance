@@ -180,8 +180,11 @@ html, body {
 
 .narration {
     position: absolute;
-    top: 40px;
+    top: 16px;
     height: 40px;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
 }
 
 .dialogue {
@@ -198,6 +201,15 @@ html, body {
     height: 100%;
     justify-content: space-between;
     align-items: center;
+}
+
+.speaker {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.text {
+    font-size: 14px;
 }
 
 #next-btn {
@@ -225,6 +237,7 @@ html, body {
 .popup {
     position: fixed;
     top: 50%;
+    left: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 80%;
     background: #fff;
@@ -280,6 +293,14 @@ html, body {
     flex: 1
 }
 
+.button {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 16px;
+    background: #ECD4AD;
+    border: 2px solid #C7A880;
+    border-radius: 8px;
+}
 
 .quest {
     display: flex;
@@ -287,11 +308,11 @@ html, body {
     min-width: 360px;
     flex-shrink: 0;
     height: 140px;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: flex-start;
+    flex-direction: row;
     align-items: flex-start;
-    padding: 4px 24px 80px;
-    gap: 2px;
+    padding: 12px 24px 64px;
+    gap: 24px;
     width: 100%;
     background: #ECD4AD;
     box-sizing: border-box;
@@ -470,6 +491,102 @@ html, body {
     background: #C7A880;
 }
 
+.content-html-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hotel-content-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 380px;
+    height: 100%;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.hotel-card-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+    justify-content: center;
+}
+
+.hotel-card {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    background: #fff;
+    padding: 4px;
+    border: 3px solid #54575C;
+    border-radius: 8px;
+    gap: 4px;
+    padding: 8px;
+}
+
+.hotel-card-content {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.hotel-card-texts {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+}
+
+.view-details {
+    width: 30%;
+    font-size: 13px;
+    padding: 4px 0;
+    text-align: center;
+}
+
+.reservation-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirm-reservation {
+    width: 40%;
+}
+
+.hotel-card-texts h3 {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.hotel-card-texts p {
+    font-size: 12px;
+    margin-top: 0;
+}
+
+.hotel-card img {
+    width: 45%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
 
 
 /* 데스크탑 대응 (640px 이상) */
@@ -547,6 +664,19 @@ html, body {
         font-size: 18px;
     }
     
+    .narration {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .speaker {
+        font-size: 18px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
     #next-btn {
         font-size: 20px;
     }
@@ -590,7 +720,7 @@ html, body {
         max-width: 1960px;
         min-width: 640px;
         height: 120px;
-        padding: 2px 24px 32px;
+        padding: 12px 32px 32px;
     }
     
     .quest-title {

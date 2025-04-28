@@ -23,7 +23,7 @@ const hotelData = [
         "🥐 Petit-déjeuner non inclus",
         "🌐 Site web: www.maisonparis.fr"
       ],
-      "image": "images/hotel2.jpg"
+      "image": "assets/images/hotel1.jpg"
     },
     {
       "id": "hotel3",
@@ -36,7 +36,7 @@ const hotelData = [
         "🥐 Petit-déjeuner inclus",
         "🌐 Site web: www.petitpalais.fr"
       ],
-      "image": "images/hotel3.jpg"
+      "image": "assets/images/hotel1.jpg"
     }
 ];
 
