@@ -318,6 +318,7 @@ html, body {
     background: #ECD4AD;
     border: 2px solid #C7A880;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .quest {
@@ -580,6 +581,7 @@ html, body {
     font-size: 13px;
     padding: 4px 0;
     text-align: center;
+    cursor: pointer;
 }
 
 .reservation-actions {
@@ -802,6 +804,10 @@ html, body {
     
     .hotel-card-texts {
         text-align: center;
+    }
+
+    .hotel-card-content {
+        width: 100%;
     }
     
     .view-details {
