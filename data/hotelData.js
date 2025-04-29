@@ -25,7 +25,7 @@ const hotelData = [
         "🥐 Petit-déjeuner non inclus",
         "🌐 Site web: www.maisonparis.fr"
       ],
-      "image": "assets/images/hotel1.jpg",
+      "image": "assets/images/hotel2.jpg",
       "price": 85,
       "score": 5
     },
@@ -40,7 +40,7 @@ const hotelData = [
         "🥐 Petit-déjeuner inclus",
         "🌐 Site web: www.petitpalais.fr"
       ],
-      "image": "assets/images/hotel1.jpg",
+      "image": "assets/images/hotel3.jpg",
       "price": 105,
       "score": 7
     }

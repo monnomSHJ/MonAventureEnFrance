@@ -50,7 +50,7 @@ dictionaryPanelHeader.addEventListener('click', () => {
 
 dictionaryOverlay.addEventListener('click', () => {
   dictionaryPanel.classList.remove('open');
-  overlay.classList.remove('show');
+  dictionaryOverlay.classList.remove('show');
   dictionaryPanelArrow.textContent = '▲';
 });
 
