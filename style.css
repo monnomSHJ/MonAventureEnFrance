@@ -399,7 +399,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     height: 40px;
-    padding: 0 12px 4px;
+    padding: 4px 12px 6px;
     font-family: 'DungGeunMo';
     font-size: 16px;
     font-weight: 700;
@@ -670,12 +670,15 @@ html, body {
     .header {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         width: 100%;
-        max-width: 1960px;
+        max-width: 720px;
         min-width: 640px;
-        padding-top: 32px;
-        height: 80px;
-        margin-bottom: 12px;
+        height: 100px;
+        padding: 12px;
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
     }
     
     .header-logo {
@@ -693,13 +696,15 @@ html, body {
     }
 
     .status-bar {
-        border-radius: 8px;
         justify-content: flex-end;
-        padding: 0 8px 0 0;
+        padding: 0;
+                border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
     }
     
     .status-item {
-        padding: 8px 10px;
+        padding: 8px;
     }
     
     .name {
@@ -715,16 +720,14 @@ html, body {
     .contents {
         max-width: 720px;
         min-width: 640px;
-        padding: 0 12px;
     }
     
     .content-main {
-        padding: 12px 16px;
+        padding: 12px 12px;
         height: 100%;
-    }
-    
-    .bg-container {
-        border-radius: 12px;
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
     }
 
     .text-box {
@@ -786,10 +789,15 @@ html, body {
     }
 
     .quest {
-        max-width: 1960px;
+        max-width: 720px;
         min-width: 640px;
         height: 120px;
-        padding: 12px 32px 32px;
+        width: 100%;
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+        padding: 12px 24px 32px;
+        gap: 24px;
     }
     
     .quest-title {
@@ -803,13 +811,19 @@ html, body {
     .dictionary-panel {
         right: 0;
         width: 40%;
-        transform: translateX(20%) translateY(calc(100% - 44px));
+        transform: translateX(20%) translateY(calc(100% - 65px));
+        border-width: 5px;
+        border-image-slice: 24 fill;
+        border-image-width: 5px;
     }
     
     .dictionary-panel-header {
         height: 40px;
-        padding: 0 28px 6px;
+        padding: 6px 24px 8px;
         font-size: 16px;
+        border-width: 5px;
+        border-image-slice: 24 fill;
+        border-image-width: 5px;
     }
     
     .dictionary-panel.open {
@@ -822,11 +836,11 @@ html, body {
     }
     
     #dictionary-search {
-        padding: 16px 18px;
+        padding: 12px 18px;
     }
     
     .card {
-        padding: 10px 16px;
+        padding: 8px 16px;
     }
 
     .hotel-content-wrap {
