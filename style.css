@@ -391,7 +391,7 @@ html, body {
 
 .dictionary-panel-header {
     border: 4px solid transparent;
-    border-image: url('/assets/images/dictionnaryHeaderBg.png');
+    border-image: url('assets/images/dictionnaryHeaderBg.png');
     border-image-slice: 20 fill;
     border-image-width: 4px;
     display: flex;
@@ -901,7 +901,7 @@ html, body {
         border-width: 10px;
         border-image-slice: 24 fill;
         border-image-width: 10px;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 18px;
         margin-bottom: 32px;
         padding-top: 16px;
@@ -911,7 +911,7 @@ html, body {
     
     .name-input-box label {
         font-weight: 600;
-        font-size: 20px;
+        font-size: 18px;
     }
     
     .name-input-box-group {
