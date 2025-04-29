@@ -377,7 +377,7 @@ html, body {
     width: 90%;
     height: 480px;
     border: 4px solid transparent;
-    border-image: url('/assets/images/dictionnaryBg.png');
+    border-image: url('assets/images/dictionnaryBg.png');
     border-image-slice: 20 fill;
     border-image-width: 4px;
     transform: translateX(-50%) translateY(calc(100% - 55px));
