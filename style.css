@@ -508,17 +508,21 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .name-input-box label {
     font-weight: 600;
     font-size: 16px;
+    width: 100%;
+    text-align: center;
 }
 
 .name-input-box-group {
     display: flex;
     flex-direction: row;
     gap: 4px;
+    width: 100%;
 }
 
 .name-input-box-group input {
@@ -884,5 +888,51 @@ html, body {
     .hotel-card img {
         width: 100%;
         height: 60%;
+    }
+
+    .main-title {
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+        font-size: 24px;
+    }
+    
+    .description {
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 32px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        margin-bottom: 40px;
+    }
+    
+    .name-input-box label {
+        font-weight: 600;
+        font-size: 20px;
+    }
+    
+    .name-input-box-group {
+        gap: 12px;
+        width: 80%;
+    }
+    
+    .name-input-box-group input {
+        font-size: 18px;
+        padding: 6px 12px;
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+    }
+    
+    .name-input-box-group button {
+        font-size: 16px;
+        width: 160px;
+        padding: 6px 12px;
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
     }
 }
