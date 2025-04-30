@@ -233,6 +233,10 @@ html, body {
     cursor: pointer;
 }
 
+#next-btn:hover {
+    color: #ccc;
+}
+
 .hidden {
     display: none !important;
 }
@@ -338,6 +342,10 @@ html, body {
     flex: 1
 }
 
+.popup-content-btn:hover {
+    filter: brightness(90%);
+}
+
 .button {
     font-family: 'Jersey 25', 'DungGeunMo';
     font-size: 16px;
@@ -349,6 +357,10 @@ html, body {
     border-image-width: 8px;
     cursor: pointer;
     border-radius: 24px;
+}
+
+.button:hover {
+    filter: brightness(90%);
 }
 
 .quest {
@@ -426,6 +438,10 @@ html, body {
     font-weight: 700;
     cursor: pointer;
     z-index: 10000;
+}
+
+.dictionary-panel-header:hover {
+    filter: brightness(90%);
 }
 
 .dictionary-panel.open {
@@ -591,7 +607,7 @@ html, body {
 }
 
 .name-input-box-group button:hover {
-    border-radius: 24px;
+    filter: brightness(90%);
 }
 
 .content-html-container {

@@ -34,39 +34,17 @@ export function setupIntroEvents() {
 
   setTimeout(() => {
     const startBtn = document.getElementById("start-btn");
-    if (startBtn) {
-      startBtn.addEventListener("click", () => {
-        const input = document.getElementById("userName").value.trim();
+    const nameInput = document.getElementById("userName");
 
-        if (!input) {
-          popupHeaderTitle.textContent = "오류 발생!";
-          popupContentText.innerHTML = "이름을 입력해주세요.";
+    function handleStart() {
+      const input = nameInput.value.trim();
 
-          btn1.textContent = "확인";
-          btn2.classList.add('hidden');
-          btn3.classList.add('hidden');
+      if (!input) {
+        popupHeaderTitle.textContent = "오류 발생!";
+        popupContentText.innerHTML = "이름을 입력해주세요.";
 
-          popup.classList.remove('hidden');
-          overlay.classList.toggle('show');
-
-          btn1.onclick = () => {
-            popup.classList.add("hidden");
-            overlay.classList.remove("show"); 
-          };
-          return;
-        }
-
-        state.userName = input;
-
-        popupHeaderTitle.textContent = "정보 확인";
-        popupContentText.innerHTML = `
-        <p>아래 이름이 맞습니까?</p>
-        <h3>>  ${state.userName}  <</h3>
-        `
-
-        btn1.textContent = "아니요";
-        btn1.classList.remove('hidden');
-        btn2.textContent = "예";
+        btn1.textContent = "확인";
+        btn2.classList.add('hidden');
         btn3.classList.add('hidden');
 
         popup.classList.remove('hidden');
@@ -74,46 +52,79 @@ export function setupIntroEvents() {
 
         btn1.onclick = () => {
           popup.classList.add("hidden");
-          overlay.classList.remove("show");
+          overlay.classList.remove("show"); 
         };
+        return;
+      }
 
-        btn2.onclick = () => {
-          popup.classList.add("hidden");
-          overlay.classList.remove("show");
-          renderStatusBar();
+      state.userName = input;
 
-          document.getElementById("content-main").innerHTML = `
-          <div id="bg-container" class="bg-container hidden"></div>
-          <div id="narration-box" class="text-box narration hidden"></div>
-          <div id="dialogue-box" class="text-box dialogue hidden">
-            <div class="dialogue-container">
-              <div id="dialogue-text"></div>
-              <div id="next-btn" class="next-btn">▶</div>
+      popupHeaderTitle.textContent = "정보 확인";
+      popupContentText.innerHTML = `
+      <p>아래 이름이 맞습니까?</p>
+      <h3>>  ${state.userName}  <</h3>
+      `
+
+      btn1.textContent = "아니요";
+      btn1.classList.remove('hidden');
+      btn2.textContent = "예";
+      btn2.classList.remove('hidden');
+      btn3.classList.add('hidden');
+
+      popup.classList.remove('hidden');
+      overlay.classList.toggle('show');
+
+
+      btn1.onclick = () => {
+        popup.classList.add("hidden");
+        overlay.classList.remove("show");
+      };
+
+      btn2.onclick = () => {
+        popup.classList.add("hidden");
+        overlay.classList.remove("show");
+        renderStatusBar();
+
+        document.getElementById("content-main").innerHTML = `
+        <div id="bg-container" class="bg-container hidden"></div>
+        <div id="narration-box" class="text-box narration hidden"></div>
+        <div id="dialogue-box" class="text-box dialogue hidden">
+          <div class="dialogue-container">
+            <div id="dialogue-text"></div>
+            <div id="next-btn" class="next-btn">▶</div>
+          </div>
+        </div>
+
+        <div id="overlay-image" class="overlay-image hidden"></div>
+
+        <div id="popup" class="popup hidden">
+          <div id="popup-header" class="popup-header">
+            <div class="popup-header-title"></div>
+            <div class="popup-header-close-btn"></div>
+          </div>
+          <div id="popup-content" class="popup-content">
+            <div class="popup-content-text"></div>
+            <div class="popup-content-btn-group">
+              <div id="popup-content-btn1" class="popup-content-btn></div>
+              <div id="popup-content-btn2" class="popup-content-btn hidden"></div>
+              <div id="popup-content-btn3" class="popup-content-btn hidden"></div>
             </div>
           </div>
+        </div>
+      `;
 
-          <div id="overlay-image" class="overlay-image hidden"></div>
+      loadScene(getIntro2Scene());
+      console.log("loadScene 호출");
+    };
+  }
 
-          <div id="popup" class="popup hidden">
-            <div id="popup-header" class="popup-header">
-              <div class="popup-header-title"></div>
-              <div class="popup-header-close-btn"></div>
-            </div>
-            <div id="popup-content" class="popup-content">
-              <div class="popup-content-text"></div>
-              <div class="popup-content-btn-group">
-                <div id="popup-content-btn1" class="popup-content-btn></div>
-                <div id="popup-content-btn2" class="popup-content-btn hidden"></div>
-                <div id="popup-content-btn3" class="popup-content-btn hidden"></div>
-              </div>
-            </div>
-          </div>
-        `;
-        
-        loadScene(getIntro2Scene());
-        console.log("loadScene 호출");
-        }
-      });
-    }
+  if (startBtn && nameInput) {
+    startBtn.addEventListener("click", handleStart);
+    nameInput.addEventListener("keydown", (e) => {
+      if (e.key === 'Enter') {
+        handleStart();
+      }
+    });
+  }
   }, 0);
 }

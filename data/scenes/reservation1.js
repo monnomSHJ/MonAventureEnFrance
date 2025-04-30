@@ -82,7 +82,26 @@ function setupReservationUI() {
     });
 
     confirmBtn.addEventListener("click", () => {
-        if (!selectedHotelID) return;
+        if (!selectedHotelID) {
+            popupHeaderTitle.textContent = "오류 발생";
+            popupContentText.innerHTML = `<p>⚠️ 숙소를 선택해주세요.</p>`;
+
+            btn1.textContent = "닫기";
+            btn2.classList.add('hidden');
+            btn3.classList.add('hidden');
+
+            popup.classList.remonve('hidden');
+            overlay.classList.toggle("show");
+
+            btn1.onClick = () => {
+                popup.classList.remove("hidden");
+                overlay.classList.toggle("show");
+            }
+            return;
+        };
+
+
+
         const hotel = hotelData.find(h => h.id === selectedHotelID);
 
         const deductedAmount = hotel.price || 0;
@@ -112,7 +131,7 @@ function setupReservationUI() {
         }
 
         popup.classList.remove("hidden");
-        overlay.classList.add("show");
+        overlay.classList.toggle("show");
 
         return;
     });
