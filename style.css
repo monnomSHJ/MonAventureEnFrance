@@ -134,8 +134,8 @@ html, body {
 
 .contents {
     max-width: 640px;
-    min-width: 360px;
-    width: 100%;
+    min-width: 350px;
+    width: 97%;
     display: flex;
     flex: 1;
     min-height: 0;
@@ -147,6 +147,10 @@ html, body {
     padding: 0 8px;
     overflow-y: auto;
     overflow-x: hidden;
+    border: 8px solid transparent;
+    border-image: url('assets/images/contentMainBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
 }
 
 .content-main {
@@ -156,21 +160,14 @@ html, body {
     align-items: center;
     padding: 8px 12px;
     height: 100%;
-    border: 8px solid transparent;
-    border-image: url('assets/images/contentMainBg.png');
-    border-image-slice: 20 fill;
-    border-image-width: 8px;
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 2;
 }
 
 .bg-container {
-    background: #ECD4AD;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
-    border: 3px solid #54575C;
     z-index: 3;
     background-repeat: no-repeat;
     background-position: center;
@@ -178,7 +175,7 @@ html, body {
 }
 
 .text-box {
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     border: 8px solid transparent;
     border-image: url('assets/images/statusItemBg.png');

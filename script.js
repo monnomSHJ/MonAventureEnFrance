@@ -167,8 +167,6 @@ export function loadScene(scene) {
     contentMain.style.alignItems = 'center';
     contentMain.style.justifyContent = 'center';
     contentMain.style.padding = '8px 12px';
-    contentMain.style.background = '#FFF1D4';
-    contentMain.style.border = '3px solid #C7A880';
     contentMain.style.borderRadius = '12px';
     contentMain.style.zIndex = '2';
 
