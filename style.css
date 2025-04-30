@@ -389,6 +389,7 @@ html, body {
 }
 
 .dictionary-panel {
+    background: transparent;
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -398,6 +399,7 @@ html, body {
     border-image: url('assets/images/dictionnaryBg.png');
     border-image-slice: 20 fill;
     border-image-width: 4px;
+    border-radius: 24px;
     transform: translateX(-50%) translateY(calc(100% - 55px));
     transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     box-sizing: border-box;
@@ -408,6 +410,7 @@ html, body {
 }
 
 .dictionary-panel-header {
+    background: transparent;
     border: 4px solid transparent;
     border-image: url('assets/images/dictionnaryHeaderBg.png');
     border-image-slice: 20 fill;
