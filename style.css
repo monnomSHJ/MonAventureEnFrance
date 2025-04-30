@@ -177,12 +177,14 @@ html, body {
 .text-box {
     width: 70%;
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
+    border: 8px solid transparent;
+    border-image: url('assets/images/statusItemBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
     padding: 12px;
     font-size: 16px;
     line-height: 24px;
-    color: #fff;
+    color: black;
     z-index: 5;
     display: flex;
     align-items: center;
@@ -200,19 +202,18 @@ html, body {
 
 .dialogue {
     position: absolute;
-    bottom: 40px;
+    bottom: 24px;
     display: flex;
     flex-direction: column;
-    height: 80px;
 }
 
 .dialogue-container {
     display: flex;
-    width: 90%;
+    width: 100%;
     height: 100%;
     justify-content: space-between;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
 }
 
 .speaker {
@@ -222,6 +223,7 @@ html, body {
 
 .text {
     font-size: 13px;
+    line-height: 16px;
 }
 
 #next-btn {
@@ -274,7 +276,7 @@ html, body {
 
 .popup-header-title {
     font-family: "Jersey 25", "DungGeunMo";
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
 }
   
@@ -294,14 +296,15 @@ html, body {
     font-weight: 200;
     font-family: 'Jersey 25', 'DungGeunMo';
     font-size: 14px;
-    line-height: 15px;
+    line-height: 16px;
     margin-top: 12px;
     margin-bottom: 24px;
 }
 
 .popup-content-text p {
-    margin-top: 2px;
-    margin-bottom: 2px;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .popup-content-text p:first-child {
@@ -320,7 +323,7 @@ html, body {
   }
   
 .popup-content-btn {
-    font-family: "Jersey 25", "DungGeumNo";
+    font-family: "Jersey 25", "DungGeunMo";
     font-size: 14px;
     padding: 4px;
     text-align: center;
@@ -334,13 +337,16 @@ html, body {
 }
 
 .button {
+    font-family: 'Jersey 25', 'DungGeunMo';
     font-size: 16px;
-    font-weight: 700;
-    padding: 12px 16px;
-    background: #ECD4AD;
-    border: 2px solid #C7A880;
-    border-radius: 8px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border: 8px solid transparent;
+    border-image: url('assets/images/contentMainBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
     cursor: pointer;
+    border-radius: 24px;
 }
 
 .quest {
@@ -607,18 +613,25 @@ html, body {
 .hotel-card {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 90%;
     align-items: center;
-    justify-content: center;
-    background: #fff;
-    border: 3px solid #54575C;
-    border-radius: 8px;
-    gap: 8px;
-    padding: 8px;
+    justify-content: space-evenly;
+    border: 8px solid transparent;
+    border-image: url('assets/images/inputBoxBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+    gap: 12px;
+    padding: 12px 6px;
+    background: transparent;
 }
 
 .hotel-card.selected {
-    border: 3px solid #F19B0F;
+    background: transparent;
+    border: 8px solid transparent;
+    border-image: url('assets/images/hotelCardSelected.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+    border-radius: 12px;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
 }
 
@@ -638,8 +651,10 @@ html, body {
 }
 
 .view-details {
+    font-family: 'Jersey 25', 'DungGeunMo';
     width: 100%;
     font-size: 13px;
+    font-weight: 200;
     padding: 4px 0;
     text-align: center;
     cursor: pointer;
@@ -650,19 +665,22 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 4px;
 }
 
 .confirm-reservation {
-    width: 90%;
+    width: 100%;
 }
 
 .hotel-card-texts h3 {
-    font-size: 13px;
+    font-size: 16px;
+    font-weight: 500;
     margin-bottom: 0;
 }
 
 .hotel-card-texts p {
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 300;
     margin-top: 0;
 }
 
@@ -672,6 +690,10 @@ html, body {
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+    border: 8px solid transparent;
+    border-image: url('assets/images/contentMainBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
 }
 
 
@@ -751,6 +773,12 @@ html, body {
         width: 85%;
         padding: 16px;
         font-size: 18px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+    }
+
+    .dialogue {
+        max-width: 520px;
     }
     
     .narration {
@@ -775,7 +803,7 @@ html, body {
     }
 
     .popup {
-        width: 40%;
+        width: 60%;
         max-width: 400px;
         border-image-slice: 24 fill;
         border-image-width: 10px;
@@ -788,7 +816,7 @@ html, body {
     }
     
     .popup-header-title {
-        font-size: 18px;
+        font-size: 20px;
     }
       
     .popup-header-close-btn {  
@@ -799,6 +827,12 @@ html, body {
         padding: 12px 24px;
         height: 100%;
         font-size: 16px;
+    }
+
+    .popup-content p {
+        font-size: 16px;
+        margin-top: 8px;
+        margin-bottom: 8px;
     }
       
     .popup-content-text {
@@ -868,46 +902,61 @@ html, body {
     }
 
     .hotel-content-wrap {
-        padding: 32px 24px;
+        padding: 24px;
+        justify-content: center;
+        gap: 2px;
     }
     
     .hotel-card-container {
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-around;
+        width: 100%;
         height: 80%;
-        gap: 24px;
+        gap: 8px;
     }
     
     .hotel-card {
-        height: 80%;
         flex-direction: column;
-        padding: 12px;
+        height: 85%;
+        padding: 6px 12px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+        gap: 0;
+        justify-content: center;
+    }
+
+    .hotel-card.selected {
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+    }
+    
+    .hotel-card-content {
+        width: 100%;
+        align-items: center;
     }
     
     .hotel-card-texts {
         text-align: center;
     }
-
-    .hotel-card-content {
-        width: 100%;
-    }
     
     .view-details {
-        font-size: 14px;
+        font-size: 15px;
     }
     
     .hotel-card-texts h3 {
-        font-size: 16px;
+        font-size: 17px;
     }
     
     .hotel-card-texts p {
-        font-size: 14px;
+        font-size: 16px;
         margin-top: 0;
     }
     
     .hotel-card img {
         width: 100%;
-        height: 60%;
+        height: 40%;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
     }
 
     .main-title {
@@ -924,8 +973,7 @@ html, body {
         font-size: 14px;
         line-height: 18px;
         margin-bottom: 24px;
-        padding-top: 16px;
-        padding-bottom: 16px;
+        padding: 16px 24px;
     }
     
     .name-input-box label {

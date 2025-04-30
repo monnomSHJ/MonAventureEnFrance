@@ -69,12 +69,13 @@ function setupReservationUI() {
                 confirmBtn.disabled = false;
                 popup.classList.add("hidden");
                 overlay.classList.remove("show");
-                
+                return;
             };
 
             btn2.onclick = () => {
                 popup.classList.add("hidden");
                 overlay.classList.remove("show");
+                return;
             };
         });
     });
@@ -95,9 +96,9 @@ function setupReservationUI() {
 
         popupHeaderTitle.textContent = "✅ 예약 완료";
         popupContentText.innerHTML = `
-            <p><strong>${hotelName}</strong> 예약이 완료되었습니다.</p><br>
-            <p><strong>💸 ${deductedAmount}</strong> 유로가 차감되었습니다.</p><br>
-            <p><strong>🌟 ${addedScore}</strong-> 점을 획득했습니다.</p>
+            <p>${hotelName} 예약이 완료되었습니다.</p>
+            <p>💸 ${deductedAmount} 유로가 차감되었습니다.</p>
+            <p>🌟 ${addedScore} 점을 획득했습니다.</p>
         `;
 
         btn1.textContent = "다음으로";
@@ -111,6 +112,8 @@ function setupReservationUI() {
 
         popup.classList.remove("hidden");
         overlay.classList.add("show");
+
+        return;
     });
 
     function highlightSelectedCard(idToHighlight) {
