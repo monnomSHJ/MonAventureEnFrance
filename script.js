@@ -151,24 +151,12 @@ export function loadScene(scene) {
 
   if (scene.contentHTML) {
     contentMain.innerHTML = '';
-    contentMain.style = ''
-    contentMain.style.display = 'block';
-    contentMain.style.padding = '0'
     
     const container = document.createElement("div");
     container.innerHTML = scene.contentHTML;
     container.classList.add('content-html-container');
     contentMain.appendChild(container);
   } else {
-
-    contentMain.style = '';
-    contentMain.style.display = 'flex';
-    contentMain.style.flexDirection = 'column';
-    contentMain.style.alignItems = 'center';
-    contentMain.style.justifyContent = 'center';
-    contentMain.style.padding = '8px 12px';
-    contentMain.style.borderRadius = '12px';
-    contentMain.style.zIndex = '2';
 
     contentMain.appendChild(bgContainer);
     contentMain.appendChild(narrationBox);

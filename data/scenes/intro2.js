@@ -5,7 +5,7 @@ import { getReservation1Scene } from "./reservation1.js";
 export function getIntro2Scene() {
     return {
         id: "intro2",
-        background_img: "",
+        background_img: "assets/images/intro2Scene.jpg",
         narration: "",
         lines: [
             { speaker: `👤 ${state.userName}`, text: "오랜 시간 꿈꿔왔던 프랑스로의 여행." },

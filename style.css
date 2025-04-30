@@ -158,7 +158,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 8px 12px;
+    padding: 8px;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -172,10 +172,11 @@ html, body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    border-radius: 8px;
 }
 
 .text-box {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     border: 8px solid transparent;
     border-image: url('assets/images/statusItemBg.png');
@@ -202,7 +203,7 @@ html, body {
 
 .dialogue {
     position: absolute;
-    bottom: 24px;
+    bottom: 36px;
     display: flex;
     flex-direction: column;
 }
@@ -219,6 +220,7 @@ html, body {
 .speaker {
     font-size: 16px;
     font-weight: 700;
+    margin-bottom: 6px;
 }
 
 .text {
@@ -801,11 +803,11 @@ html, body {
     }
 
     .speaker {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .text {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     #next-btn {
@@ -830,7 +832,7 @@ html, body {
     }
     
     .popup-header-title {
-        font-size: 20px;
+        font-size: 18px;
     }
       
     .popup-header-close-btn {  
