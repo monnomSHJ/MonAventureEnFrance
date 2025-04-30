@@ -145,14 +145,18 @@ html, body {
     box-sizing: border-box;
     z-index: 0;
     padding: 0 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .content-main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 8px 12px;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
     border: 8px solid transparent;
     border-image: url('assets/images/contentMainBg.png');
     border-image-slice: 20 fill;
@@ -491,10 +495,16 @@ html, body {
 
 .intro-screen {
     display: flex;
-    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    max-width: 640px;
+    box-sizing: border-box;
+    flex-direction: column; 
+    overflow-y: auto;
+    overflow-x: hidden;
     justify-content: center;
     align-items: center;
-    padding: 24px 24px;
+    padding: 8px 24px;
 }
 
 .main-title {
@@ -507,6 +517,7 @@ html, body {
     width: 90%;
     text-align: center;
     padding: 8px 12px;
+    box-sizing: border-box;
 }
 
 .description {
@@ -520,6 +531,7 @@ html, body {
     text-align: left;
     line-height: 16px;
     margin-bottom: 24px;
+    box-sizing: border-box;
 }
 
 .name-input-box {
@@ -551,6 +563,7 @@ html, body {
     border-image: url('assets/images/inputBoxBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
+    border-radius: 24px;
     margin: 0;
     background: #ECD4AD;
     flex: 1;
@@ -568,13 +581,13 @@ html, body {
     border-image: url('assets/images/contentMainBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
-    background: #ECD4AD;
+    border-radius: 24px;
     cursor: pointer;
     margin: 0;
 }
 
 .name-input-box-group button:hover {
-    background: #ECD4AD;
+    border-radius: 24px;
 }
 
 .content-html-container {
@@ -759,10 +772,11 @@ html, body {
     .contents {
         max-width: 720px;
         min-width: 640px;
+        padding: 0;
     }
     
     .content-main {
-        padding: 12px 12px;
+        padding: 12px;
         height: 100%;
         border-width: 10px;
         border-image-slice: 24 fill;
@@ -959,14 +973,20 @@ html, body {
         border-image-width: 10px;
     }
 
+    .intro-screen {
+        padding: 8px;
+    }
+
     .main-title {
         border-width: 10px;
         border-image-slice: 24 fill;
         border-image-width: 10px;
         font-size: 24px;
+        width: 100%;
     }
     
     .description {
+        width: 100%;
         border-width: 10px;
         border-image-slice: 24 fill;
         border-image-width: 10px;
@@ -983,7 +1003,7 @@ html, body {
     
     .name-input-box-group {
         gap: 12px;
-        width: 80%;
+        width: 100%;
     }
     
     .name-input-box-group input {

@@ -96,13 +96,10 @@ export function renderQuest() {
 
 /* ===== 초기화면 렌더링 ===== */
 function init() {
-  loadGameState();
   renderStatusBar();
   renderQuest();
   loadDictionary();
   renderIntroScreen();
-
-  if (!currentScene) renderIntroScreen();
 }
 
 init();
@@ -206,8 +203,6 @@ export function loadScene(scene) {
   if (typeof scene.onMount === "function") {
     scene.onMount();
   }
-
-  saveGameState();
 }
 
 
@@ -236,33 +231,6 @@ function updateDialogue() {
 }
 
 
-// 게임 로컬 저장 및 로드
-function saveGameState() {
-  const gameState = {
-    state,
-    currentSceneId: currentScene?.id || null,
-    currentLineIndex
-  };
-  localStorage.setItem('gameState', JSON.stringify(gameState));
-}
-
-function loadGameState() {
-  const saved = localStorage.getItem('gameState');
-  if (saved) {
-    try {
-      const parsed = JSON.parse(saved);
-      Object.assign(state, parsed.state);
-      currentLineIndex = parsed.currentLineIndex;
-
-      if (parsed.currentSceneId && sceneMap[parsed.currentSceneId]) {
-        const scene = sceneMap[parsed.currentSceneId] ();
-        loadScene(scene);
-      }
-    } catch (e) {
-      console.error("게임 불러오기 실패", e);
-    }
-  }
-}
 
 window.addEventListener("beforeunload", function (e) {
   e.preventDefault();
