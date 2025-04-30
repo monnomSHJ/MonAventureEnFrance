@@ -3,6 +3,7 @@ import hotelData from "../hotelData.js";
 
 export function getReservation1Scene() {
     return {
+        id: "reservation1",
         background_img: "",
         narration: "",
         lines: [],

@@ -4,6 +4,7 @@ import { getReservation1Scene } from "./reservation1.js";
 
 export function getIntro2Scene() {
     return {
+        id: "intro2",
         background_img: "",
         narration: "",
         lines: [
