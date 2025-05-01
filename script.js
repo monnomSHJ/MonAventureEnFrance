@@ -139,17 +139,11 @@ export function loadScene(scene) {
 
   console.log("씬 로딩", scene);
 
-  const bgContainer = document.getElementById("bg-container");
-  const dialogueBox = document.getElementById("dialogue-box");
-  const narrationBox  = document.getElementById("narration-box");
-  const overlayImg = document.getElementById("overlay-image");
-
   currentScene = scene;
   currentLineIndex = 0;
 
-  if (typeof scene.contentHTML === "string" && scene.contentHTML.trim() !== "") {
+  if (scene.contentHTML) {
     contentMain.innerHTML = '';
-
     const container = document.createElement("div");
     container.innerHTML = scene.contentHTML;
     container.classList.add('content-html-container');
@@ -157,12 +151,22 @@ export function loadScene(scene) {
 
   } else {
 
-    contentMain.innerHTML = "";
+    contentMain.innerHTML = `
+      <div id="bg-container" class="bg-container hidden"></div>
+      <div id="narration-box" class="text-box narration hidden">example text</div>
+      <div id="dialogue-box" class="text-box dialogue hidden">
+        <div class="dialogue-container">
+          <div id="dialogue-text">example text</div>
+          <div id="next-btn" class="next-btn">▶</div>
+        </div>
+      </div>
+      <div id="overlay-image" class="overlay-image hidden"></div>
+      `;
 
-    contentMain.appendChild(bgContainer);
-    contentMain.appendChild(narrationBox);
-    contentMain.appendChild(dialogueBox);
-    contentMain.appendChild(overlayImg);
+    const bgContainer = document.getElementById("bg-container");
+    const dialogueBox = document.getElementById("dialogue-box");
+    const narrationBox  = document.getElementById("narration-box");
+    const overlayImg = document.getElementById("overlay-image");
 
     if (scene.background_img) {
       bgContainer.style.backgroundImage = `url('${scene.background_img}')`;
