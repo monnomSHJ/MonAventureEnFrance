@@ -11,6 +11,8 @@ const hotelData = [
         "🌐 Site web: www.hotelsoleil.fr"
       ],
       "image": "assets/images/hotel1.jpg",
+      "distance": "25 minutes de l'aéroport",
+      "breakfast": "inclus",
       "price": 95,
       "score": 10
     },
@@ -26,6 +28,8 @@ const hotelData = [
         "🌐 Site web: www.maisonparis.fr"
       ],
       "image": "assets/images/hotel2.jpg",
+      "distance": "40 minutes de l'aéroport",
+      "breakfast": "non inclus",
       "price": 85,
       "score": 5
     },
@@ -41,6 +45,8 @@ const hotelData = [
         "🌐 Site web: www.petitpalais.fr"
       ],
       "image": "assets/images/hotel3.jpg",
+      "distance": "30 minutes de l'aéroport",
+      "breakfast": "inclus",
       "price": 105,
       "score": 7
     }

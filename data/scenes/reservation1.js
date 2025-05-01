@@ -57,14 +57,14 @@ function setupReservationUI() {
             popupHeaderTitle.textContent = hotel.name;
             popupContentText.innerHTML = hotel.descriptionLines.map(line => `<p>${line}</p>`).join("");
 
-            btn1.textContent = "숙소 선택하기";
-            btn2.textContent = "다른 숙소 보기";
+            btn1.textContent = "다른 숙소 보기";
+            btn2.textContent = "숙소 선택하기";
             btn3.classList.add('hidden');
 
             popup.classList.remove("hidden");
             overlay.classList.toggle("show");
 
-            btn1.onclick = () => {
+            btn2.onclick = () => {
                 selectedHotelID = id;
                 highlightSelectedCard(selectedHotelID);
                 confirmBtn.disabled = false;
@@ -73,7 +73,7 @@ function setupReservationUI() {
                 return;
             };
 
-            btn2.onclick = () => {
+            btn1.onclick = () => {
                 popup.classList.add("hidden");
                 overlay.classList.remove("show");
                 return;
@@ -83,24 +83,8 @@ function setupReservationUI() {
 
     confirmBtn.addEventListener("click", () => {
         if (!selectedHotelID) {
-            popupHeaderTitle.textContent = "오류 발생";
-            popupContentText.innerHTML = `<p>⚠️ 숙소를 선택해주세요.</p>`;
-
-            btn1.textContent = "닫기";
-            btn2.classList.add('hidden');
-            btn3.classList.add('hidden');
-
-            popup.classList.remonve('hidden');
-            overlay.classList.toggle("show");
-
-            btn1.onClick = () => {
-                popup.classList.remove("hidden");
-                overlay.classList.toggle("show");
-            }
             return;
-        };
-
-
+        }
 
         const hotel = hotelData.find(h => h.id === selectedHotelID);
 
@@ -115,10 +99,24 @@ function setupReservationUI() {
         }
 
         popupHeaderTitle.textContent = "✅ 예약 완료";
+
+        const distanceInfo = hotel.distance;
+        const priceInfo = hotel.price;
+        const breakfastInfo = hotel.breakfast;
+
+        const isDistanceOk = distanceInfo.includes("30 minutes") || distanceInfo.includes("25 minutes");
+        const isPriceOk = hotel.price <= 100;
+        const isBreakfastNotOk = breakfastInfo.includes("non");
+
         popupContentText.innerHTML = `
             <p>${hotelName} 예약이 완료되었습니다.</p>
             <p>💸 ${deductedAmount} 유로가 차감되었습니다.</p>
             <p>🌟 ${addedScore} 점을 획득했습니다.</p>
+            <hr>
+            <h3>조건 만족 여부</h3>
+            <p>🏨 거리: ${distanceInfo} → ${isDistanceOk ? "✅ 만족" : "❌ 불만족"}</p>
+            <p>💶 가격: ${priceInfo} → ${isPriceOk ? "✅ 만족" : "❌ 불만족"}</p>
+            <p>🥐 조식: ${breakfastInfo} → ${isBreakfastNotOk ? "❌ 미포함" : "✅ 포함"}</p>
         `;
 
         btn1.textContent = "다음으로";

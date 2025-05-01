@@ -307,6 +307,12 @@ html, body {
     margin-bottom: 24px;
 }
 
+.popup-content-text hr {
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #C7A880;
+}
+
 .popup-content-text p {
     font-size: 14px;
     margin-top: 4px;
