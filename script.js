@@ -219,12 +219,15 @@ async function updateDialogue() {
     <div class="text"></div>
   `;
   const textEl = dialogueTextEl.querySelector('.text');
+  const bgContainer = document.getElementById("bg-container");
 
   if (line.overlayImg) {
     overlayImg.style.backgroundImage = `url('${line.overlayImg}')`;
     overlayImg.classList.remove('hidden');
+    bgContainer.classList.add('darken');
   } else {
     overlayImg.classList.add('hidden');
+    bgContainer.classList.remove('darken');
   }
 
   isTyping = true;
