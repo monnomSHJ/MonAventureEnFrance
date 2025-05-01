@@ -107,18 +107,17 @@ function renderIntroScreen() {
 
 /* ===== 다음 텍스트 ===== */
 // 이벤트 
-contentMain.addEventListener("click", (e) => {
+contentMain.addEventListener("click", async (e) => {
   if (e.target.id === "next-btn") {
     if (isTyping) {
       skipTyping = true;
-      clearTimeout(typingTimeout);
       return;
     }
 
     currentLineIndex++;
 
     if (currentScene && currentLineIndex < currentScene.lines.length) {
-      updateDialogue();
+      await updateDialogue();
     } else {
       if (typeof currentScene.nextScene === "function") {
         const next = currentScene.nextScene();
@@ -143,22 +142,27 @@ export function loadScene(scene) {
   const bgContainer = document.getElementById("bg-container");
   const dialogueBox = document.getElementById("dialogue-box");
   const narrationBox  = document.getElementById("narration-box");
+  const overlayImg = document.getElementById("overlay-image");
 
   currentScene = scene;
   currentLineIndex = 0;
 
-  if (scene.contentHTML) {
+  if (typeof scene.contentHTML === "string" && scene.contentHTML.trim() !== "") {
     contentMain.innerHTML = '';
-    
+
     const container = document.createElement("div");
     container.innerHTML = scene.contentHTML;
     container.classList.add('content-html-container');
     contentMain.appendChild(container);
+
   } else {
+
+    contentMain.innerHTML = "";
 
     contentMain.appendChild(bgContainer);
     contentMain.appendChild(narrationBox);
     contentMain.appendChild(dialogueBox);
+    contentMain.appendChild(overlayImg);
 
     if (scene.background_img) {
       bgContainer.style.backgroundImage = `url('${scene.background_img}')`;
@@ -193,7 +197,6 @@ export function loadScene(scene) {
 
 // 디알로그 업데이트 
 let isTyping = false;
-let typingTimeout = null;
 let skipTyping = false;
 
 async function updateDialogue() {
@@ -223,14 +226,24 @@ async function updateDialogue() {
   isTyping = true;
   skipTyping = false;
 
-  for (let i = 0; i < text.length; i++) {
-    if (skipTyping) break;
-    textEl.innerHTML += text[i];
-    await new Promise(resolve => typingTimeout = setTimeout(resolve, 30));
+  let currentIndex = 0;
+
+  function typeChar() {
+    if (skipTyping) {
+      textEl.innerHTML = text;
+      isTyping = false;
+      return;
+    }
+
+    if (currentIndex < text.length) {
+      textEl.innerHTML += text[currentIndex++];
+      setTimeout(typeChar, 30);
+    } else {
+      isTyping = false;
+    }
   }
 
-  textEl.innerHTML = text;
-  isTyping = false;
+  typeChar();
 }
 
 
