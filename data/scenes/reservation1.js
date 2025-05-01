@@ -1,5 +1,6 @@
-import { state, overlay, renderStatusBar } from "../../script.js";
+import { state, overlay, renderStatusBar, renderQuest, loadScene } from "../../script.js";
 import hotelData from "../hotelData.js";
+import { getReservation2Scene } from './reservation2.js';
 
 export function getReservation1Scene() {
     return {
@@ -126,6 +127,9 @@ function setupReservationUI() {
         btn1.onclick = () => {
             popup.classList.add("hidden");
             overlay.classList.remove("show");
+            state.currentQuest = "";
+            renderQuest();
+            loadScene(getReservation2Scene());
         }
 
         popup.classList.remove("hidden");

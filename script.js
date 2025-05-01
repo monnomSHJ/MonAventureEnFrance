@@ -5,14 +5,6 @@ import quests from "./quest.js";
 import { loadDictionary } from "./dictionary.js";
 import { renderIntro, setupIntroEvents } from "./data/scenes/intro.js";
 
-// Scene 매니징
-import { getIntro2Scene } from "./data/scenes/intro2.js";
-import { getReservation1Scene } from "./data/scenes/reservation1.js";
-
-export const sceneMap = {
-  intro2: getIntro2Scene,
-  reservation1: getReservation1Scene,
-};
 
 // 상태 관리
 export const state = {
@@ -117,6 +109,12 @@ function renderIntroScreen() {
 // 이벤트 
 contentMain.addEventListener("click", (e) => {
   if (e.target.id === "next-btn") {
+    if (isTyping) {
+      skipTyping = true;
+      clearTimeout(typingTimeout);
+      return;
+    }
+
     currentLineIndex++;
 
     if (currentScene && currentLineIndex < currentScene.lines.length) {
@@ -194,19 +192,26 @@ export function loadScene(scene) {
 
 
 // 디알로그 업데이트 
-function updateDialogue() {
+let isTyping = false;
+let typingTimeout = null;
+let skipTyping = false;
+
+async function updateDialogue() {
+
   const line = currentScene.lines?.[currentLineIndex];
   if (!line) return;
 
-  const overlayImg = document.getElementById("overlay-image")
+  const overlayImg = document.getElementById("overlay-image");
+  const dialogueTextEl = document.getElementById("dialogue-text");
 
   const text = line.text;
   const speaker = line.speaker || "";
 
-  document.getElementById("dialogue-text").innerHTML = `
+  dialogueTextEl.innerHTML = `
     <div class="speaker">${speaker}</div>
-    <div class="text">${text}</div>
+    <div class="text"></div>
   `;
+  const textEl = dialogueTextEl.querySelector('.text');
 
   if (line.overlayImg) {
     overlayImg.style.backgroundImage = `url('${line.overlayImg}')`;
@@ -214,6 +219,18 @@ function updateDialogue() {
   } else {
     overlayImg.classList.add('hidden');
   }
+
+  isTyping = true;
+  skipTyping = false;
+
+  for (let i = 0; i < text.length; i++) {
+    if (skipTyping) break;
+    textEl.innerHTML += text[i];
+    await new Promise(resolve => typingTimeout = setTimeout(resolve, 30));
+  }
+
+  textEl.innerHTML = text;
+  isTyping = false;
 }
 
 
@@ -222,3 +239,5 @@ window.addEventListener("beforeunload", function (e) {
   e.preventDefault();
   e.returnValue = "";
 });
+
+
