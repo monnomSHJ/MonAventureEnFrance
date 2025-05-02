@@ -133,71 +133,97 @@ contentMain.addEventListener("click", async (e) => {
 
 
 /* ===== 씬 로딩 및 업데이트 ===== */
+let pendingDialogueUpdate = false;
+
 export function loadScene(scene) {
   if (!scene) {
     console.error("로드할 scene이 없습니다!", scene);
     return;
   }
 
-  console.log("씬 로딩", scene);
+  const overlay = document.getElementById("transition-overlay");
+  overlay.classList.add('show');
 
-  currentScene = scene;
-  currentLineIndex = 0;
+  setTimeout(() => {
 
-  if (scene.contentHTML) {
-    contentMain.innerHTML = '';
-    const container = document.createElement("div");
-    container.innerHTML = scene.contentHTML;
-    container.classList.add('content-html-container');
-    contentMain.appendChild(container);
+    currentScene = scene;
+    currentLineIndex = 0;
 
-  } else {
+    if (scene.contentHTML) {
+      contentMain.innerHTML = '';
+      const container = document.createElement("div");
+      container.innerHTML = scene.contentHTML;
+      container.classList.add('content-html-container');
+      contentMain.appendChild(container);
 
-    contentMain.innerHTML = `
-      <div id="bg-container" class="bg-container hidden"></div>
-      <div id="narration-box" class="text-box narration hidden">example text</div>
-      <div id="dialogue-box" class="text-box dialogue hidden">
-        <div class="dialogue-container">
-          <div id="dialogue-text">example text</div>
-          <div id="next-btn" class="next-btn"></div>
+    } else {
+
+      contentMain.innerHTML = `
+        <div id="bg-container" class="bg-container hidden"></div>
+        <div id="narration-box" class="text-box narration hidden">example text</div>
+        <div id="dialogue-box" class="text-box dialogue hidden">
+          <div class="dialogue-container">
+            <div id="dialogue-text">example text</div>
+            <div id="next-btn" class="next-btn"></div>
+          </div>
         </div>
-      </div>
-      <div id="overlay-image" class="overlay-image hidden"></div>
-      `;
+        <div id="overlay-image" class="overlay-image hidden"></div>
+        <div id="person-image" class="person-image hidden"></div>
+        `;
 
-    const bgContainer = document.getElementById("bg-container");
-    const dialogueBox = document.getElementById("dialogue-box");
-    const narrationBox  = document.getElementById("narration-box");
-    const overlayImg = document.getElementById("overlay-image");
+      const bgContainer = document.getElementById("bg-container");
+      const dialogueBox = document.getElementById("dialogue-box");
+      const narrationBox  = document.getElementById("narration-box");
 
-    if (scene.background_img) {
-      bgContainer.style.backgroundImage = `url('${scene.background_img}')`;
-      bgContainer.classList.remove('hidden');
-    } else {
-      bgContainer.classList.add('hidden');
+
+      if (scene.background_img) {
+        bgContainer.style.backgroundImage = `url('${scene.background_img}')`;
+        bgContainer.classList.remove('hidden');
+      } else {
+        bgContainer.classList.add('hidden');
+      }
+
+      if (scene.lines && scene.lines.length > 0) {
+        dialogueBox.classList.remove("hidden");
+        updateDialogue();
+      } else {
+        dialogueBox.classList.add("hidden");
+      }
+
+      if (scene.narration) {
+        narrationBox.textContent = scene.narration;
+        narrationBox.classList.remove('hidden');
+      } else {
+        narrationBox.classList
+        .add('hidden');
+      }
+
+      if (scene.lines && scene.lines.length > 0) {
+        dialogueBox.classList.remove('hidden');
+        pendingDialogueUpdate = true;
+      } else {
+        dialogueBox.classList.add('hidden');
+      }
     }
 
-    if (scene.lines && scene.lines.length > 0) {
-      dialogueBox.classList.remove("hidden");
-      updateDialogue();
-    } else {
-      dialogueBox.classList.add("hidden");
+    // 초기 설정 함수 호출
+    if (typeof scene.onMount === "function") {
+      scene.onMount();
     }
 
-    if (scene.narration) {
-      narrationBox.textContent = scene.narration;
-      narrationBox.classList.remove('hidden');
-    } else {
-      narrationBox.classList
-      .add('hidden');
-    }
-  }
+    setTimeout(() => {
+      overlay.classList.remove('show');
 
-  // 초기 설정 함수 호출
-  if (typeof scene.onMount === "function") {
-    scene.onMount();
-  }
+      if (pendingDialogueUpdate) {
+        updateDialogue();
+        pendingDialogueUpdate = false;
+      }
+    }, 200);
+
+  }, 500);
 }
+
+
 
 
 
@@ -211,6 +237,7 @@ async function updateDialogue() {
   if (!line) return;
 
   const overlayImg = document.getElementById("overlay-image");
+  const personImg = document.getElementById("person-image");
   const dialogueTextEl = document.getElementById("dialogue-text");
 
   const text = line.text;
@@ -230,6 +257,20 @@ async function updateDialogue() {
   } else {
     overlayImg.classList.add('hidden');
     bgContainer.classList.remove('darken');
+  }
+
+  if (line.personImg) {
+    personImg.style.backgroundImage = `url('${line.personImg}')`;
+    personImg.classList.remove('hidden');
+  } else {
+    personImg.classList.add('hidden');
+  }
+
+  if (line.production) {
+    showProductionPopup(line.production);
+    overlay.classList.toggle('show');
+  } else {
+    overlay.classList.remove('show');
   }
 
   isTyping = true;
@@ -259,3 +300,87 @@ window.addEventListener("beforeunload", function (e) {
   e.preventDefault();
   e.returnValue = "";
 });
+
+// 문장 만들기 팝업
+function showProductionPopup({ prompt, meaning, words, answer }) {
+  const popup = document.createElement("div");
+  popup.className = "popup production-popup";
+
+  const blankCount = (prompt.match(/_/g) || []).length;
+  const promptHTML = prompt.replace(/_/g, (_, i) => `<span class="fill-blank" data-index="${i}"></span>`);
+
+  popup.innerHTML = `
+    <div class="popup-header"><span class="popup-header-title">문장 완성</span></div>
+    <div class="popup-content">
+      <div class="popup-production-prompt">${promptHTML}</div>
+      <div class="popup-production-meaning">${meaning}</div>
+      <div class="popup-production-choices">
+        ${words.map(word => `<button class="choice-button">${word}</button>`).join("")}
+      </div>
+      <div class="popup-production-result"></div>
+      <button class="button popup-production-confirm" disabled>제출</button>
+    </div>
+  `;
+
+  document.body.appendChild(popup);
+
+  const blanks = popup.querySelectorAll('.fill-blank');
+  const choiceButtons = popup.querySelectorAll('.choice-button');
+  const resultBox = popup.querySelector('.popup-production-result');
+  const confirmBtn = popup.querySelector('.popup-production-confirm');
+
+  const selectedWords = new Array(blankCount).fill(null);
+
+  choiceButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const word = btn.textContent;
+      const emptyIndex = selectedWords.findIndex(w => w === null);
+      if (emptyIndex === -1) return;
+
+      selectedWords[emptyIndex] = word;
+      blanks[emptyIndex].textContent = word;
+      blanks[emptyIndex].classList.add('filled');
+      btn.disabled = true;
+
+      checkConfirmState();
+    });
+  });
+
+  blanks.forEach((blank, index) => {
+    blank.addEventListener('click', () => {
+      const word = selectedWords[index];
+      if (!word) return;
+
+      // 단어 취소
+      selectedWords[index] = null;
+      blank.textContent = '';
+      blank.classList.remove('filled');
+
+      // 해당 단어 버튼 다시 활성화
+      choiceButtons.forEach(btn => {
+        if (btn.textContent === word) btn.disabled = false;
+      });
+
+      checkConfirmState();
+    });
+  });
+
+  function checkConfirmState() {
+    confirmBtn.disabled = selectedWords.includes(null);
+  }
+
+  confirmBtn.addEventListener('click', () => {
+    const isCorrect = JSON.stringify(selectedWords) === JSON.stringify(answer);
+    resultBox.textContent = isCorrect
+      ? "✅ 정답입니다!"
+      : `❌ 정답은: ${answer.join(" ")}`;
+    confirmBtn.disabled = true;
+
+    setTimeout(() => {
+      popup.remove();
+      if (isCorrect) state.score += 5;
+      updateDialogue(); // 다음 대사로 이동
+      renderStatusBar();
+    }, 1500);
+  });
+}

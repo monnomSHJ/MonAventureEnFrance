@@ -16,7 +16,7 @@ html, body {
     padding: 0;
 }
 
-img {
+body {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
@@ -177,6 +177,23 @@ img {
     z-index: 2;
 }
 
+.transition-overlay {
+    position: absolute;
+    border-radius: 16px;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ECD4AD;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transition: opacity 0.4s ease;
+}
+
+.transition-overlay.show {
+    opacity: 1;
+}
+
 .bg-container {
     position: relative;
     width: 100%;
@@ -267,7 +284,6 @@ img {
     border-image-slice: 20 fill;
     border-image-width: 6px;
     cursor: pointer;
-    transition: transform 0.15s ease filter 0.2s ease;
     flex-shrink: 0s;
 }
 
@@ -278,6 +294,18 @@ img {
 
 #next-btn:active {
     transform: scale(0.95);
+}
+
+.person-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    z-index: 4;
+    background-repeat: no-repeat;
 }
 
 .hidden {
@@ -294,6 +322,7 @@ img {
     aspect-ratio: 4 / 3;
     background: #fff;
     background-size: cover;
+    background-position: center;
     border: 8px solid transparent;
     border-radius: 24px;
     border-image: url('assets/images/contentMainBg.png');
@@ -397,7 +426,6 @@ img {
     cursor: pointer;
     font-weight: 400;
     flex: 1;
-    transition: transform 0.15s ease, filter 0.2s ease;
 }
 
 .popup-content-btn:hover {
@@ -420,7 +448,6 @@ img {
     border-image-width: 8px;
     cursor: pointer;
     border-radius: 24px;
-    transition: transform 0.15s ease, filter 0.2s ease;
 }
 
 .button:hover {
@@ -673,7 +700,6 @@ img {
     border-radius: 24px;
     cursor: pointer;
     margin: 0;
-    transition: transform 0.15s ease, filter 0.2s ease;
 }
 
 .name-input-box-group button:hover {
@@ -721,7 +747,7 @@ img {
 .hotel-card {
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 95%;
     align-items: center;
     justify-content: space-evenly;
     border: 8px solid transparent;
@@ -802,6 +828,94 @@ img {
     border-image: url('assets/images/contentMainBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
+}
+
+.production-popup {
+    width: 80%;
+}
+
+.fill-blank {
+    display: inline-flex;
+    border: 8px solid transparent;
+    border-image: url('assets/images/inputBoxBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+    vertical-align: middle;
+    text-align: center;
+    justify-content: center;
+    padding: 4px;
+    min-width: 24px;
+    min-height: 16px;
+    margin-right: 4px;
+}
+
+.fill-blank.filled {
+    border: 8px solid transparent;
+    border-image: url('assets/images/hotelCardSelected.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+    font-size: 18px;
+    max-height: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.fill-blank.filled:hover {
+    filter: brightness(90%);
+    transform: scale(1.05);
+}
+
+.fill-blank.filled:active {
+    transform: scale(0.95);
+}
+
+.popup-content {
+    font-family: 'Jersey 25', 'DungGeunMo';
+}
+
+.popup-production-prompt {
+    text-align: left;
+    font-size: 18px;
+    line-height: 200%;
+}
+
+.popup-production-meaning {
+    font-size: 13px;
+    font-weight: 100;
+    opacity: 0.8;
+}
+
+.popup-production-choices {
+    display: flex;
+    gap: 4px 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.choice-button {
+    font-family: 'Jersey 25', 'DungGeunMo';
+    font-size: 16px;
+    background: transparent;
+    padding: 4px 12px;
+    border: 8px solid transparent;
+    border-image: url('assets/images/statusItemBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+    cursor: pointer;
+}
+
+.choice-button:hover {
+    filter: brightness(90%);
+    transform: scale(1.05);
+}
+
+.choice-button:active {
+    transform: scale(0.95);
+}
+
+.popup-production-confirm {
+    width: 100%;
 }
 
 
@@ -1118,6 +1232,50 @@ img {
         font-size: 16px;
         width: 160px;
         padding: 6px 12px;
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+    }
+
+    .production-popup {
+        width: 50%;
+        max-width: 500px;
+    }
+    
+    .fill-blank {
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+        min-height: 16px;
+        padding: 4px 12px;
+    }
+    
+    .fill-blank.filled {
+        align-items: center;
+        border-width: 10px;
+        border-image-slice: 24 fill;
+        border-image-width: 10px;
+        font-size: 20px;
+        max-height: 16px;
+    }
+    
+    .popup-production-prompt {
+        font-size: 20px;
+        margin-top: 16px;
+    }
+    
+    .popup-production-meaning {
+        font-size: 15px;
+        margin-top: 24px;
+    }
+    
+    .popup-production-choices {
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    
+    .choice-button {
+        font-size: 20px;
         border-width: 10px;
         border-image-slice: 24 fill;
         border-image-width: 10px;
