@@ -16,6 +16,14 @@ html, body {
     padding: 0;
 }
 
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-select: none;
+}
+
 .overlay {
     position: fixed;
     top: 0;

@@ -20,6 +20,8 @@ export let currentScene = null;
 
 
 
+
+
 /* ===== DOM 요소 캐싱 ===== */
 export const overlay = document.querySelector('.overlay');
 const contentMain = document.getElementById("content-main");
@@ -253,11 +255,7 @@ async function updateDialogue() {
   typeChar();
 }
 
-
-
 window.addEventListener("beforeunload", function (e) {
   e.preventDefault();
   e.returnValue = "";
 });
-
-
