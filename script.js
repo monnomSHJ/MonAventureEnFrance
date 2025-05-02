@@ -157,7 +157,7 @@ export function loadScene(scene) {
       <div id="dialogue-box" class="text-box dialogue hidden">
         <div class="dialogue-container">
           <div id="dialogue-text">example text</div>
-          <div id="next-btn" class="next-btn">▶</div>
+          <div id="next-btn" class="next-btn"></div>
         </div>
       </div>
       <div id="overlay-image" class="overlay-image hidden"></div>
