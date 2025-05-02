@@ -4,6 +4,7 @@ console.log("script.js 로드됨");
 import quests from "./quest.js";
 import { loadDictionary } from "./dictionary.js";
 import { renderIntro, setupIntroEvents } from "./data/scenes/intro.js";
+import { getAirport2Scene } from "./data/scenes/airport2.js";
 
 
 // 상태 관리
@@ -268,7 +269,8 @@ async function updateDialogue() {
 
   if (line.production) {
     showProductionPopup(line.production);
-    overlay.classList.toggle('show');
+    overlay.classList.add('show');
+    return;
   } else {
     overlay.classList.remove('show');
   }
@@ -303,21 +305,27 @@ window.addEventListener("beforeunload", function (e) {
 
 // 문장 만들기 팝업
 function showProductionPopup({ prompt, meaning, words, answer }) {
+
+  document.querySelectorAll('.production-popup').forEach(p => p.remove());
+
   const popup = document.createElement("div");
   popup.className = "popup production-popup";
 
   const blankCount = (prompt.match(/_/g) || []).length;
-  const promptHTML = prompt.replace(/_/g, (_, i) => `<span class="fill-blank" data-index="${i}"></span>`);
+
+  let blankCounter = 0;
+  const promptHTML = prompt.replace(/_/g, () => {
+    return `<span class="fill-blank" data-index="${blankCounter++}"></span>`;
+  });
 
   popup.innerHTML = `
-    <div class="popup-header"><span class="popup-header-title">문장 완성</span></div>
+    <div class="popup-header"><span class="popup-header-title">문장을 완성하자!</span></div>
     <div class="popup-content">
       <div class="popup-production-prompt">${promptHTML}</div>
       <div class="popup-production-meaning">${meaning}</div>
       <div class="popup-production-choices">
         ${words.map(word => `<button class="choice-button">${word}</button>`).join("")}
       </div>
-      <div class="popup-production-result"></div>
       <button class="button popup-production-confirm" disabled>제출</button>
     </div>
   `;
@@ -326,7 +334,6 @@ function showProductionPopup({ prompt, meaning, words, answer }) {
 
   const blanks = popup.querySelectorAll('.fill-blank');
   const choiceButtons = popup.querySelectorAll('.choice-button');
-  const resultBox = popup.querySelector('.popup-production-result');
   const confirmBtn = popup.querySelector('.popup-production-confirm');
 
   const selectedWords = new Array(blankCount).fill(null);
@@ -370,17 +377,43 @@ function showProductionPopup({ prompt, meaning, words, answer }) {
   }
 
   confirmBtn.addEventListener('click', () => {
-    const isCorrect = JSON.stringify(selectedWords) === JSON.stringify(answer);
-    resultBox.textContent = isCorrect
-      ? "✅ 정답입니다!"
-      : `❌ 정답은: ${answer.join(" ")}`;
-    confirmBtn.disabled = true;
+    popup.remove();
+    document.getElementById('popup').classList.add('hidden');
+    document.querySelector('.overlay').classList.remove('show');
 
-    setTimeout(() => {
-      popup.remove();
-      if (isCorrect) state.score += 5;
-      updateDialogue(); // 다음 대사로 이동
+    const isCorrect = JSON.stringify(selectedWords) === JSON.stringify(answer);
+
+    if (isCorrect) {
+      state.score += 5;
       renderStatusBar();
-    }, 1500);
+      updateDialogue();
+    } else {
+      const wrongLine = {
+        speaker: "📢",
+        text: "뭔가 실수가 있었나봅니다. 다시 한번 시도해볼까요?"
+      };
+
+      currentScene.lines.splice(currentLineIndex + 1, 0, wrongLine);
+      updateDialogue();
+
+      setTimeout(() => {
+        showProductionPopup({ prompt, meaning, words, answer }); // 원래의 production 다시 호출
+      }, 1600);
+    }
   });
+}
+
+// 디버그 메뉴
+window.goToScene = function (sceneId) {
+  const sceneMap = {
+    intro: renderIntroScreen,
+    airport2: () => loadScene(getAirport2Scene())
+  };
+
+  if (sceneMap[sceneId]) {
+    console.log(`이동 중: ${sceneId}`);
+    sceneMap[sceneId]();
+  } else {
+    console.warn(`${sceneId} 씬을 찾을 수 없습니다.`);
+  }
 }

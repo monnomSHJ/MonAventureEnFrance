@@ -1,4 +1,4 @@
-import { state, renderQuest } from "../../script.js";
+import { state } from "../../script.js";
 
 export function getAirport2Scene() {
     return {
@@ -16,7 +16,8 @@ export function getAirport2Scene() {
                     words: ["Où", "est", "Quand", "moi", "Pourquoi"],
                     answer: ["Où", "est"]
                 }
-            }
+            },
+            { speaker: `👩‍💼 Employée`, text: "test"}
         ],
     }
 }
