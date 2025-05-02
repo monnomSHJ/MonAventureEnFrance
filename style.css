@@ -186,8 +186,8 @@ body {
     background: #ECD4AD;
     opacity: 0;
     pointer-events: none;
-    z-index: 99999;
-    transition: opacity 0.4s ease;
+    z-index: 999999;
+    transition: opacity 0.2s ease;
 }
 
 .transition-overlay.show {
