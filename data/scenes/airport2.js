@@ -7,7 +7,8 @@ export function getAirport2Scene() {
         narration: "",
         retryLines: [
             { speaker: `👩‍💼 Employée`, text: "Pardon ?", personImg: "assets/images/airportPerson1.png"},
-            { speaker: `👤 ${state.userName}`, text: ".. 다시 한 번 시도해보자.", personImg: "assets/images/airportPerson1.png"}
+            { speaker: `👤 ${state.userName}`, text: ".. 다시 한 번 시도해보자.", personImg: "assets/images/airportPerson1.png"},
+            { speaker: `📢`, text: "1점이 차감되었습니다.", personImg: "assets/images/airportPerson1.png"}
         ],
         lines: [
             { speaker: `👤 ${state.userName}`, text: "Excusez-moi."},
@@ -21,9 +22,12 @@ export function getAirport2Scene() {
                     answer: ["Où", "est"]
                 }
             },
+            { speaker: `📢`, text: "문장 만들기 성공! 5점을 획득하였습니다.", personImg: "assets/images/airportPerson1.png"},
             { speaker: `👤 ${state.userName}`, text: "Où est la station de taxi, s'il vous plaît ?", personImg: "assets/images/airportPerson1.png"},
-            { speaker: `👩‍💼 Employée`, text: "test", personImg: "assets/images/airportPerson1.png"},
-            { speaker: `👤 ${state.userName}`, text: "test", personImg: "assets/images/airportPerson1.png"}
+            { speaker: `👩‍💼 Employée`, text: "Bien sûr ! Tout d'abord, suivez le couloir à droite, puis tournez à gauche après les ascenseurs.", personImg: "assets/images/airportPerson1.png"},
+            { speaker: `👤 ${state.userName}`, text: "Merci beaucoup !", personImg: "assets/images/airportPerson1.png"},
+            { speaker: `👩‍💼 Employée`, text: "Je vous en prie. Bonne journée !", personImg: "assets/images/airportPerson1.png"}
+            
         ],
     }
 }
