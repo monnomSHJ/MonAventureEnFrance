@@ -232,6 +232,8 @@ export function loadScene(scene) {
 let isTyping = false;
 let skipTyping = false;
 
+let lastProductionData = null;
+
 async function updateDialogue() {
 
   const line = currentScene.lines?.[currentLineIndex];
@@ -275,6 +277,12 @@ async function updateDialogue() {
     overlay.classList.remove('show');
   }
 
+  if (line.productionRetry && lastProductionData) {
+    showProductionPopup(lastProductionData);
+    overlay.classList.add('show');
+    return;
+  }
+
   isTyping = true;
   skipTyping = false;
 
@@ -304,7 +312,11 @@ window.addEventListener("beforeunload", function (e) {
 });
 
 // 문장 만들기 팝업
-function showProductionPopup({ prompt, meaning, words, answer }) {
+
+function showProductionPopup(data) {
+  lastProductionData = data;
+
+  const { prompt, meaning, words, answer } = data;
 
   document.querySelectorAll('.production-popup').forEach(p => p.remove());
 
@@ -377,8 +389,13 @@ function showProductionPopup({ prompt, meaning, words, answer }) {
   }
 
   confirmBtn.addEventListener('click', () => {
-    popup.remove();
-    document.getElementById('popup').classList.add('hidden');
+    console.log("제출 버튼 클릭됨");
+
+    document.querySelectorAll('.production-popup').forEach(p => {
+      console.log("팝업 제거 중:", p);
+      p.remove();
+    })
+
     document.querySelector('.overlay').classList.remove('show');
 
     const isCorrect = JSON.stringify(selectedWords) === JSON.stringify(answer);
@@ -386,19 +403,21 @@ function showProductionPopup({ prompt, meaning, words, answer }) {
     if (isCorrect) {
       state.score += 5;
       renderStatusBar();
+      currentLineIndex++;
       updateDialogue();
     } else {
-      const wrongLine = {
-        speaker: "📢",
-        text: "뭔가 실수가 있었나봅니다. 다시 한번 시도해볼까요?"
+      const feedbackLines = [
+        { speaker: "👩‍💼 Employée", text: "Pardon ?" },
+        { speaker: `👤 ${state.userName}`, text: "... 다시 한 번 시도해보자." },
+      ];
+
+      const retryLine = {
+        speaker: "", text: "", productionRetry: true
       };
 
-      currentScene.lines.splice(currentLineIndex + 1, 0, wrongLine);
+      currentScene.lines.splice(currentLineIndex + 1, 0, ...feedbackLines, retryLine);
+      currentLineIndex++;
       updateDialogue();
-
-      setTimeout(() => {
-        showProductionPopup({ prompt, meaning, words, answer }); // 원래의 production 다시 호출
-      }, 1600);
     }
   });
 }

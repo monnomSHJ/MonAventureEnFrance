@@ -13,11 +13,12 @@ export function getAirport2Scene() {
                 production: {
                     prompt: "_ _ la station de taxi, s'il vous plaît ?",
                     meaning: "택시 승강장은 어디에 있나요?",
-                    words: ["Où", "est", "Quand", "moi", "Pourquoi"],
+                    words: ["est", "Quand", "moi", "Où", "Pourquoi"],
                     answer: ["Où", "est"]
                 }
             },
-            { speaker: `👩‍💼 Employée`, text: "test"}
+            { speaker: `👩‍💼 Employée`, text: "test", personImg: "assets/images/airportPerson1.png"},
+            { speaker: `👤 ${state.userName}`, text: "test", personImg: "assets/images/airportPerson1.png"}
         ],
     }
 }
