@@ -5,6 +5,10 @@ export function getAirport2Scene() {
         id: "airport2",
         background_img: "assets/images/airportMain.jpg",
         narration: "",
+        retryLines: [
+            { speaker: `👩‍💼 Employée`, text: "Pardon ?", personImg: "assets/images/airportPerson1.png"},
+            { speaker: `👤 ${state.userName}`, text: ".. 다시 한 번 시도해보자.", personImg: "assets/images/airportPerson1.png"}
+        ],
         lines: [
             { speaker: `👤 ${state.userName}`, text: "Excusez-moi."},
             { speaker: `👩‍💼 Employée`, text: "Oui, vous avez besoin de l'aide ?", personImg: "assets/images/airportPerson1.png"},
@@ -17,6 +21,7 @@ export function getAirport2Scene() {
                     answer: ["Où", "est"]
                 }
             },
+            { speaker: `👤 ${state.userName}`, text: "Où est la station de taxi, s'il vous plaît ?", personImg: "assets/images/airportPerson1.png"},
             { speaker: `👩‍💼 Employée`, text: "test", personImg: "assets/images/airportPerson1.png"},
             { speaker: `👤 ${state.userName}`, text: "test", personImg: "assets/images/airportPerson1.png"}
         ],

@@ -20,9 +20,6 @@ export let currentLineIndex = 0;
 export let currentScene = null;
 
 
-
-
-
 /* ===== DOM 요소 캐싱 ===== */
 export const overlay = document.querySelector('.overlay');
 const contentMain = document.getElementById("content-main");
@@ -406,15 +403,14 @@ function showProductionPopup(data) {
       currentLineIndex++;
       updateDialogue();
     } else {
-      const feedbackLines = [
-        { speaker: "👩‍💼 Employée", text: "Pardon ?" },
-        { speaker: `👤 ${state.userName}`, text: "... 다시 한 번 시도해보자." },
-      ];
+      const retryLine = { speaker: "", text: "", personImg: "", productionRetry: true };
 
-      const retryLine = {
-        speaker: "", text: "", productionRetry: true
-      };
-
+      const feedbackLines = currentScene.retryLines?.map(line => ({
+        speaker: typeof line.speaker === "function" ? line.speaker() : line.speaker,
+        text: line.text,
+        personImg: line.personImg
+      }));
+      
       currentScene.lines.splice(currentLineIndex + 1, 0, ...feedbackLines, retryLine);
       currentLineIndex++;
       updateDialogue();
