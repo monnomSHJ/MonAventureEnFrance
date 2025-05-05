@@ -1,4 +1,5 @@
-import { state, renderQuest } from "../../script.js";
+import { state } from "../../script.js";
+import { renderQuest } from "../../statusBar.js";
 import { getReservation1Scene } from "./reservation1.js";
 
 

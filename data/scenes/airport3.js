@@ -1,4 +1,4 @@
-import { state, showMiniMapGame } from "../../script.js";
+/*import { state, showMiniMapGame } from "../../script.js";
 
 export function getAirport3Scene() {
     const fullMap = [
@@ -33,3 +33,4 @@ export function getAirport3Scene() {
         ]
     };
 }
+    */

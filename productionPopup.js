@@ -1,6 +1,6 @@
 import { state } from "./script.js";
 import { renderStatusBar } from "./statusBar.js";
-import { updateDialogue, currentScene, currentLineIndex } from "./sceneManager.js";
+import { updateDialogue, currentScene, incrementLineIndex, currentLineIndex } from "./sceneManager.js";
 
 let lastProductionData = null;
 
@@ -16,19 +16,19 @@ export function showProductionPopup(data) {
     const blankCount = (prompt.match(/_/g) || []).length;
     let blankCounter = 0;
     const promptHTML = prompt.replace(/_/g, () => {
-      return `<span class="fill-blank" data-index="${blankCounter++}"></span>`;
+        return `<span class="fill-blank" data-index="${blankCounter++}"></span>`;
     });
   
     popup.innerHTML = `
-      <div class="popup-header"><span class="popup-header-title">문장을 완성하자!</span></div>
-      <div class="popup-content">
-        <div class="popup-production-prompt">${promptHTML}</div>
-        <div class="popup-production-meaning">${meaning}</div>
-        <div class="popup-production-choices">
-          ${words.map(word => `<button class="choice-button">${word}</button>`).join("")}
-        </div>
+        <div class="popup-header"><span class="popup-header-title">문장을 완성하자!</span></div>
+        <div class="popup-content">
+            <div class="popup-production-prompt">${promptHTML}</div>
+            <div class="popup-production-meaning">${meaning}</div>
+            <div class="popup-production-choices">
+                ${words.map(word => `<button class="choice-button">${word}</button>`).join("")}
+            </div>
         <button class="button popup-production-confirm" disabled>제출</button>
-      </div>
+    </div>
     `;
   
     document.body.appendChild(popup);
@@ -40,63 +40,75 @@ export function showProductionPopup(data) {
     const selectedWords = new Array(blankCount).fill(null);
   
     choiceButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const word = btn.textContent;
-        const emptyIndex = selectedWords.findIndex(w => w === null);
-        if (emptyIndex === -1) return;
-  
-        selectedWords[emptyIndex] = word;
-        blanks[emptyIndex].textContent = word;
-        blanks[emptyIndex].classList.add('filled');
-        btn.disabled = true;
-  
-        checkConfirmState();
-      });
+        btn.addEventListener('click', () => {
+            const word = btn.textContent;
+            const emptyIndex = selectedWords.findIndex(w => w === null);
+            if (emptyIndex === -1) return;
+    
+            selectedWords[emptyIndex] = word;
+            blanks[emptyIndex].textContent = word;
+            blanks[emptyIndex].classList.add('filled');
+            btn.disabled = true;
+    
+            checkConfirmState();
+        });
     });
   
     blanks.forEach((blank, index) => {
-      blank.addEventListener('click', () => {
-        const word = selectedWords[index];
-        if (!word) return;
+        blank.addEventListener('click', () => {
+            const word = selectedWords[index];
+            if (!word) return;
   
-        selectedWords[index] = null;
-        blank.textContent = '';
-        blank.classList.remove('filled');
+            selectedWords[index] = null;
+            blank.textContent = '';
+            blank.classList.remove('filled');
   
-        choiceButtons.forEach(btn => {
-          if (btn.textContent === word) btn.disabled = false;
+            choiceButtons.forEach(btn => {
+                if (btn.textContent === word) btn.disabled = false;
+            });
+  
+            checkConfirmState();
         });
-  
-        checkConfirmState();
-      });
     });
   
     function checkConfirmState() {
-      confirmBtn.disabled = selectedWords.includes(null);
+        confirmBtn.disabled = selectedWords.includes(null);
     }
   
     confirmBtn.addEventListener('click', () => {
-      document.querySelectorAll('.production-popup').forEach(p => p.remove());
-      document.querySelector('.overlay')?.classList.remove('show');
+        document.querySelectorAll('.production-popup').forEach(p => p.remove());
+        document.querySelector('.overlay')?.classList.remove('show');
   
-      const isCorrect = JSON.stringify(selectedWords) === JSON.stringify(answer);
+        const isCorrect = JSON.stringify(selectedWords) === JSON.stringify(answer);
+
+        console.log("현재 currentLineIndex:", currentLineIndex);
   
-      if (isCorrect) {
-        state.score += 5;
-        renderStatusBar();
-        currentLineIndex++;
-        updateDialogue();
-      } else {
-        const retryLine = { speaker: "", text: "", personImg: "", productionRetry: true };
-  
-        const feedbackLines = currentScene.retryLines?.map(line => ({
-          speaker: typeof line.speaker === "function" ? line.speaker() : line.speaker,
-          text: line.text,
-          personImg: line.personImg || ""
+        if (isCorrect) {
+            state.score += 5;
+            renderStatusBar();
+            incrementLineIndex();
+
+            console.log("정답 제출 후 currentLineIndex:", currentLineIndex);
+            updateDialogue();
+        } else {
+            state.score -= 1;
+            const feedbackLines = currentScene.retryLines?.map(line => ({
+            speaker: typeof line.speaker === "function" ? line.speaker() : line.speaker,
+            text: line.text,
+            personImg: line.personImg || ""
         })) || [];
+
+        const retryLine = {
+            speaker: "",
+            text: "",
+            personImg: "",
+            production: lastProductionData
+        };
   
         currentScene.lines.splice(currentLineIndex + 1, 0, ...feedbackLines, retryLine);
-        currentLineIndex++;
+        incrementLineIndex();
+
+        console.log("오답 처리 후 currentLineIndex:", currentLineIndex);
         updateDialogue();
         }
     });

@@ -10,7 +10,6 @@ import { getReservation1Scene } from "./data/scenes/reservation1.js";
 import { getReservation2Scene } from "./data/scenes/reservation2.js";
 import { getAirport1Scene } from "./data/scenes/airport1.js";
 import { getAirport2Scene } from "./data/scenes/airport2.js";
-import { getAirport3Scene } from "./data/scenes/airport3.js";
 
 // State
 export let currentScene = null;
@@ -22,6 +21,15 @@ let lastProductionData = null;
 export const overlay = document.querySelector('.overlay');
 const contentMain = document.getElementById("content-main");
 
+
+
+export function incrementLineIndex() {
+    currentLineIndex++;
+}
+
+export function setLineIndex(idx) {
+    currentLineIndex = idx;
+}
 
 
 // Load Scene
@@ -38,18 +46,19 @@ export function loadScene(scene) {
     setTimeout(() => {
       currentScene = scene;
       currentLineIndex = 0;
+      console.log(`씬 로드: ${currentScene.id}`);
   
         if (scene.contentHTML) {
             contentMain.innerHTML = '';
             const container = document.createElement("div");
-            container.innerHTML = scene.contentHTML;
+            container.innerHTML = currentScene.contentHTML;
             container.classList.add("content-html-container");
             contentMain.appendChild(container);
         } else {
             contentMain.innerHTML = `
-            <div id="bg-container" class="bg-container hidden"></div>
+            <div id="bg-container" class="bg-container"></div>
             <div id="narration-box" class="text-box narration hidden">example text</div>
-            <div id="dialogue-box" class="text-box dialogue hidden">
+            <div id="dialogue-box" class="text-box dialogue">
                 <div class="dialogue-container">
                 <div id="dialogue-text">example text</div>
                 <div id="next-btn" class="next-btn"></div>
@@ -58,9 +67,13 @@ export function loadScene(scene) {
             <div id="overlay-image" class="overlay-image hidden"></div>
             <div id="person-image" class="person-image hidden"></div>
             `;
+
+            const bgContainer = document.getElementById("bg-container");
+            bgContainer.style.backgroundImage = `url('${currentScene.background_img}')`;
         }
   
         if (typeof scene.onMount === "function") scene.onMount();
+        
   
         setTimeout(() => {
             overlayEl.classList.remove("show");
@@ -74,6 +87,7 @@ export function loadScene(scene) {
 // Update Dialogue
 export async function updateDialogue() {
     const line = currentScene.lines?.[currentLineIndex];
+
     if (!line) return;
   
     const overlayImg = document.getElementById("overlay-image");
@@ -111,12 +125,6 @@ export async function updateDialogue() {
     if (line.production) {
         lastProductionData = line.production;
         showProductionPopup(line.production);
-        overlay.classList.add("show");
-        return;
-    }
-    
-    if (line.productionRetry && lastProductionData) {
-        showProductionPopup(lastProductionData);
         overlay.classList.add("show");
         return;
     }

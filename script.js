@@ -4,10 +4,7 @@ console.log("script.js 로드됨");
 import { loadDictionary } from "./dictionary.js";
 import { renderStatusBar, renderQuest } from './statusBar.js';
 import { loadScene, setupDialogueClick, setupDebugMenu } from './sceneManager.js';
-
 import { getIntro1Scene } from "./data/scenes/intro1.js";
-
-
 
 // 상태 관리
 export const state = {
@@ -16,8 +13,6 @@ export const state = {
   score: 0,
   currentQuest: '',
 };
-
-
 
 // 단어장 기능
 const dictionaryPanel = document.querySelector('.dictionary-panel');
@@ -42,22 +37,17 @@ dictionaryOverlay.addEventListener('click', () => {
   dictionaryPanelArrow.textContent = '▲';
 });
 
-
-
 // 초기화
 function init() {
   renderStatusBar();
   renderQuest();
   loadDictionary();
   loadScene(getIntro1Scene());
-  setupIntroEvents();
   setupDialogueClick();
   setupDebugMenu();
 }
 
 init();
-
-
 
 // 안전 저장 방지
 window.addEventListener("beforeunload", function (e) {

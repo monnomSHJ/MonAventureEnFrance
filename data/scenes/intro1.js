@@ -1,5 +1,5 @@
-import { state, overlay } from "../../script.js";
-import { loadScene } from "../../sceneManager.js";
+import { state } from "../../script.js";
+import { loadScene, overlay } from "../../sceneManager.js";
 import { renderStatusBar } from "../../statusBar.js";
 import { getIntro2Scene } from "./intro2.js";
 

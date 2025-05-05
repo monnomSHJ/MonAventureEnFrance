@@ -1,4 +1,5 @@
-import { state, renderQuest } from "../../script.js";
+import { state } from "../../script.js";
+import { renderQuest } from "../../statusBar.js";
 import { getAirport2Scene } from "./airport2.js";
 
 export function getAirport1Scene() {

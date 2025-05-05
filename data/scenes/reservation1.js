@@ -1,4 +1,6 @@
-import { state, overlay, renderStatusBar, renderQuest, loadScene } from "../../script.js";
+import { state } from "../../script.js";
+import { overlay, loadScene } from "../../sceneManager.js";
+import { renderQuest, renderStatusBar } from "../../statusBar.js";
 import hotelData from "../hotelData.js";
 import { getReservation2Scene } from './reservation2.js';
 
