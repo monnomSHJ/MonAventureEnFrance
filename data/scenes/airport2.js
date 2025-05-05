@@ -1,4 +1,5 @@
 import { state } from "../../script.js";
+import { getAirport3Scene } from "./airport3.js";
 
 export function getAirport2Scene() {
     return {
@@ -29,5 +30,9 @@ export function getAirport2Scene() {
             { speaker: `👩‍💼 Employée`, text: "Je vous en prie. Bonne journée !", personImg: "assets/images/airportPerson1.png"}
             
         ],
+
+        nextScene: () => {
+            return getAirport3Scene();
+        }
     }
 }

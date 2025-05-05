@@ -10,6 +10,7 @@ import { getReservation1Scene } from "./data/scenes/reservation1.js";
 import { getReservation2Scene } from "./data/scenes/reservation2.js";
 import { getAirport1Scene } from "./data/scenes/airport1.js";
 import { getAirport2Scene } from "./data/scenes/airport2.js";
+import { getAirport3Scene } from "./data/scenes/airport3.js";
 
 // State
 export let currentScene = null;
