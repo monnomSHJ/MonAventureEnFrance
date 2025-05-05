@@ -962,6 +962,7 @@ body {
     transition: background-position 0.2s ease;
     border-radius: 8px;
     border: 4px solid #ccc;
+    background-color: black;
 }
 
 .tile {
@@ -998,12 +999,7 @@ body {
     content: '';
     display: block;
     width: 100%; height: 100%;
-    background: rgba(0, 128, 255, 0.4);
     border-radius: 4px;
-}
-
-.tile.out {
-    background: #000;
 }
 
 /* 데스크탑 대응 (640px 이상) */
