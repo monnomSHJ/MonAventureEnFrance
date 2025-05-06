@@ -12,6 +12,7 @@ import { getAirport1Scene } from "./data/scenes/airport1.js";
 import { getAirport2Scene } from "./data/scenes/airport2.js";
 import { getAirport3Scene } from "./data/scenes/airport3.js";
 import { getAirport4Scene } from "./data/scenes/airport4.js";
+import { getHotel1Scene } from "./data/scenes/hotel1.js";
 
 // State
 export let currentScene = null;
@@ -206,7 +207,8 @@ export function setupDebugMenu() {
         airport1: () => loadScene(getAirport1Scene()),
         airport2: () => loadScene(getAirport2Scene()),
         airport3: () => loadScene(getAirport3Scene()),
-        airport4: () => loadScene(getAirport4Scene())
+        airport4: () => loadScene(getAirport4Scene()),
+        hotel1: () => loadScene(getHotel1Scene())
         };
 
         if (sceneMap[sceneId]) {

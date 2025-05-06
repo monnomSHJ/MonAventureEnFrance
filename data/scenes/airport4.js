@@ -1,4 +1,6 @@
 import { state } from "../../script.js";
+import { renderQuest } from "../../statusBar.js";
+import { getHotel1Scene } from "./hotel1.js";
 
 export function getAirport4Scene() {
 
@@ -9,9 +11,9 @@ export function getAirport4Scene() {
         background_img: "assets/images/taxiMain.jpeg",
         narration: "",
         retryLines: [
-            { speaker: `👩‍💼 Employée`, text: "Pardon ?", personImg: "assets/images/airportPerson1.png"},
-            { speaker: `👤 ${state.userName}`, text: ".. 다시 한 번 시도해보자.", personImg: "assets/images/airportPerson1.png"},
-            { speaker: `📢`, text: "1점이 차감되었습니다.", personImg: "assets/images/airportPerson1.png"}
+            { speaker: `👨‍✈️ Chauffeur`, text: "Pardon ?"},
+            { speaker: `👤 ${state.userName}`, text: ".. 다시 한 번 시도해보자."},
+            { speaker: `📢`, text: "1점이 차감되었습니다."}
         ],
         lines: [
             { speaker: `👤 ${state.userName}`, text: `Bonjour ! ${selectedHotel}, s'il vous plaît.`},
@@ -31,7 +33,7 @@ export function getAirport4Scene() {
                 }
             },
             { speaker: `📢`, text: "문장 만들기 성공! 5점을 획득하였습니다."},
-            { speaker: `👤 ${state.userName}`, text: `Je viens de Corée.`},
+            { speaker: `👤 ${state.userName}`, text: `Je viens de Corée. J'habite en Corée du Sud.`},
             { speaker: `👨‍✈️ Chauffeur`, text: `Ah, vous venez de Corée ? C'est un beau pays !`},
             { speaker: `👨‍✈️ Chauffeur`, text: `C'est la première fois que vous venez en France ?`},
             { speaker: `👤 ${state.userName}`, text: `Oui, c'est ma première fois.`},
@@ -53,7 +55,9 @@ export function getAirport4Scene() {
         ],
         
         nextScene: () => {
-            console.log("울랄라");
+            state.currentQuest = "";
+            renderQuest();
+            return getHotel1Scene();
         }
     }
 }
