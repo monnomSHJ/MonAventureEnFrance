@@ -1,5 +1,5 @@
-import { state } from "../script.js";
-import quests from "../quest.js";
+import { state } from "./script.js";
+import quests from "./quest.js";
 
 export function renderStatusBar() {
   const statusBar = document.querySelector('.status-bar');
