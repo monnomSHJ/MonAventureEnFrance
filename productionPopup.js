@@ -92,6 +92,7 @@ export function showProductionPopup(data) {
             updateDialogue();
         } else {
             state.score -= 1;
+            renderStatusBar();
             const feedbackLines = currentScene.retryLines?.map(line => ({
             speaker: typeof line.speaker === "function" ? line.speaker() : line.speaker,
             text: line.text,

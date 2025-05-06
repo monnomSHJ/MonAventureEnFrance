@@ -1,7 +1,9 @@
-import { updateDialogue, currentScene, currentLineIndex } from "./sceneManager.js";
+import { updateDialogue, currentScene, currentLineIndex, incrementLineIndex } from "./sceneManager.js";
+import { state } from "./script.js";
+import { renderStatusBar } from "./statusBar.js";
 
-export function showMiniMapGame(scene, onSuccess, onFail) {
-    const { map, start, correctTarget, retryLines, mapImg } = scene.miniMapGame;
+export function showMiniMapGame(scene) {
+    const { map, start, correctTargets, mapImg } = scene.miniMapGame;
     let playerPos = { ...start };
 
     document.querySelectorAll('.mini-map-popup').forEach(p => p.remove());
@@ -73,7 +75,19 @@ export function showMiniMapGame(scene, onSuccess, onFail) {
         return pos1.x === pos2.x && pos1.y === pos2.y;
     }
 
+    function isCorrectPosition(pos) {
+        return correctTargets?.some(target => isSame(target, pos));
+    }
+
+    let canMove = true;
+
     function tryMove(dx, dy) {
+
+        if (!canMove) return;
+        
+        canMove = false;
+        setTimeout(() => canMove = true, 120);
+
         const newX = playerPos.x + dx;
         const newY = playerPos.y + dy;
         
@@ -98,22 +112,30 @@ export function showMiniMapGame(scene, onSuccess, onFail) {
                 document.body.removeChild(popup);
                 document.querySelector('.overlay')?.classList.remove('show');
         
-                if (isSame({ x: newX, y: newY }, correctTarget)) {
-                    onSuccess();
+                if (isCorrectPosition({ x: newX, y: newY })) {
+                    state.score += 5;
+                    renderStatusBar();
+                    incrementLineIndex();
+                    updateDialogue();
                 } else {
-                    if (retryLines) {
-                        const feedback = retryLines.map(line => ({
-                            speaker: typeof line.speaker === 'function' ? line.speaker() : line.speaker,
-                            text: line.text,
-                            personImg: line.personImg || ''
-                        })).concat({ productionRetry: true });
-        
-                        currentScene.lines.splice(currentLineIndex + 1, 0, ...feedback);
-                        currentLineIndex++;
-                        updateDialogue();
-                    } else {
-                        onFail();
+                    state.score -= 1;
+                    renderStatusBar();
+                    const feedbackLines = currentScene.retryLines?.map(line => ({
+                        speaker: typeof line.speaker === "function" ? line.speaker() : line.speaker,
+                        text: line.text,
+                        personImg: line.personImg || ""
+                    })) || [];
+
+                    const retryLine = {
+                        speaker: "",
+                        text: "",
+                        personImg: "",
+                        miniGame: true
                     }
+
+                    currentScene.lines.splice(currentLineIndex + 1, 0, ...feedbackLines, retryLine);
+                    incrementLineIndex();
+                    updateDialogue();
                 }
             });
         }

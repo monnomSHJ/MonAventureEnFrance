@@ -1,6 +1,6 @@
 console.log("script.js 로드됨");
 
-// 필요한 모듈 불러오기
+// 필요한 모듈 불러오기기
 import { loadDictionary } from "./dictionary.js";
 import { renderStatusBar, renderQuest } from './statusBar.js';
 import { loadScene, setupDialogueClick, setupDebugMenu } from './sceneManager.js';

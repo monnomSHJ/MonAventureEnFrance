@@ -131,12 +131,7 @@ export async function updateDialogue() {
     }
     
     if (line.miniGame) {
-        showMiniMapGame(currentScene, () => {
-        currentLineIndex++;
-        updateDialogue();
-    }, () => {
-        alert("잘못된 위치에 도착했어요!");
-    });
+        showMiniMapGame(currentScene);
         overlay.classList.add("show");
         return;
     }
