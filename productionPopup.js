@@ -20,7 +20,7 @@ export function showProductionPopup(data) {
     });
   
     popup.innerHTML = `
-        <div class="popup-header"><span class="popup-header-title">문장을 완성하자!</span></div>
+        <div class="popup-header"><span class="popup-header-title">🗨️ 문장을 완성하자!</span></div>
         <div class="popup-content">
             <div class="popup-production-prompt">${promptHTML}</div>
             <div class="popup-production-meaning">${meaning}</div>

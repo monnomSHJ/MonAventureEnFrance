@@ -83,8 +83,6 @@ export function loadScene(scene) {
     }, 500);
 }
 
-
-
 // Update Dialogue
 export async function updateDialogue() {
     const line = currentScene.lines?.[currentLineIndex];

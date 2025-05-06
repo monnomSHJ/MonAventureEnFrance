@@ -952,6 +952,67 @@ body {
     max-width: 256px;
 }
 
+.mini-map-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.direction-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.direction-buttons .left-right {
+    display: flex;
+    gap: 40px;
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 8px solid transparent;
+}
+
+.arrow.up {
+    border-image: url('assets/images/arrowUp.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+}
+
+.arrow.left {
+    border-image: url('assets/images/arrowLeft.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+}
+
+.arrow.right {
+    border-image: url('assets/images/arrowRight.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+}
+
+.arrow.down {
+    border-image: url('assets/images/arrowDown.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+}
+
+.arrow:hover {
+    filter: brightness(90%);
+    transform: scale(1.05);
+}
+
+.arrow:active {
+    transform: scale(0.95);
+}
+
 .mini-map {
     position: relative;
     width: 256px;
@@ -959,7 +1020,6 @@ body {
     background-size: 640px 640px;
     background-repeat: no-repeat;
     overflow: hidden;
-    transition: background-position 0.2s ease;
     border-radius: 8px;
     border: 4px solid #ccc;
     background-color: black;
@@ -970,7 +1030,6 @@ body {
     width: 32px;
     height: 32px;
     pointer-events: none;
-    transition: transform 0.2s ease;
 }
 
 .tile.player::after {
@@ -978,7 +1037,6 @@ body {
     display: block;
     width: 100%; height: 100%;
     background: rgba(255, 99, 71, 0.9);
-    transition: transform 0.2s ease;
     border-radius: 24px;
     box-shadow: 0 0 6px rgba(255, 99, 71, 0.6);
 }
@@ -1000,6 +1058,13 @@ body {
     display: block;
     width: 100%; height: 100%;
     border-radius: 4px;
+}
+
+.tile.out::after {
+    content: '';
+    display: block;
+    width: 100%; height: 100%;
+    background: #192F3F;
 }
 
 /* 데스크탑 대응 (640px 이상) */
@@ -1371,7 +1436,8 @@ body {
     }
     
     .popup.mini-map-popup .popup-content-text {
-        max-width: 320px;
+        max-width: 90%;
+        font-size: 16px;
     }
 
     .mini-map {
@@ -1379,5 +1445,13 @@ body {
         height: 320px;
         background-size: 1280px 1280x;
         overflow: hidden;
+    }
+
+    .mini-map-controls {
+        margin-top: 8px;
+        flex-direction: row;
+        gap: 24px;
+        align-items: flex-end;
+        flex-wrap: wrap;
     }
 }

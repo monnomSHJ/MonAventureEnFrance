@@ -12,10 +12,20 @@ export function showMiniMapGame(scene) {
     popup.className = 'popup mini-map-popup';
 
     popup.innerHTML = `
-        <div class="popup-header"><span class="popup-header-title">길을 찾아가자!</span></div>
+        <div class="popup-header"><span class="popup-header-title">🚶 길을 찾아가자!</span></div>
         <div class="popup-content">
-            <div class="popup-content-text">울라랄랄라라라ㅏ라라라라</div>
-            <div class="mini-map"></div>
+            <div class="popup-content-text">${scene.miniMapGame.promptText || ''}</div>
+            <div class="mini-map-controls">
+                <div class="mini-map"></div>
+                <div class="direction-buttons">
+                    <button class="arrow up" data-dir="up"></button>
+                    <div class="left-right">
+                        <button class="arrow left" data-dir="left"></button>
+                        <button class="arrow right" data-dir="right"></button>
+                    </div>
+                    <button class="arrow down" data-dir="down"></button>
+                </div>
+            </div>
         </div> 
     `;
 
@@ -82,7 +92,6 @@ export function showMiniMapGame(scene) {
     let canMove = true;
 
     function tryMove(dx, dy) {
-
         if (!canMove) return;
         
         canMove = false;
@@ -101,11 +110,12 @@ export function showMiniMapGame(scene) {
         render();
         
         if (map[newY][newX] === 'T') {
-            document.removeEventListener('keydown', keyHandler);
+            stopKeyMovement();
         
             showConfirmPopup((confirmed) => {
                 if (!confirmed) {
-                    document.addEventListener('keydown', keyHandler);
+                    document.addEventListener('keydown', handleKeyDown);
+                    document.addEventListener('keyup', handleKeyUp);
                     return;
                 }
         
@@ -131,7 +141,7 @@ export function showMiniMapGame(scene) {
                         text: "",
                         personImg: "",
                         miniGame: true
-                    }
+                    };
 
                     currentScene.lines.splice(currentLineIndex + 1, 0, ...feedbackLines, retryLine);
                     incrementLineIndex();
@@ -141,17 +151,99 @@ export function showMiniMapGame(scene) {
         }
     }
 
-    function keyHandler(e) {
-        switch (e.key) {
-            case 'ArrowUp': return tryMove(0, -1);
-            case 'ArrowDown': return tryMove(0, 1);
-            case 'ArrowLeft': return tryMove(-1, 0);
-            case 'ArrowRight': return tryMove(1, 0);
+    const heldKeys = new Set();
+    let keyMoveIntervals = {};
+
+    function handleKeyDown(e) {
+        const key = e.key;
+        if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) return;
+
+        e.preventDefault();
+
+        if (heldKeys.has(key)) return;
+
+        const move = () => {
+            switch(key) {
+                case 'ArrowUp': tryMove(0, -1); break;
+                case 'ArrowDown': tryMove(0, 1); break;
+                case 'ArrowLeft': tryMove(-1, 0); break;
+                case 'ArrowRight': tryMove(1, 0); break;
+            }
+        };
+
+        heldKeys.add(key);
+        move();
+        keyMoveIntervals[key] = setInterval(move, 150);
+    }
+
+    function handleKeyUp(e) {
+        const key = e.key;
+        if (heldKeys.has(key)) {
+            clearInterval(keyMoveIntervals[key]);
+            delete keyMoveIntervals[key];
+            heldKeys.delete(key);
         }
     }
 
-    document.addEventListener('keydown', keyHandler);
+    function stopKeyMovement() {
+        Object.values(keyMoveIntervals).forEach(clearInterval);
+        heldKeys.clear();
+        Object.keys(keyMoveIntervals).forEach(k => delete keyMoveIntervals[k]);
+        document.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('keyup', handleKeyUp);
+    }
+
+    function startKeyMovement() {
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', handleKeyUp);
+    }
+
+    const dirToKey = {
+        up: 'ArrowUp',
+        down: 'ArrowDown',
+        left: 'ArrowLeft',
+        right: 'ArrowRight'
+    }
+
+    const buttons = popup.querySelectorAll('.arrow');
+    buttons.forEach(button => {
+        const dir = button.dataset.dir;
+        const key = dirToKey[dir];
+
+        const move = () => {
+            switch (key) {
+                case 'ArrowUp': tryMove(0, -1); break;
+                case 'ArrowDown': tryMove(0, 1); break;
+                case 'ArrowLeft': tryMove(-1, 0); break;
+                case 'ArrowRight': tryMove(1, 0); break;
+            }
+        };
+
+        const start = () => {
+            if (heldKeys.has(key)) return;
+            heldKeys.add(key);
+            move();
+            keyMoveIntervals[key] = setInterval(move, 150);
+        };
+
+        const stop = () => {
+            if (heldKeys.has(key)) {
+                clearInterval(keyMoveIntervals[key]);
+                delete keyMoveIntervals[key];
+                heldKeys.delete(key);
+            }
+        };
+
+        button.addEventListener('mousedown', start);
+        button.addEventListener('touchstart', start);
+        button.addEventListener('mouseup', stop);
+        button.addEventListener('mouseleave', stop);
+        button.addEventListener('touchend', stop);
+    });
+
     render();
+    startKeyMovement();
+
 }
 
 function showConfirmPopup(callback) {
