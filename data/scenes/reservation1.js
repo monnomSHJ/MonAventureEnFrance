@@ -111,6 +111,8 @@ function setupReservationUI() {
         const isPriceOk = hotel.price <= 100;
         const isBreakfastNotOk = breakfastInfo.includes("non");
 
+        state.selectedHotelName = hotelName;
+
         popupContentText.innerHTML = `
             <p>${hotelName} 예약이 완료되었습니다.</p>
             <p>💸 ${deductedAmount} 유로가 차감되었습니다.</p>

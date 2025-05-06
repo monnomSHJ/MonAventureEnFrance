@@ -11,6 +11,7 @@ import { getReservation2Scene } from "./data/scenes/reservation2.js";
 import { getAirport1Scene } from "./data/scenes/airport1.js";
 import { getAirport2Scene } from "./data/scenes/airport2.js";
 import { getAirport3Scene } from "./data/scenes/airport3.js";
+import { getAirport4Scene } from "./data/scenes/airport4.js";
 
 // State
 export let currentScene = null;
@@ -71,6 +72,11 @@ export function loadScene(scene) {
 
             const bgContainer = document.getElementById("bg-container");
             bgContainer.style.backgroundImage = `url('${currentScene.background_img}')`;
+            
+            if (scene.narration) {
+                document.getElementById("narration-box").innerHTML = `${scene.narration}`;
+                document.getElementById("narration-box").classList.remove('hidden');
+            }
         }
   
         if (typeof scene.onMount === "function") scene.onMount();
@@ -199,7 +205,8 @@ export function setupDebugMenu() {
         reservation2: () => loadScene(getReservation2Scene()),
         airport1: () => loadScene(getAirport1Scene()),
         airport2: () => loadScene(getAirport2Scene()),
-        airport3: () => loadScene(getAirport3Scene())
+        airport3: () => loadScene(getAirport3Scene()),
+        airport4: () => loadScene(getAirport4Scene())
         };
 
         if (sceneMap[sceneId]) {
