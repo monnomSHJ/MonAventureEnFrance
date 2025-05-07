@@ -28,7 +28,7 @@ export function getReservation2Scene() {
             { speaker: `📢`, text: "... 하기 전에, 여기서 깜짝 토막 상식!", overlayImg: "assets/images/franceMap.png" },
             { speaker: `📢`, text: "프랑스는 유럽의 서쪽에 위치해있으며, 수도는 파리입니다.", overlayImg: "assets/images/franceMap.png" },
             { speaker: `📢`, text: "파리는 세느 강(La Seine)을 중심으로 남북으로 나뉘며,", overlayImg: "assets/images/parisAirportMap.png" },
-            { speaker: `📢`, text: "우리의 목적지인 샤를 드골 공항은 북쪽, 외곽에 위치해있습니다.", overlayImg: "assets/images/parisAirportMap.png" },
+            { speaker: `📢`, text: "우리의 목적지인 샤를 드골 공항은 파리의 북쪽, 외곽에 위치해있습니다.", overlayImg: "assets/images/parisAirportMap.png" },
             { speaker: `📢`, text: "공항에 도착할 때까지 잠시만 기다려주세요.", overlayImg: "assets/images/toParis.jpeg" }
         ],
         

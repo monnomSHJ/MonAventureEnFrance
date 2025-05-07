@@ -1067,6 +1067,14 @@ body {
     background: #192F3F;
 }
 
+.choice-popup .popup-content-btn-group {
+    flex-direction: column;
+}
+
+.choice-popup .popup-content-text {
+    font-size: 14px;
+}
+
 /* 데스크탑 대응 (640px 이상) */
 @media (min-width: 640px) {
 
@@ -1453,5 +1461,9 @@ body {
         gap: 24px;
         align-items: flex-end;
         flex-wrap: wrap;
+    }
+
+    .choice-popup .popup-content-text {
+        font-size: 16px;
     }
 }

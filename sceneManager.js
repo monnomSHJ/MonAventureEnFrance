@@ -2,6 +2,7 @@ import { state } from "./script.js";
 import { renderStatusBar, renderQuest } from "./statusBar.js";
 import { showProductionPopup } from "./productionPopup.js";
 import { showMiniMapGame } from "./miniMapGamePopup.js";
+import { maybeShowChoiceAgain, showChoicePopup } from "./chociePopup.js";
 
 // Scenes
 import { getIntro1Scene } from "./data/scenes/intro1.js";
@@ -13,6 +14,9 @@ import { getAirport2Scene } from "./data/scenes/airport2.js";
 import { getAirport3Scene } from "./data/scenes/airport3.js";
 import { getAirport4Scene } from "./data/scenes/airport4.js";
 import { getHotel1Scene } from "./data/scenes/hotel1.js";
+import { getHotel2Scene } from "./data/scenes/hotel2.js";
+import { getHotel3Scene } from "./data/scenes/hotel3.js";
+import { getHotel4Scene } from "./data/scenes/hotel4.js";
 
 // State
 export let currentScene = null;
@@ -141,6 +145,17 @@ export async function updateDialogue() {
         return;
     }
 
+    if (line.choices) {
+        showChoicePopup(line.choices);
+        overlay.classList.add("show");
+        return;
+    }
+
+    if (maybeShowChoiceAgain(line)) {
+        overlay.classList.add("show");
+        return;
+    }
+
     overlay.classList.remove("show");
   
 
@@ -208,7 +223,10 @@ export function setupDebugMenu() {
         airport2: () => loadScene(getAirport2Scene()),
         airport3: () => loadScene(getAirport3Scene()),
         airport4: () => loadScene(getAirport4Scene()),
-        hotel1: () => loadScene(getHotel1Scene())
+        hotel1: () => loadScene(getHotel1Scene()),
+        hotel2: () => loadScene(getHotel2Scene()),
+        hotel3: () => loadScene(getHotel3Scene()),
+        hotel4: () => loadScene(getHotel4Scene())
         };
 
         if (sceneMap[sceneId]) {
