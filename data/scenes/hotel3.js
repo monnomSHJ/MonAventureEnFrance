@@ -59,7 +59,7 @@ export function getHotel3Scene() {
                             ],
                         },
                         {
-                            label: "RC",
+                            label: "0",
                             scoreDelta: -1,
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `여기는 내가 지금 있는 층이었다.` },

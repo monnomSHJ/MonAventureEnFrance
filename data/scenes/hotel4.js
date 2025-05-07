@@ -157,7 +157,14 @@ export function getHotel4Scene() {
                 }
              },
              { speaker: `📢`, text: `🥳 퀴즈는 여기까지! 고생 많으셨습니다.` },
-             { speaker: `👤 ${state.userName}`, text: `호텔 규칙도 다시 한번 확인했으니, 조금 쉬다가 밖에 나가보자.` }
+             { speaker: `👤 ${state.userName}`, text: `호텔 규칙도 다시 한번 확인했으니, 조금 쉬다가 밖에 나가보자.` },
+             { speaker: `📢`, text: `방에 나가기 전에 또 다시 찾아온 깜짝 토막 상식 시간입니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
+             { speaker: `📢`, text: `프랑스와 우리나라의 층수 개념이 다르다는 사실, 알고 계셨나요?`, overlayImg: "assets/images/hotelElevator.jpeg" },
+             { speaker: `📢`, text: `우리나라에서의 1층을 프랑스에서는 'rez-de-chaussée'라고 부릅니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
+             { speaker: `📢`, text: `프랑스에서의 1층은 우리나라에서 말하는 2층이 됩니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
+             { speaker: `📢`, text: `위 사진에서처럼 rez-de-chaussée는 엘리베이터에서 0으로 표시되거나,`, overlayImg: "assets/images/hotelElevator.jpeg" },
+             { speaker: `📢`, text: `RC, RdC 등의 약자로 표시되기도 합니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
+             { speaker: `📢`, text: `꼭 기억해서 엘리베이터 탈 때 당황하지 않기!`, overlayImg: "assets/images/hotelElevator.jpeg" },
         ],
         
         nextScene: () => {
