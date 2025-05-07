@@ -16,7 +16,7 @@ export function getHotel5Scene() {
             { speaker: `👮 Réceptionniste`, text: `Oui, vous avez besoin d'aide ?`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👤 ${state.userName}`, text: `J'ai du mal à choisir quel restaurant visiter en ce moment.`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👤 ${state.userName}`, text: `Connaissez-vous un bon restaurant près d'ici ?`, personImg: "assets/images/hotelPerson1.png" },
-            { speaker: `👮 Réceptionniste`, text: `Bien sûr ! Il y a un bon restaurant à deux rues d'ici. Très apprécié par les locaux !`, personImg: "assets/images/hotelPerson1.png" },
+            { speaker: `👮 Réceptionniste`, text: `Bien sûr ! Il y a un bon restaurant près d'ici. Très apprécié par les locaux !`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👤 ${state.userName}`, text: `Où se trouve le restaurant ?`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👮 Réceptionniste`, text: `Pour aller au restaurant, sortez de l'hôtel, puis tournez à gauche.`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👮 Réceptionniste`, text: `Continuez tout droit et tournez à droite à la pharmacie.`, personImg: "assets/images/hotelPerson1.png" },

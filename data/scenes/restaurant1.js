@@ -9,10 +9,10 @@ const fullMap = [
     [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
     [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ',' ','T','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
     [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
-    [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
-    [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
-    [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
+    [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', 'T', 'W', 'W', 'W', 'W', 'W'],
+    [' ',' ',' ','W','W','W','W','W','W','W','W','W', 'T', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
     [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
     [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
     [' ',' ',' ','W','W','W','W','W','W','W','W','W', ' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W'],
@@ -26,7 +26,7 @@ const fullMap = [
 ];
 
 const start = { x: 10, y: 19 };
-const correctTargets = [ { x: 0, y: 4 }, { x: 0, y: 5 }];
+const correctTargets = [ { x: 2, y: 6 }];
 const promptText = "👩‍💼 Pour aller au restaurant, sortez de l'hôtel, puis tournez à gauche. Continuez tout droit et tournez à droite à la pharmacie. Le restaurant se trouve à côté du Café de Flore."
 
  return {
