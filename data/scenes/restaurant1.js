@@ -1,4 +1,6 @@
 import { state } from "../../script.js";
+import { renderQuest } from "../../statusBar.js";
+import { getRestaurant2Scene } from "./restaurant2.js";
 
 export function getRestaurant1Scene() {
 
@@ -41,11 +43,14 @@ const promptText = "👩‍💼 Pour aller au restaurant, sortez de l'hôtel, pu
         lines: [
             { speaker: `👤 ${state.userName}`, text: "자! 직원 분이 알려준 대로 식당을 찾아 가보자." },
             { speaker: "", text: "", miniGame: true},
-            { speaker: `👤 ${state.userName}`, text: "test" }
+            { speaker: `📢`, text: "길찾기 성공! 5점을 획득하였습니다."},
+            { speaker: `👤 ${state.userName}`, text: "추천받은 식당에 도착했다! 들어가보자."}
         ],
         
         nextScene: () => {
-            console.log('dd');
+            state.currentQuest = "식당에서";
+            renderQuest();
+            return getRestaurant2Scene();
         }
     }
 }

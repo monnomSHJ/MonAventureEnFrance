@@ -90,12 +90,10 @@ export function showMiniMapGame(scene) {
     }
 
     let canMove = true;
+    let isPopupOpen = false;
 
     function tryMove(dx, dy) {
         if (!canMove) return;
-        
-        canMove = false;
-        setTimeout(() => canMove = true, 120);
 
         const newX = playerPos.x + dx;
         const newY = playerPos.y + dy;
@@ -105,15 +103,28 @@ export function showMiniMapGame(scene) {
             newX < 0 || newX >= map[0].length ||
             map[newY][newX] === 'W' || map[newY][newX] === 'B'
         ) return;
+
+        canMove = false;
+        setTimeout(() => {
+            canMove = true;
+         }, 120);
         
         playerPos = { x: newX, y: newY };
         render();
         
         if (map[newY][newX] === 'T') {
+
+            isPopupOpen = true;
+
+            canMove = false;
             stopAllMovement();
-        
+            
             showConfirmPopup((confirmed) => {
+                isPopupOpen = false;
+
                 if (!confirmed) {
+                    render();
+                    canMove = true;
                     startKeyMovement();
                     return;
                 }
@@ -147,20 +158,48 @@ export function showMiniMapGame(scene) {
                     updateDialogue();
                 }
             });
+
+            return;
         }
     }
 
     const heldKeys = new Set();
-    let keyMoveIntervals = {};
-    let mouseMoveInterval = null;
-    let mouseHeldKey = null;
+    let activeIntervals = {};
+
+    function startMoving(key, moveFn) {
+        if (!canMove) return;
+        stopMoving(key);
+        heldKeys.add(key);
+        moveFn();
+        activeIntervals[key] = setInterval(moveFn, 150);
+    }
+
+    function stopMoving(key) {
+        if (activeIntervals[key]) {
+            clearInterval(activeIntervals[key]);
+            delete activeIntervals[key];
+        }
+        heldKeys.delete(key);
+    }
+
+    function stopAllMovement() {
+        Object.keys(activeIntervals).forEach(stopMoving);
+        heldKeys.clear();
+        document.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('keyup', handleKeyUp);
+    }
+
+    function startKeyMovement() {
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', handleKeyUp);
+    }
 
     function handleKeyDown(e) {
+        if (isPopupOpen) return;
+
         const key = e.key;
         if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) return;
-
         e.preventDefault();
-
         if (heldKeys.has(key)) return;
 
         const move = () => {
@@ -172,34 +211,11 @@ export function showMiniMapGame(scene) {
             }
         };
 
-        heldKeys.add(key);
-        move();
-        keyMoveIntervals[key] = setInterval(move, 150);
+        startMoving(key, move);
     }
 
     function handleKeyUp(e) {
-        const key = e.key;
-        if (heldKeys.has(key)) {
-            clearInterval(keyMoveIntervals[key]);
-            delete keyMoveIntervals[key];
-            heldKeys.delete(key);
-        }
-    }
-
-    function stopAllMovement() {
-        Object.values(keyMoveIntervals).forEach(clearInterval);
-        heldKeys.clear();
-        Object.keys(keyMoveIntervals).forEach(k => delete keyMoveIntervals[k]);
-        document.removeEventListener('keydown', handleKeyDown);
-        document.removeEventListener('keyup', handleKeyUp);
-
-        clearInterval(mouseMoveInterval);
-        mouseHeldKey = null;
-    }
-
-    function startKeyMovement() {
-        document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('keyup', handleKeyUp);
+        stopMoving(e.key);
     }
 
     const dirToKey = {
@@ -223,23 +239,11 @@ export function showMiniMapGame(scene) {
             }
         };
 
-        const start = () => {
-            if (heldKeys.has(key)) return;
-            heldKeys.add(key);
-            move();
-            keyMoveIntervals[key] = setInterval(move, 150);
-        };
-
-        const stop = () => {
-            clearInterval(mouseMoveInterval);
-            mouseHeldKey = null;
-        };
-
-        button.addEventListener('mousedown', start);
-        button.addEventListener('touchstart', start);
-        button.addEventListener('mouseup', stop);
-        button.addEventListener('mouseleave', stop);
-        button.addEventListener('touchend', stop);
+        button.addEventListener('mousedown', () => startMoving(key, move));
+        button.addEventListener('touchstart', () => startMoving(key, move));
+        button.addEventListener('mouseup', () => stopMoving(key));
+        button.addEventListener('mouseleave', () => stopMoving(key));
+        button.addEventListener('touchend', () => stopMoving(key));
     });
 
     render();
@@ -248,8 +252,12 @@ export function showMiniMapGame(scene) {
 }
 
 function showConfirmPopup(callback) {
+    const blocker = document.createElement('div');
+    blocker.className = 'popup-blocker';
+    document.body.appendChild(blocker);
+
     const confirm = document.createElement('div');
-    confirm.className = 'popup';
+    confirm.className = 'popup mapGame-popup';
     confirm.innerHTML = `
         <div class="popup-header"><span class="popup-header-title">목적지 확인</span></div>
         <div class="popup-content">
@@ -260,14 +268,19 @@ function showConfirmPopup(callback) {
             </div>
         </div>`;
     document.body.appendChild(confirm);
+
+    const closePopup = () => {
+        document.body.removeChild(confirm);
+        document.body.removeChild(blocker);
+    }
   
     confirm.querySelector('#yes').onclick = () => {
-        document.body.removeChild(confirm);
+        closePopup();
         callback(true);
     };
 
     confirm.querySelector('#no').onclick = () => {
-        document.body.removeChild(confirm);
+        closePopup();
         callback(false);
     };
 }

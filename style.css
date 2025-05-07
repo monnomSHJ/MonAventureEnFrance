@@ -1025,6 +1025,10 @@ body {
     background-color: black;
 }
 
+.popup.mapGame-popup {
+    z-index: 10020;
+}
+
 .tile {
     position: absolute;
     width: 32px;
@@ -1073,6 +1077,16 @@ body {
 
 .choice-popup .popup-content-text {
     font-size: 14px;
+}
+
+.popup-blocker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 10000;
 }
 
 /* 데스크탑 대응 (640px 이상) */

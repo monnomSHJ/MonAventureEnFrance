@@ -158,7 +158,7 @@ export function getHotel4Scene() {
              },
              { speaker: `📢`, text: `🥳 퀴즈는 여기까지! 고생 많으셨습니다.` },
              { speaker: `👤 ${state.userName}`, text: `호텔 규칙도 다시 한번 확인했으니, 조금 쉬다가 밖에 나가보자.` },
-             { speaker: `📢`, text: `방에 나가기 전에 또 다시 찾아온 깜짝 토막 상식 시간입니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
+             { speaker: `📢`, text: `방에서 나가기 전에 또 다시 찾아온 깜짝 토막 상식 시간입니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
              { speaker: `📢`, text: `프랑스와 우리나라의 층수 개념이 다르다는 사실, 알고 계셨나요?`, overlayImg: "assets/images/hotelElevator.jpeg" },
              { speaker: `📢`, text: `우리나라에서의 1층을 프랑스에서는 'rez-de-chaussée'라고 부릅니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
              { speaker: `📢`, text: `프랑스에서의 1층은 우리나라에서 말하는 2층이 됩니다.`, overlayImg: "assets/images/hotelElevator.jpeg" },
@@ -168,7 +168,7 @@ export function getHotel4Scene() {
         ],
         
         nextScene: () => {
-            state.currentQuest = "장소 추천";
+            state.currentQuest = "식당 추천";
             renderQuest();
             return getHotel5Scene();
         }
