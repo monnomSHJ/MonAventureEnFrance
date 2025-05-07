@@ -110,12 +110,11 @@ export function showMiniMapGame(scene) {
         render();
         
         if (map[newY][newX] === 'T') {
-            stopKeyMovement();
+            stopAllMovement();
         
             showConfirmPopup((confirmed) => {
                 if (!confirmed) {
-                    document.addEventListener('keydown', handleKeyDown);
-                    document.addEventListener('keyup', handleKeyUp);
+                    startKeyMovement();
                     return;
                 }
         
@@ -153,6 +152,8 @@ export function showMiniMapGame(scene) {
 
     const heldKeys = new Set();
     let keyMoveIntervals = {};
+    let mouseMoveInterval = null;
+    let mouseHeldKey = null;
 
     function handleKeyDown(e) {
         const key = e.key;
@@ -185,12 +186,15 @@ export function showMiniMapGame(scene) {
         }
     }
 
-    function stopKeyMovement() {
+    function stopAllMovement() {
         Object.values(keyMoveIntervals).forEach(clearInterval);
         heldKeys.clear();
         Object.keys(keyMoveIntervals).forEach(k => delete keyMoveIntervals[k]);
         document.removeEventListener('keydown', handleKeyDown);
         document.removeEventListener('keyup', handleKeyUp);
+
+        clearInterval(mouseMoveInterval);
+        mouseHeldKey = null;
     }
 
     function startKeyMovement() {
@@ -227,11 +231,8 @@ export function showMiniMapGame(scene) {
         };
 
         const stop = () => {
-            if (heldKeys.has(key)) {
-                clearInterval(keyMoveIntervals[key]);
-                delete keyMoveIntervals[key];
-                heldKeys.delete(key);
-            }
+            clearInterval(mouseMoveInterval);
+            mouseHeldKey = null;
         };
 
         button.addEventListener('mousedown', start);
