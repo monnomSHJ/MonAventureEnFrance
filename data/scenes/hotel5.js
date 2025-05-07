@@ -21,6 +21,8 @@ export function getHotel5Scene() {
             { speaker: `👮 Réceptionniste`, text: `Pour aller au restaurant, sortez de l'hôtel, puis tournez à gauche.`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👮 Réceptionniste`, text: `Continuez tout droit et tournez à droite à la pharmacie.`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👮 Réceptionniste`, text: `Le restaurant se trouve à côté du Café de Flore.`, personImg: "assets/images/hotelPerson1.png" },
+            { speaker: `👮 Réceptionniste`, text: `Comme vous parlez français, si jamais vous avez du mal à trouver votre chemin,`, personImg: "assets/images/hotelPerson1.png" },
+            { speaker: `👮 Réceptionniste`, text: `n'hésitez pas à demander de l'aide aux passants. Ils seront ravis de vous aider.`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👤 ${state.userName}`, text: `Merci beaucoup !`, personImg: "assets/images/hotelPerson1.png" },
             { speaker: `👮 Réceptionniste`, text: `Avec plaisir. Bonne journée !`, personImg: "assets/images/hotelPerson1.png" },
         ],

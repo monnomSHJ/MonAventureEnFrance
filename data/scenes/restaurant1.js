@@ -33,7 +33,7 @@ const promptText = "👩‍💼 Pour aller au restaurant, sortez de l'hôtel, pu
         id: "restaurant1",
         background_img: "assets/images/hotelLobbyMain.jpg",
         narration: "",
-        miniMapGame: { map: fullMap, start, correctTargets, promptText, mapImg: "assets/images/airportMapGameBg.png" },
+        miniMapGame: { map: fullMap, start, correctTargets, promptText, mapImg: "assets/images/restaurantMapGameBg.png" },
         retryLines: [
             { speaker: `👤 ${state.userName}`, text: "여기가 아닌 것 같은데... 다시 찾아가보자."},
             { speaker: `📢`, text: "1점이 차감되었습니다."}
