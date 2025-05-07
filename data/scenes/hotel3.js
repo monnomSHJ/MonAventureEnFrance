@@ -15,16 +15,7 @@ export function getHotel3Scene() {
                     prompt: "어떤 층으로 갈까요?",
                     options: [
                         {
-                            label: "RC",
-                            scoreDelta: -1,
-                            insertLines: [
-                                { speaker: `👤 ${state.userName}`, text: `여기는 내가 지금 있는 층이었다.` },
-                                { speaker: `📢`, text: `1점이 차감되었습니다. 다시 시도해봅시다.` },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
-                            ],
-                        },
-                        {
-                            label: "1",
+                            label: "5",
                             scoreDelta: -1,
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `이 층에는 내 방이 없어.` },
@@ -33,7 +24,7 @@ export function getHotel3Scene() {
                             ],
                         },
                         {
-                            label: "2",
+                            label: "4",
                             scoreDelta: -1,
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `이 층에는 내 방이 없어.` },
@@ -50,7 +41,7 @@ export function getHotel3Scene() {
                             ],
                         },
                         {
-                            label: "4",
+                            label: "2",
                             scoreDelta: -1,
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `이 층에는 내 방이 없어.` },
@@ -59,10 +50,19 @@ export function getHotel3Scene() {
                             ],
                         },
                         {
-                            label: "5",
+                            label: "1",
                             scoreDelta: -1,
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `이 층에는 내 방이 없어.` },
+                                { speaker: `📢`, text: `1점이 차감되었습니다. 다시 시도해봅시다.` },
+                                { speaker: ``, text: ``, showChoiceAgain: true }
+                            ],
+                        },
+                        {
+                            label: "RC",
+                            scoreDelta: -1,
+                            insertLines: [
+                                { speaker: `👤 ${state.userName}`, text: `여기는 내가 지금 있는 층이었다.` },
                                 { speaker: `📢`, text: `1점이 차감되었습니다. 다시 시도해봅시다.` },
                                 { speaker: ``, text: ``, showChoiceAgain: true }
                             ],
@@ -73,7 +73,7 @@ export function getHotel3Scene() {
         ],
         
         nextScene: () => {
-            nextScene(getHotel4Scene())
+            return getHotel4Scene();
         }
     }
 }
