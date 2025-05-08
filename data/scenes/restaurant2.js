@@ -72,11 +72,15 @@ export function getRestaurant2Scene() {
                             label: "Des pâtes - 8,00 €",
                             scoreDelta: 0,
                             insertLines: [
-                                () => {
-                                    state.selectedDish = { name: "des pâtes", price: 8, image: "assets/images/pates.jpg" }
-                                },
                                 { speaker: `👤 ${state.userName}`, text: "J'ai envie de manger des pâtes, s'il vous plaît.", personImg: "assets/images/restaurantPerson1.png" },
                             ],
+                            customAction: () => {
+                                state.selectedDish = {
+                                    name: "des pâtes",
+                                    price: 8,
+                                    image: "assets/images/pates.jpg"
+                                };
+                            }
                         },
                         {
                             label: "Un steak-frites - 12,00 €",
@@ -84,6 +88,13 @@ export function getRestaurant2Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: "J'ai envie de manger un steak-frites, s'il vous plaît.", personImg: "assets/images/restaurantPerson1.png" },
                             ],
+                            customAction: () => {
+                                state.selectedDish = {
+                                    name: "un steak-frites",
+                                    price: 12,
+                                    image: "assets/images/steak-frites.jpg"
+                                };
+                            }
                         },
                         {
                             label: "Une salade niçoise - 7,00 €",
@@ -91,6 +102,13 @@ export function getRestaurant2Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: "J'ai envie de manger une salade niçoise, s'il vous plaît.", personImg: "assets/images/restaurantPerson1.png" },
                             ],
+                            customAction: () => {
+                                state.selectedDish = {
+                                    name: "une salade niçoise",
+                                    price: 7,
+                                    image: "assets/images/salade-nicoise.jpg"
+                                };
+                            } 
                         },
                         {
                             label: "Une pizza - 9,00 €",
@@ -98,6 +116,13 @@ export function getRestaurant2Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: "J'ai envie de manger une pizza, s'il vous plaît.", personImg: "assets/images/restaurantPerson1.png" },
                             ],
+                            customAction: () => {
+                                state.selectedDish = {
+                                    name: "une pizza",
+                                    price: 9,
+                                    image: "assets/images/pizza.jpg"
+                                };
+                            }
                         },
                     ]
                 }

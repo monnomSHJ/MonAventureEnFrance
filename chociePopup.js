@@ -30,6 +30,10 @@ export function showChoicePopup(choices) {
             document.body.removeChild(popup);
             document.querySelector('.overlay')?.classList.remove('show');
 
+            if (typeof opt.customAction === 'function') {
+                opt.customAction();
+            }
+
             if (opt.scoreDelta) {
                 state.score += opt.scoreDelta;
                 renderStatusBar?.();

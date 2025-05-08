@@ -48,7 +48,7 @@ const promptText = "👩‍💼 Pour aller au restaurant, sortez de l'hôtel, pu
         ],
         
         nextScene: () => {
-            state.currentQuest = "식당에서";
+            state.currentQuest = "식당";
             renderQuest();
             return getRestaurant2Scene();
         }
