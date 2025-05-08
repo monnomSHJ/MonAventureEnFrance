@@ -20,6 +20,7 @@ import { getHotel4Scene } from "./data/scenes/hotel4.js";
 import { getHotel5Scene } from "./data/scenes/hotel5.js";
 import { getRestaurant1Scene } from "./data/scenes/restaurant1.js";
 import { getRestaurant2Scene } from "./data/scenes/restaurant2.js";
+import { getRestaurant3Scene } from "./data/scenes/restaurant3.js";
 
 // State
 export let currentScene = null;
@@ -232,7 +233,8 @@ export function setupDebugMenu() {
         hotel4: () => loadScene(getHotel4Scene()),
         hotel5: () => loadScene(getHotel5Scene()),
         restaurant1: () => loadScene(getRestaurant1Scene()),
-        restaurant2: () => loadScene(getRestaurant2Scene())
+        restaurant2: () => loadScene(getRestaurant2Scene()),
+        restaurant3: () => loadScene(getRestaurant3Scene())
         };
 
         if (sceneMap[sceneId]) {

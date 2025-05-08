@@ -12,7 +12,8 @@ export const state = {
   balance: 500,
   score: 0,
   currentQuest: '',
-  selectedHotelName: ''
+  selectedHotelName: '',
+  selectedDish: 'null'
 };
 
 // 단어장 기능
