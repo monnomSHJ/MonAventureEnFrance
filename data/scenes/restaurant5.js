@@ -1,4 +1,6 @@
 import { state } from "../../script.js";
+import { getCafe1Scene } from "./cafe1.js";
+import { renderQuest } from "../../statusBar.js";
 
 export function getRestaurant5Scene() {
 
@@ -56,7 +58,9 @@ export function getRestaurant5Scene() {
         ],
 
         nextScene: () => {
-            console.log('dd');
+            state.currentQuest = "카페";
+            renderQuest();
+            return getCafe1Scene();
         }
     }
 }

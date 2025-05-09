@@ -849,6 +849,7 @@ body {
     min-width: 24px;
     min-height: 16px;
     margin-right: 4px;
+    margin-bottom: 4px;
 }
 
 .fill-blank.filled {
@@ -885,6 +886,7 @@ body {
     font-size: 13px;
     font-weight: 100;
     opacity: 0.8;
+    margin-top: 8px;
 }
 
 .popup-production-choices {
