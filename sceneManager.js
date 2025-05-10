@@ -27,6 +27,8 @@ import { getCafe1Scene } from "./data/scenes/cafe1.js";
 import { getCafe2Scene } from "./data/scenes/cafe2.js";
 import { getCafe3Scene } from "./data/scenes/cafe3.js";
 import { getCafe4Scene } from "./data/scenes/cafe4.js";
+import { getEIffelTower1Scene } from "./data/scenes/eiffelTower1.js";
+import { getEiffelTower2Scene } from "./data/scenes/eiffelTower2.js";
 
 // State
 export let currentScene = null;
@@ -115,7 +117,7 @@ export async function updateDialogue() {
     const dialogueTextEl = document.getElementById("dialogue-text");
     const bgContainer = document.getElementById("bg-container");
   
-    const text = line.text;
+    const text = typeof line.text === 'function' ? line.text() : line.text;
     const speaker = line.speaker || "";
   
     dialogueTextEl.innerHTML = `
@@ -246,7 +248,9 @@ export function setupDebugMenu() {
         cafe1: () => loadScene(getCafe1Scene()),
         cafe2: () => loadScene(getCafe2Scene()),
         cafe3: () => loadScene(getCafe3Scene()),
-        cafe4: () => loadScene(getCafe4Scene())
+        cafe4: () => loadScene(getCafe4Scene()),
+        eiffelTower1: () => loadScene(getEIffelTower1Scene()),
+        eiffelTower2: () => loadScene(getEiffelTower2Scene())
         };
 
         if (sceneMap[sceneId]) {

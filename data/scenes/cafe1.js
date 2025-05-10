@@ -10,7 +10,6 @@ export function getCafe1Scene() {
         image: ""
     };
 
-
     return {
         id: "cafe1",
         background_img: "assets/images/cafeMain.jpg",
@@ -90,7 +89,7 @@ export function getCafe1Scene() {
             { speaker: `👤 ${state.userName}`, text: `Sur place.`, personImg: `assets/images/cafePerson1.png` },
             { speaker: `👩‍🍳 Serveuse`, text: `D'accord. Vous payez comment ? Par carte ou en espèces ?`, personImg: "assets/images/cafePerson1.png" },
             { speaker: `👤 ${state.userName}`, text: `En espèces. s'il vous plaît.`, personImg: `assets/images/cafePerson1.png` },
-            { speaker: `👩‍🍳 Serveuse`, text: `Très bien ! Ça coûte ${cafe.price} euros.`, personImg: "assets/images/cafePerson1.png" },
+            { speaker: `👩‍🍳 Serveuse`, text: () => `Très bien ! Ça coûte ${state.selectedCafe?.price ?? "?"} euros.`, personImg: "assets/images/cafePerson1.png" },
             { speaker: `👤 ${state.userName}`, text: `D'accord.`, personImg: `assets/images/cafePerson1.png` },
         ],
 

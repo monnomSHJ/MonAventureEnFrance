@@ -13,7 +13,8 @@ export const state = {
   score: 0,
   currentQuest: '',
   selectedHotelName: '',
-  selectedDish: 'null'
+  selectedDish: 'null',
+  selectedCafe: 'null'
 };
 
 // 단어장 기능

@@ -8,7 +8,7 @@ export function getCafe3Scene() {
         background_img: "assets/images/cafeMain.jpg",
         narration: "",
         retryLines: [],
-        Lines: [
+        lines: [
             { speaker: `👤 ${state.userName}`, text: `정말 즐거운 시간이었다.` },
             { speaker: `👤 ${state.userName}`, text: `이제 다른 곳으로 이동해볼까...` },
             { speaker: `👤 ${state.userName}`, text: `...` },

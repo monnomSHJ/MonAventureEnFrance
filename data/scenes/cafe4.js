@@ -1,4 +1,6 @@
 import { state } from "../../script.js";
+import { renderQuest } from "../../statusBar.js";
+import { getEIffelTower1Scene } from "./eiffelTower1.js";
 
 export function getCafe4Scene() {
 
@@ -11,7 +13,7 @@ export function getCafe4Scene() {
             { speaker: `👤 ${state.userName}`, text: ".. 다시 한 번 시도해보자.", personImg: "assets/images/restaurantPerson1.png"},
             { speaker: `📢`, text: "1점이 차감되었습니다.", personImg: "assets/images/restaurantPerson1.png"}
         ],
-        Lines: [
+        lines: [
             { speaker: `👤 ${state.userName}`, text: `다시 식당에 돌아왔다.` },
             { speaker: `👨‍🍳 Serveur`, text: `Bonjour.`, personImg: "assets/images/restaurantPerson1.png" },
             { speaker: `👤 ${state.userName}`, text: `Bonjour.`, personImg: "assets/images/restaurantPerson1.png" },
@@ -58,12 +60,13 @@ export function getCafe4Scene() {
             { speaker: ``, text: `완전 럭키비키잖아~🍀` },
             { speaker: ``, text: `...` },
             { speaker: ``, text: `아, 참! 파리에 왔으면 에펠탑을 보러 가야지.` },
-            { speaker: ``, text: `어떻게 가야 할까?` },
-            { speaker: ``, text: `인터넷으로 찾아봐야겠다.` },
+            { speaker: ``, text: `가는 방법을 인터넷에서 찾아보자.` },
         ],
 
         nextScene: () => {
-            console.log('dd');
+            state.currentQuest = "에펠탑";
+            renderQuest();
+            return getEIffelTower1Scene();
         }
     }
 }
