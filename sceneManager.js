@@ -27,8 +27,11 @@ import { getCafe1Scene } from "./data/scenes/cafe1.js";
 import { getCafe2Scene } from "./data/scenes/cafe2.js";
 import { getCafe3Scene } from "./data/scenes/cafe3.js";
 import { getCafe4Scene } from "./data/scenes/cafe4.js";
-import { getEIffelTower1Scene } from "./data/scenes/eiffelTower1.js";
+import { getEiffelTower1Scene } from "./data/scenes/eiffelTower1.js";
 import { getEiffelTower2Scene } from "./data/scenes/eiffelTower2.js";
+import { getLouvre1Scene } from "./data/scenes/louvre1.js";
+import { getLouvre2Scene } from "./data/scenes/louvre2.js";
+import { getLouvre3Scene } from "./data/scenes/louvre3.js";
 
 // State
 export let currentScene = null;
@@ -249,8 +252,11 @@ export function setupDebugMenu() {
         cafe2: () => loadScene(getCafe2Scene()),
         cafe3: () => loadScene(getCafe3Scene()),
         cafe4: () => loadScene(getCafe4Scene()),
-        eiffelTower1: () => loadScene(getEIffelTower1Scene()),
-        eiffelTower2: () => loadScene(getEiffelTower2Scene())
+        eiffelTower1: () => loadScene(getEiffelTower1Scene()),
+        eiffelTower2: () => loadScene(getEiffelTower2Scene()),
+        louvre1: () => loadScene(getLouvre1Scene()),
+        louvre2: () => loadScene(getLouvre2Scene()),
+        louvre3: () => loadScene(getLouvre3Scene())
         };
 
         if (sceneMap[sceneId]) {

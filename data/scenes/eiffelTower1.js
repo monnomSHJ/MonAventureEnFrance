@@ -2,7 +2,7 @@ import { state } from "../../script.js";
 import { renderQuest } from "../../statusBar.js";
 import { getEiffelTower2Scene } from "./eiffelTower2.js";
 
-export function getEIffelTower1Scene() {
+export function getEiffelTower1Scene() {
     
     return {
         id: "eiffelTower1",
@@ -81,7 +81,7 @@ export function getEIffelTower1Scene() {
             { speaker: ``, text: "", personImg: "assets/images/eiffelTowerPerson1.png",
                 production: {
                     prompt: "Pouvez-vous _ _ _ _, s'il vous plaît ?",
-                    meaning: "사진 좀 찍어주실 수 있나요?",
+                    meaning: "제 사진 좀 찍어 주실래요?",
                     words: ["prendre", "photo", "un", "en", "me", "vous"],
                     answer: ["me", "prendre", "en", "photo"]
                 }
@@ -93,7 +93,7 @@ export function getEIffelTower1Scene() {
             { speaker: ``, text: "우연히 만난 행인에게 부탁해 에펠탑 앞에서 사진을 잔뜩 찍었다.", personImg: "assets/images/eiffelTowerPerson1.png" },
         ],
 
-        nestScene: () => {
+        nextScene: () => {
             state.currentQuest = "",
             renderQuest();
             return getEiffelTower2Scene();

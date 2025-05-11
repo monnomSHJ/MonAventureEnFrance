@@ -1,6 +1,6 @@
 import { state } from "../../script.js";
 import { renderQuest } from "../../statusBar.js";
-import { getEIffelTower1Scene } from "./eiffelTower1.js";
+import { getEiffelTower1Scene } from "./eiffelTower1.js";
 
 export function getCafe4Scene() {
 
@@ -66,7 +66,7 @@ export function getCafe4Scene() {
         nextScene: () => {
             state.currentQuest = "에펠탑";
             renderQuest();
-            return getEIffelTower1Scene();
+            return getEiffelTower1Scene();
         }
     }
 }
