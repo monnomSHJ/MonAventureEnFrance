@@ -715,10 +715,10 @@ body {
 
 .content-html-container {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     z-index: 99;
     overflow-y: auto;
@@ -1090,6 +1090,79 @@ body {
     height: 100vh;
     background: transparent;
     z-index: 10000;
+}
+
+.transport-content-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    min-height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.transport-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+}
+
+.transport-card {
+    border: 8px solid transparent;
+    border-image: url('assets/images/inputBoxBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    width: 95%;
+}
+
+.transport-card-title {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 12px;
+    margin-top: 4px;
+}
+
+.transport-card-discription {
+    font-size: 15px;
+    font-weight: 10;
+    line-height: 16px;
+    margin-left: 36px;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    text-indent: -24px;
+}
+
+.transport-card-plus {
+    font-size: 13px;
+    font-weight: 10;
+    line-height: 16px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 8px;
+}
+
+.transport-card-select {
+    width: 100%;
+}
+
+.transport-confirm-wrap {
+    width: 100%;
+    align-items: center;
+}
+
+.confirm-transport {
+    width: 100%;
 }
 
 /* 데스크탑 대응 (640px 이상) */
@@ -1482,5 +1555,54 @@ body {
 
     .choice-popup .popup-content-text {
         font-size: 16px;
+    }
+
+    .transport-content-wrap {
+        justify-content: flex-start;
+        gap: 4px;
+    }
+
+    .transport-card-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .transport-card {
+        padding: 12px;
+        flex: 1;
+        min-width: 0;
+        height: 90%;
+    }
+
+    .transport-card-title {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 6px;
+        margin-top: 2px;
+    }
+
+    .transport-card-discription {
+        font-size: 15px;
+        font-weight: 10;
+        line-height: 16px;
+        margin-left: 32px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        text-indent: -24px;
+    }
+
+    .transport-card-select {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .transport-confirm-wrap {
+        width: 100%;
+        align-items: center;
+    }
+
+    .confirm-transport {
+        width: 100%;
     }
 }

@@ -1,10 +1,10 @@
-const lyonTransportData = [
+export const lyonTransportData = [
     {
       "id": "train",
       "name": "🚄 리옹행 기차 정보",
       "descriptionLines": [
         "💶 Prix: 88€",
-        "⌛ Durée estimée: environ 1h 50m",
+        "🕛 Durée estimée: environ 1h 50m",
         "🧳 Lieu de départ: Paris Gare de Lyon",
         "🧳 Lieu d'arrivée: Lyon Part-Dieu",
       ],
@@ -17,7 +17,7 @@ const lyonTransportData = [
       "name": "🚌 리옹행 버스 정보",
       "descriptionLines": [
         "💶 Prix: 30€",
-        "⌛ Durée estimée: environ 5h 25m",
+        "🕛 Durée estimée: environ 5h 25m",
         "🧳 Lieu de départ: Paris Bercy-Seine Bus Station",
         "🧳 Lieu d'arrivée: Lyon Perrache Bus Station",
       ],
@@ -30,7 +30,7 @@ const lyonTransportData = [
       "name": "✈️ 리옹행 비행기 정보",
       "descriptionLines": [
         "💶 Prix: 160€",
-        "⌛ Durée estimée: environ 1h 05m",
+        "🕛 Durée estimée: environ 1h 05m",
         "🧳 Lieu de départ: Paris Charles de Gaulle Airport",
         "🧳 Lieu d'arrivée: Lyon Saint-Exupéry Airport",
       ],
