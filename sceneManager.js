@@ -34,6 +34,7 @@ import { getLouvre2Scene } from "./data/scenes/louvre2.js";
 import { getLouvre3Scene } from "./data/scenes/louvre3.js";
 import { getToilet1Scene } from "./data/scenes/toilet1.js";
 import { getToilet2Scene } from "./data/scenes/toilet2.js";
+import { getToilet3Scene } from "./data/scenes/toilet3.js";
 
 // State
 export let currentScene = null;
@@ -260,7 +261,8 @@ export function setupDebugMenu() {
         louvre2: () => loadScene(getLouvre2Scene()),
         louvre3: () => loadScene(getLouvre3Scene()),
         toilet1: () => loadScene(getToilet1Scene()),
-        toilet2: () => loadScene(getToilet2Scene())
+        toilet2: () => loadScene(getToilet2Scene()),
+        toilet3: () => loadScene(getToilet3Scene())
         };
 
         if (sceneMap[sceneId]) {
