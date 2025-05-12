@@ -60,23 +60,22 @@ export function getLouvre3Scene() {
                         {
                             label: "La Joconde",
                             scoreDelta: 0,
-                            insertLines: () => makeChoice("La Joconde")
+                            insertLines: () => makeChoice("La Joconde"),
                         },
                         {
                             label: "La Vénus de Milo",
                             scoreDelta: 0,
-                            insertLines: () => makeChoice("La Vénus de Milo")
-
+                            insertLines: () => makeChoice("La Vénus de Milo"),
                         },
                         {
                             label: "La Liberté guidant le peuple",
                             scoreDelta: 0,
-                            insertLines: () => makeChoice("La Liberté guidant le peuple")
+                            insertLines: () => makeChoice("La Liberté guidant le peuple"),
                         },
                         {
                             label: "Les Noces de Cana",
                             scoreDelta: 0,
-                            insertLines: () => makeChoice("Les Noces de Cana")
+                            insertLines: () => makeChoice("Les Noces de Cana"),
                         },
 
                     ]

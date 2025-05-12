@@ -25,6 +25,7 @@ export function showChoicePopup(choices) {
         const btn = document.createElement("div");
         btn.className = "popup-content-btn";
         btn.textContent = opt.label;
+        btn.dataset.label = opt.label;
 
         btn.onclick = () => {
             document.body.removeChild(popup);
