@@ -39,7 +39,7 @@ export function showChoicePopup(choices) {
                 renderStatusBar?.();
             }
 
-            const insert = opt.insertLines || [];
+            const insert = typeof opt.insertLines === 'function' ? opt.insertLines() : (opt.insertLines || []);
             if (insert.length) {
                 currentScene.lines.splice(currentLineIndex + 1, 0, ... insert);
             }

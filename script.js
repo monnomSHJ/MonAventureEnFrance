@@ -14,7 +14,7 @@ export const state = {
   currentQuest: '',
   selectedHotelName: '',
   selectedDish: 'null',
-  selectedCafe: 'null'
+  selectedCafe: 'null',
 };
 
 // 단어장 기능

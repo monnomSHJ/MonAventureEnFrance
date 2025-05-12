@@ -32,6 +32,8 @@ import { getEiffelTower2Scene } from "./data/scenes/eiffelTower2.js";
 import { getLouvre1Scene } from "./data/scenes/louvre1.js";
 import { getLouvre2Scene } from "./data/scenes/louvre2.js";
 import { getLouvre3Scene } from "./data/scenes/louvre3.js";
+import { getToilet1Scene } from "./data/scenes/toilet1.js";
+import { getToilet2Scene } from "./data/scenes/toilet2.js";
 
 // State
 export let currentScene = null;
@@ -166,10 +168,10 @@ export async function updateDialogue() {
         return;
     }
 
-    if (maybeShowChoiceAgain(line)) {
+   if (maybeShowChoiceAgain(line)) {
         overlay.classList.add("show");
         return;
-    }
+    } 
 
     overlay.classList.remove("show");
   
@@ -256,7 +258,9 @@ export function setupDebugMenu() {
         eiffelTower2: () => loadScene(getEiffelTower2Scene()),
         louvre1: () => loadScene(getLouvre1Scene()),
         louvre2: () => loadScene(getLouvre2Scene()),
-        louvre3: () => loadScene(getLouvre3Scene())
+        louvre3: () => loadScene(getLouvre3Scene()),
+        toilet1: () => loadScene(getToilet1Scene()),
+        toilet2: () => loadScene(getToilet2Scene())
         };
 
         if (sceneMap[sceneId]) {

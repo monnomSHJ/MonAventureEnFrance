@@ -49,6 +49,7 @@ export function getLouvre2Scene() {
                     ]
                 }
              },
+             { speaker: `📢`, text: "이제 본격적으로 박물관을 둘러볼까요?" },
         ],
 
         nextScene: () => {

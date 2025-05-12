@@ -53,6 +53,10 @@ export function getLouvre1Scene() {
                                 { speaker: `👤 ${state.userName}`, text: "Oui, je paie en espèces.", personImg: "assets/images/louvrePerson1.png" },
                                 { speaker: `📢`, text: "표를 구매했습니다. 12 유로가 차감되었고, 3점이 추가되었습니다.", personImg: "assets/images/louvrePerson1.png" },
                             ],
+                            customAction: () => {
+                                state.balance -= 12;
+                                renderStatusBar();
+                            }
                         },
                                                 {
                             label: "L'entrée gratuite",
@@ -66,6 +70,10 @@ export function getLouvre1Scene() {
                                 { speaker: `👤 ${state.userName}`, text: "D'accord, je prends le billet.", personImg: "assets/images/louvrePerson1.png" },
                                 { speaker: `📢`, text: "표를 구매했습니다. 17 유로가 차감되었습니다.", personImg: "assets/images/louvrePerson1.png" },
                             ],
+                            customAction: () => {
+                                state.balance -= 17;
+                                renderStatusBar();
+                            }
                         },
                     ]
                 }
@@ -86,7 +94,7 @@ export function getLouvre1Scene() {
                             label: "아니오",
                             scoreDelta: 0,
                             insertLines: [
-                                { speaker: `👤 ${state.userName}`, text: "Oui, j'ai tout compris", personImg: "assets/images/louvrePerson1.png" },
+                                { speaker: `👤 ${state.userName}`, text: "Oui, j'ai tout compris.", personImg: "assets/images/louvrePerson1.png" },
                             ]
                         },
                         {

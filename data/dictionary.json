@@ -84,6 +84,10 @@
     "korean": "고딕 건축"
   },
   {
+    "french": "arrêt",
+    "korean": "버스 승강장"
+  },
+  {
     "french": "armure",
     "korean": "갑옷"
   },
@@ -576,6 +580,10 @@
     "korean": "~을 원합니다"
   },
   {
+    "french": "Je vous en prie",
+    "korean": "천만에요"
+  },
+  {
     "french": "Jean-Baptiste Kléber",
     "korean": "(프랑스의 장군)장-밥티스트 클레베르"
   },
@@ -972,6 +980,10 @@
     "korean": "카페에 가려면"
   },
   {
+    "french": "pour y aller",
+    "korean": "거기에 가려면"
+  },
+  {
     "french": "pouvez-vous me prendre en photo, s'il vous plaît ?",
     "korean": "혹시 사진 좀 찍어주실 수 있으실까요?"
   },
@@ -1002,6 +1014,10 @@
   {
     "french": "puis",
     "korean": "그리고 나서"
+  },
+  {
+    "french": "puis-je",
+    "korean": "'je peux'의 의문형"
   },
   {
     "french": "qu'est-ce que vous voulez ?",
