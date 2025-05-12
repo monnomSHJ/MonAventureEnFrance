@@ -1558,7 +1558,7 @@ body {
     }
 
     .transport-content-wrap {
-        justify-content: flex-start;
+        justify-content: space-evenly;
         gap: 4px;
     }
 
@@ -1572,6 +1572,16 @@ body {
         flex: 1;
         min-width: 0;
         height: 90%;
+    }
+
+    .transport-card.selected {
+        background: transparent;
+        border: 8px solid transparent;
+        border-image: url('assets/images/hotelCardSelected.png');
+        border-image-slice: 20 fill;
+        border-image-width: 8px;
+        border-radius: 12px;
+        box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
     }
 
     .transport-card-title {

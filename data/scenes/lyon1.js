@@ -35,5 +35,110 @@ export function getLyon1Scene() {
                 </div>
             </div>
         `,
+        onMount: setupReservationUI
+    }
+}
+
+function setupReservationUI() {
+    let selectedTransportID = null;
+
+    const popup = document.getElementById("popup");
+    const popupHeaderTitle = document.querySelector(".popup-header-title");
+    const popupContentText = document.querySelector(".popup-content-text");
+    const btn1 = document.getElementById("popup-content-btn1");
+    const btn2 = document.getElementById("popup-content-btn2");
+    const btn3 = document.getElementById("popup-content-btn3");
+    const confirmBtn = document.getElementById("confirm-transport");
+
+    document.querySelectorAll(".transport-card-select").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const id = btn.dataset.id;
+            const transport = lyonTransportData.find(h => h.id === id);
+
+            if (!transport) {
+                console.warn("해당 교통편을 찾을 수 없습니다.", id);
+                return;
+            }
+
+            selectedTransportID = id;
+            highlightSelectedCard(selectedTransportID);
+            confirmBtn.disabled = false;
+            return;
+        })
+    })
+
+    confirmBtn.addEventListener("click", () => {
+        if(!selectedTransportID) {
+            return;
+        }
+
+        const transport = lyonTransportData.find(h => h.id === selectedTransportID);
+        
+        const deductedAmount = transport.price || 0;
+        const addedScore = transport.score || 0;
+
+        popupHeaderTitle.textContent = "💡 예약 확인";
+        popupContentText.innerHTML = transport.descriptionLines.map(line => `<p>${line}</p>`).join("");
+
+        btn1.textContent = "다른 교통편 선택하기";
+        btn2.textContent = "교통편 확정하기";
+        btn3.classList.add('hidden');
+
+        popup.classList.remove("hidden");
+        overlay.classList.add("show");
+
+        btn1.onclick = () => {
+            popup.classList.add("hidden");
+            overlay.classList.remove("show");
+            return;
+        }
+
+        btn2.onclick = () => {
+            state.balance -= deductedAmount;
+            state.score += addedScore;
+
+            if (typeof renderStatusBar === 'function') {
+                renderStatusBar();
+            }
+
+            popupHeaderTitle.textContent = "✅ 예약 완료";
+            popupContentText.innerHTML = `
+                <h3>🎉 성공적으로 교통편 예매를 완료하였습니다.</h3>
+                <p>아래에서 예약 정보를 확인해주세요</p>
+                <hr>
+                <p>🎫 예약한 교통수단: ${transport.what}</p>
+                <p>👤 예약자명: ${state.name}</p>
+                <hr>
+                ${transport.descriptionLines.map(line => `<div class="transport-card-discription">${line}</div>`).join("")}
+                <hr>
+                <p>💸 ${deductedAmount} 유로가 차감되었습니다.</p>
+                <p>🌟 ${addedScore} 점을 획득했습니다.</p>
+                `
+
+            btn1. textContent = "다음으로";
+            btn2.classList.add('hidden');
+            btn3.classList.add('hidden');
+
+            btn1.onclick = () => {
+                popup.classList.add("hidden");
+                overlay.classList.remove("show");
+                state.currentQuest = "";
+                renderQuest();
+                loadScene(getLyon2Scene());
+            }
+
+            popup.classList.remove("hidden");
+            overlay.classList.toggle("show");
+            return;
+        }
+    })
+
+    function highlightSelectedCard(idToHighlight) {
+        document.querySelectorAll(".transport-card").forEach(card => {
+            card.classList.remove("selected");
+            if (card.dataset.id === idToHighlight) {
+                card.classList.add("selected");
+            }
+        });
     }
 }

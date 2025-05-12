@@ -10,7 +10,8 @@ export const lyonTransportData = [
       ],
       "plus": "빠르고 편리하며, 사전 예약 시 저렴한 요금 이용 가능",
       "price": 88,
-      "score": 5
+      "score": 5,
+      "what": "기차"
     },
     {
       "id": "bus",
@@ -23,7 +24,8 @@ export const lyonTransportData = [
       ],
       "plus": "가장 경제적인 옵션으로, 예산이 적은 여행자에게 적합",
       "price": 30,
-      "score": 3
+      "score": 3,
+      "what": "버스"
     },
     {
       "id": "airport",
@@ -36,6 +38,7 @@ export const lyonTransportData = [
       ],
       "plus": "가장 빠른 이동 수단이나, 공항 접근성과 추가 비용 고려 필요",
       "price": 160,
-      "score": 10
+      "score": 10,
+      "what": "비행기"
     },
 ]
