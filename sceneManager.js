@@ -36,6 +36,7 @@ import { getToilet1Scene } from "./data/scenes/toilet1.js";
 import { getToilet2Scene } from "./data/scenes/toilet2.js";
 import { getToilet3Scene } from "./data/scenes/toilet3.js";
 import { getToilet4Scene } from "./data/scenes/toilet4.js";
+import { getLyon1Scene } from "./data/scenes/lyon1.js";
 
 // State
 export let currentScene = null;
@@ -264,7 +265,8 @@ export function setupDebugMenu() {
         toilet1: () => loadScene(getToilet1Scene()),
         toilet2: () => loadScene(getToilet2Scene()),
         toilet3: () => loadScene(getToilet3Scene()),
-        toilet4: () => loadScene(getToilet4Scene())
+        toilet4: () => loadScene(getToilet4Scene()),
+        lyon1: () => loadScene(getLyon1Scene())
         };
 
         if (sceneMap[sceneId]) {

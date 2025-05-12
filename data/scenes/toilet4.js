@@ -1,6 +1,11 @@
 import { state } from "../../script.js";
+import { getLyon1Scene } from "./lyon1.js";
+
+let selectedScene = null;
 
 export function getToilet4Scene() {
+
+    selectedScene = null;
 
     return {
         id: "toilet4",
@@ -21,7 +26,11 @@ export function getToilet4Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `그래, 리옹에 가보자!` }, 
                                 { speaker: `👤 ${state.userName}`, text: `그러면... 리옹에 가는 교통편을 찾아봐야겠다.` },   
-                            ]
+                            ],
+                            
+                            customAction: () => { 
+                                selectedScene = getLyon1Scene();
+                            }
                         },
                         {
                             label: "마르세유",
@@ -29,7 +38,11 @@ export function getToilet4Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `그래, 마르세유에 가보자!` },
                                 { speaker: `👤 ${state.userName}`, text: `그러면... 마르세유에 가는 교통편을 찾아봐야겠다.` },   
-                            ]
+                            ],
+
+                            customAction: () => { 
+                                selectedScene = getMarseille1Scene();
+                            }
                         },
                         {
                             label: "스트라스부르",
@@ -37,7 +50,11 @@ export function getToilet4Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `그래, 스트라스부르에 가보자!` },
                                 { speaker: `👤 ${state.userName}`, text: `그러면... 스트라스부르에 가는 교통편을 찾아봐야겠다.` },   
-                            ]
+                            ],
+
+                            customAction: () => { 
+                                selectedScene = getStrasbourg1Scene();
+                            }
                         },
                         {
                             label: "보르도",
@@ -45,7 +62,11 @@ export function getToilet4Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `그래, 보르도에 가보자!` },
                                 { speaker: `👤 ${state.userName}`, text: `그러면... 보르도에 가는 교통편을 찾아봐야겠다.` },   
-                            ]
+                            ],
+                                                        
+                            customAction: () => { 
+                                selectedScene = getBordeaux1Scene();
+                            }
                         },
                     ]
                 }
@@ -53,7 +74,7 @@ export function getToilet4Scene() {
         ],
 
         nextScene: () => {
-            console.log('dd');
+            return selectedScene;
         }
     }
 }
