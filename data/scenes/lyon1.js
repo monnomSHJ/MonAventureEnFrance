@@ -78,9 +78,12 @@ function setupReservationUI() {
         const addedScore = transport.score || 0;
 
         popupHeaderTitle.textContent = "💡 예약 확인";
-        popupContentText.innerHTML = transport.descriptionLines.map(line => `<p>${line}</p>`).join("");
+        popupContentText.innerHTML = `
+            <h3>${transport.name}</h3>
+            ${transport.descriptionLines.map(line => `<p>${line}</p>`).join("")}
+        `
 
-        btn1.textContent = "다른 교통편 선택하기";
+        btn1.textContent = "뒤로 가기";
         btn2.textContent = "교통편 확정하기";
         btn3.classList.add('hidden');
 

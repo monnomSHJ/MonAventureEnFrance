@@ -4,12 +4,6 @@ import { renderStatusBar } from "../../statusBar.js";
 
 export function getCafe1Scene() {
 
-    const cafe = state.selectedCafe || {
-        name: "quelque chose",
-        price: 0,
-        image: ""
-    };
-
     return {
         id: "cafe1",
         background_img: "assets/images/cafeMain.jpg",
@@ -94,8 +88,11 @@ export function getCafe1Scene() {
         ],
 
         nextScene: () => {
-            state.balance -= cafe.price;
-            state.score += cafe.price;
+            const selected= state.selectedCafe
+            const price= Number(selected?.price) || 0;
+
+            state.balance -= price;
+            state.score += price;
             renderStatusBar();
             return getCafe2Scene();
         }
