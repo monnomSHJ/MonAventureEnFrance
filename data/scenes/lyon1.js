@@ -2,6 +2,7 @@ import { state } from "../../script.js";
 import { overlay, loadScene } from "../../sceneManager.js";
 import { renderQuest, renderStatusBar } from "../../statusBar.js";
 import { lyonTransportData } from "../transportData.js";
+import { getLyon1aScene } from "./lyon1a.js";
 
 
 export function getLyon1Scene() {
@@ -127,7 +128,13 @@ function setupReservationUI() {
                 overlay.classList.remove("show");
                 state.currentQuest = "";
                 renderQuest();
-                loadScene(getLyon2Scene());
+                if (selectedTransportID == "train") {
+                    loadScene(getLyon1aScene());
+                } else if (selectedTransportID == "bus") {
+                    loadScene(getLyon1bScene());
+                } else if (selectedTransportID == "airport") {
+                    loadScene(getLyon1cScene());
+                }
             }
 
             popup.classList.remove("hidden");
