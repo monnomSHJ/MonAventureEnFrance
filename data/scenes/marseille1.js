@@ -1,7 +1,7 @@
 import { state } from "../../script.js";
 import { overlay, loadScene } from "../../sceneManager.js";
 import { renderQuest, renderStatusBar } from "../../statusBar.js";
-import { mareseilleTransportData } from "../transportData.js";
+import { marseilleTransportData } from "../transportData.js";
 import { getMarseille1aScene } from "./marseille1a.js"; // 기차 선택 시
 import { getMarseille1bScene } from "./marseille1b.js"; // 버스 선택 시
 import { getMarseille1cScene } from "./marseille1c.js"; // 비행기 선택 시
@@ -16,7 +16,7 @@ export function getMarseille1Scene() {
         contentHTML: `
             <div class="transport-content-wrap">
                 <div class="transport-card-container">
-                    ${mareseilleTransportData.map(transport => `
+                    ${marseilleTransportData.map(transport => `
                         <div class="transport-card" data-id="${transport.id}">
                             <div class="transport-card-content">
                                 <div class="transport-card-title">${transport.name}</div>
@@ -55,7 +55,7 @@ function setupReservationUI() {
     document.querySelectorAll(".transport-card-select").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
-            const transport = mareseilleTransportData.find(h => h.id === id);
+            const transport = marseilleTransportData.find(h => h.id === id);
 
             if (!transport) {
                 console.warn("해당 교통편을 찾을 수 없습니다.", id);
@@ -74,7 +74,7 @@ function setupReservationUI() {
             return;
         }
 
-        const transport = mareseilleTransportData.find(h => h.id === selectedTransportID);
+        const transport = marseilleTransportData.find(h => h.id === selectedTransportID);
         
         const deductedAmount = transport.price || 0;
         const addedScore = transport.score || 0;

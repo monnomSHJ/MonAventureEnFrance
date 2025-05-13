@@ -43,7 +43,7 @@ export const lyonTransportData = [
     },
 ]
 
-export const mareseilleTransportData = [
+export const marseilleTransportData = [
     {
       "id": "train",
       "name": "🚄 마르세유행 기차 정보",

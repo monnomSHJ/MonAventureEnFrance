@@ -1,16 +1,16 @@
 import { state } from "../../script.js";
-import { getLyon1ccScene } from "./lyoncc.js";
+import { getMarseille1ccScene } from "./marseille1cc.js";
 
-export function getLyon1cbScene() {
+export function getMarseille1cbScene() {
 
     return {
-        id: "lyon1cb",
+        id: "marseille1cb",
         background_img: "assets/images/airportMain.jpg",
         narration: "",
         lines: [
             { speaker: `👤 ${state.userName}`, text: `공항에 도착했다!` },
             { speaker: `👤 ${state.userName}`, text: `어디에서 탑승해야 하는지 직원분께 여쭤봐야겠다.` },
-            { speaker: `👤 ${state.userName}`, text: `Bonjour, je voudrais aller à Lyon.` },
+            { speaker: `👤 ${state.userName}`, text: `Bonjour, je voudrais aller à Marseille.` },
             { speaker: `👤 Employée`, text: `D'accord. Vous devez aller à la porte numéro douze.`, personImg: `assets/images/garePerson1.png` },
             { speaker: `👤 ${state.userName}`, text: `Merci beaucoup.`, personImg: `assets/images/garePerson1.png` },
             { speaker: `👤 Employée`, text: `Avec plaisir. Bon voyage !`, personImg: `assets/images/garePerson1.png` },
@@ -61,7 +61,7 @@ export function getLyon1cbScene() {
         ],
 
         nextScene: () => {
-            return getLyon1ccScene();
+            return getMarseille1ccScene();
         }
     }
 }
