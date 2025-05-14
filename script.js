@@ -17,7 +17,8 @@ export const state = {
   selectedCafe: 'null',
   viewedArtworks: new Set(),
   nextScene: 'null',
-  visitedLyonSpots: new Set()
+  visitedLyonSpots: new Set(),
+  viewedLyonArtworks: new Set()
 };
 
 // 단어장 기능

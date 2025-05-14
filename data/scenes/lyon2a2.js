@@ -14,24 +14,61 @@ export function getLyon2a2Scene() {
             { speaker: ``, text: "Voici l'armure portée dans le film Spider-Man.", overlayImg: "assets/images/spiderMan.jpg" },
         ],
         "007 제임스본드 수트": [
-            { speaker: `📢`, text: "가나의 혼인잔치(Les Noces de Cana)는 파올로 베로네세(Paolo Veronese)가 1563년에 그린 대형 르네상스 회화입니다.", overlayImg: "assets/images/nocesDeCana.jpg" },
-            { speaker: `📢`, text: "신약성경 요한복음에 나오는 예수가 처음 기적을 행한 ‘물이 포도주로 변한 사건’을 묘사하고 있습니다.", overlayImg: "assets/images/nocesDeCana.jpg" },
-            { speaker: `📢`, text: "이탈리아 베네치아풍의 건축과 화려한 색채, 130명이 넘는 인물들이 생동감 있게 표현된 것이 특징입니다.", overlayImg: "assets/images/nocesDeCana.jpg" },
-            { speaker: `📢`, text: "원래 베네치아의 수도원에 있던 작품으로, 현재는 루브르 박물관에서 모나리자 맞은편에 전시되어 있습니다.", overlayImg: "assets/images/nocesDeCana.jpg" },
+            { speaker: `📢`, text: "Voici le costume porté par James Bond dans le film 007:Skyfall.", overlayImg: "assets/images/jamesBond.jpg" },
         ]
     };
+
+    function makeChoice(label) {
+        state.viewedLyonArtworks.add(label);
+
+        const lines = artworks[label].map(line => ({ ...line }));
+
+        if (state.viewedLyonArtworks.size < 4) {
+            lines.push({
+                speaker: "",
+                text: "",
+                showChoiceAgain: true,
+                choices: {
+                    prompt: "어떤 작품을 감상해볼까요?",
+                    options: () => makeOptions()
+                }
+            });
+        } else {
+            lines.push(
+                { speaker: `👤 ${state.userName}`, text: "정말 색다르고 재미있는 곳이었다." });
+        }
+        
+        return lines;
+    };
+
+    function makeOptions() {
+        return Object.keys(artworks).map(label => ({
+            label,
+            scoreDelta: 0,
+            insertLines: () => makeChoice(label),
+            disabled: state.viewedLyonArtworks.has(label)
+        }));
+    }
 
     return {
         id: "lyon2a2",
         background_img: "assets/images/miniatureBg.jpg",
         narration: "",
         lines: [
-            { speaker: `👤 ${state.userName}`, text: `박물관에 들어오니 박물관에 대한 소개 글이 적혀있다.`, overlayImg: "assets/images/miniatureOverlay1.png" },
-            { speaker: `👤 ${state.userName}`, text: `Bienvenue au musée Cinéma et Miniature de Lyon !`, overlayImg: "assets/images/miniatureOverlay1.png" },
-            { speaker: `👤 ${state.userName}`, text: `Ce musée n'est pas intéressant que pour les adultes.`, overlayImg: "assets/images/miniatureOverlay1.png" },
-            { speaker: `👤 ${state.userName}`, text: `Au musée, on peut voir des vêtements de films, comme des costumes et des armures.`, overlayImg: "assets/images/miniatureOverlay1.png" },
-            { speaker: `👤 ${state.userName}`, text: `Découvrez les secrets des effets spéciaux du cinéma et admirez plus de 100 scènes miniatures incroyablement réalistes.`, overlayImg: "assets/images/miniatureOverlay1.png" },
+            { speaker: `👤 ${state.userName}`, text: `박물관에 들어오니 박물관에 대한 소개 글이 적혀있다.`, overlayImg: "assets/images/miniatureOverlay1.jpg" },
+            { speaker: `👤 ${state.userName}`, text: `Bienvenue au musée Cinéma et Miniature de Lyon !`, overlayImg: "assets/images/miniatureOverlay1.jpg" },
+            { speaker: `👤 ${state.userName}`, text: `Ce musée n'est pas intéressant que pour les adultes.`, overlayImg: "assets/images/miniatureOverlay1.jpg" },
+            { speaker: `👤 ${state.userName}`, text: `Au musée, on peut voir des vêtements de films, comme des costumes et des armures.`, overlayImg: "assets/images/miniatureOverlay1.jpg" },
+            { speaker: `👤 ${state.userName}`, text: `Découvrez les secrets des effets spéciaux du cinéma et admirez plus de 100 scènes miniatures incroyablement réalistes.`, overlayImg: "assets/images/miniatureOverlay1.jpg" },
             { speaker: `👤 ${state.userName}`, text: `어떤 작품을 봐볼까?` },
+            { speaker: ``, text: ``,
+                choices: {
+                    prompt: "어떤 작품을 감상해볼까요?",
+                    get options() {
+                        return makeOptions();
+                    }
+                }
+             }
         ],
 
         nextScene: () => {

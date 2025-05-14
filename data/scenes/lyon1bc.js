@@ -9,7 +9,7 @@ export function getLyon1bcScene() {
         background_img: "assets/images/inBus.jpg",
         narration: "",
         lines: [
-            { speaker: `👤 ${state.userName}`, text: `예매한 자리에 앉았다.` },,
+            { speaker: `👤 ${state.userName}`, text: `예매한 자리에 앉았다.` },
             { speaker: `🚈 Conducteur de bus`, text: `Le bus part dans une minute.` },
             { speaker: `🚈 Conducteur de bus`, text: `Avant de partir, n'oubliez jamais de mettre votre ceinture.` },
             { speaker: `🚈 Conducteur de bus`, text: `Il ne faut fumer ni cigarette ni vapoteuse dans le bus.` },

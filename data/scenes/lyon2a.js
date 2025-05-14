@@ -44,7 +44,7 @@ export function getLyon2aScene() {
                                 { speaker: ``, text: ``, showChoiceAgain: true }
                             ]
                         },
-                                                {
+                        {
                             label: "50 유로",
                             scoreDelta: -1,
                             insertLines: [
@@ -55,6 +55,7 @@ export function getLyon2aScene() {
                     ]
                 }
             },
+            { speaker: `📱`, text: `Vous recevrez votre confirmation dans quelques minutes.`},
             { speaker: `👤 ${state.userName}`, text: `표를 가지고 박물관에 입장했다.` },
         ],
 
