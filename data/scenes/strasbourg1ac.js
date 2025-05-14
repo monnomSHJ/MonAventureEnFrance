@@ -52,7 +52,7 @@ export function getStrasbourg1acScene() {
                     ]
                 }
              },
-             { speaker: `👤 ${state.userName}`, text: `10분 정도 뒤에, 마르세유행 기차가 도착했다.` },
+             { speaker: `👤 ${state.userName}`, text: `10분 정도 뒤에, 스트라스부르행 기차가 도착했다.` },
         ],
 
         nextScene: () => {

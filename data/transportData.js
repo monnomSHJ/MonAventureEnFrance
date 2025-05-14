@@ -119,7 +119,7 @@ export const strasbourgTransportData = [
     },
     {
       "id": "airport",
-      "name": "✈️ 스트라스부르 비행기 정보",
+      "name": "✈️ 스트라스부르행 비행기 정보",
       "descriptionLines": [
         "💶 Prix: 110€",
         "🕛 Durée estimée: environ 1h 15m",
@@ -136,7 +136,7 @@ export const strasbourgTransportData = [
 export const bordeauxTransportData = [
     {
       "id": "train",
-      "name": "🚄 스트라스부르행 기차 정보",
+      "name": "🚄 보르도행 기차 정보",
       "descriptionLines": [
         "💶 Prix: 88€",
         "🕛 Durée estimée: environ 2h",
@@ -150,7 +150,7 @@ export const bordeauxTransportData = [
     },
     {
       "id": "bus",
-      "name": "🚌 스트라스부르행 버스 정보",
+      "name": "🚌 보르도행 버스 정보",
       "descriptionLines": [
         "💶 Prix: 28€",
         "🕛 Durée estimée: environ 6h 35m",
@@ -164,7 +164,7 @@ export const bordeauxTransportData = [
     },
     {
       "id": "airport",
-      "name": "✈️ 스트라스부르 비행기 정보",
+      "name": "✈️ 보르도행 비행기 정보",
       "descriptionLines": [
         "💶 Prix: 200€",
         "🕛 Durée estimée: environ 1h 15m",

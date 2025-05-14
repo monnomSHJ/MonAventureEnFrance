@@ -1,7 +1,7 @@
 import { state } from "../../script.js";
 import { getMarseille1bbScene } from "./marseille1bb.js";
 
-export function getMarseille1aaScene() {
+export function getMarseille1baScene() {
 
     return {
         id: "marseille1ba",

@@ -1,4 +1,5 @@
 import { state } from "../../script.js";
+import { getLyon1caScene } from "./lyon1ca.js";
 
 export function getLyon1cScene() {
 
@@ -20,7 +21,7 @@ export function getLyon1cScene() {
         ],
 
         nextScene: () => {
-            console.log('dd');
+            return getLyon1caScene();
         }
     }
 }

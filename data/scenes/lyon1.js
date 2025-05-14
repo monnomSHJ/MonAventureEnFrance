@@ -3,6 +3,8 @@ import { overlay, loadScene } from "../../sceneManager.js";
 import { renderQuest, renderStatusBar } from "../../statusBar.js";
 import { lyonTransportData } from "../transportData.js";
 import { getLyon1aScene } from "./lyon1a.js";
+import { getLyon1bScene } from "./lyon1b.js";
+import { getLyon1cScene } from "./lyon1c.js";
 
 
 export function getLyon1Scene() {

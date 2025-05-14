@@ -1,5 +1,5 @@
 import { state } from "../../script.js";
-import { getMarseille1aaScene } from "./Marseille1aa.js";
+import { getMarseille1aaScene } from "./marseille1aa.js";
 
 export function getMarseille1aScene() {
 

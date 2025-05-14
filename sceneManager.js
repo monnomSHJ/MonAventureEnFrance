@@ -40,6 +40,19 @@ import { getLyon1Scene } from "./data/scenes/lyon1.js";
 import { getLyon1aScene } from "./data/scenes/lyon1a.js";
 import { getLyon1bScene } from "./data/scenes/lyon1b.js";
 import { getLyon1cScene } from "./data/scenes/lyon1c.js";
+import { getMarseille1Scene } from "./data/scenes/marseille1.js";
+import { getMarseille1aScene } from "./data/scenes/marseille1a.js";
+import { getMarseille1bScene } from "./data/scenes/marseille1b.js";
+import { getMarseille1cScene } from "./data/scenes/marseille1c.js";
+import { getStrasbourg1Scene } from "./data/scenes/strasbourg1.js";
+import { getStrasbourg1aScene } from "./data/scenes/strasbourg1a.js";
+import { getStrasbourg1bScene } from "./data/scenes/strasbourg1b.js";
+import { getStrasbourg1cScene } from "./data/scenes/strasbourg1c.js";
+import { getBordeaux1Scene } from "./data/scenes/bordeaux1.js";
+import { getBordeaux1aScene } from "./data/scenes/bordeaux1a.js";
+import { getBordeaux1bScene } from "./data/scenes/bordeaux1b.js";
+import { getBordeaux1cScene } from "./data/scenes/bordeaux1c.js";
+import { getLyon2Scene } from "./data/scenes/lyon2.js";
 
 // State
 export let currentScene = null;
@@ -272,7 +285,20 @@ export function setupDebugMenu() {
         lyon1: () => loadScene(getLyon1Scene()),
         lyon1a: () => loadScene(getLyon1aScene()),
         lyon1b: () => loadScene(getLyon1bScene()),
-        lyon1c: () => loadScene(getLyon1cScene())
+        lyon1c: () => loadScene(getLyon1cScene()),
+        marseille1: () => loadScene(getMarseille1Scene()),
+        marseille1a: () => loadScene(getMarseille1aScene()),
+        marseille1b: () => loadScene(getMarseille1bScene()),
+        marseille1c: () => loadScene(getMarseille1cScene()),
+        strasbourg1: () => loadScene(getStrasbourg1Scene()),
+        strasbourg1a: () => loadScene(getStrasbourg1aScene()),
+        strasbourg1b: () => loadScene(getStrasbourg1bScene()),
+        strasbourg1c: () => loadScene(getStrasbourg1cScene()),
+        bordeaux1: () => loadScene(getBordeaux1Scene()),
+        bordeaux1a: () => loadScene(getBordeaux1aScene()),
+        bordaeux1b: () => loadScene(getBordeaux1bScene()),
+        bordeaux1c: () => loadScene(getBordeaux1cScene()),
+        lyon2: () => loadScene(getLyon2Scene())
         };
 
         if (sceneMap[sceneId]) {

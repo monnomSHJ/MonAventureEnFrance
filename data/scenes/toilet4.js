@@ -1,5 +1,8 @@
 import { state } from "../../script.js";
 import { getLyon1Scene } from "./lyon1.js";
+import { getMarseille1Scene } from "./marseille1.js";
+import { getStrasbourg1Scene } from "./strasbourg1.js";
+import { getBordeaux1Scene } from "./bordeaux1.js";
 
 let selectedScene = null;
 

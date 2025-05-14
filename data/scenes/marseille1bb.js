@@ -4,7 +4,7 @@ import { getMarseille1bcScene } from "./marseille1bc.js";
 export function getMarseille1bbScene() {
 
     return {
-        id: "lyon1bb",
+        id: "marseille1bb",
         background_img: "assets/images/bercySeineBusStation.jpg",
         narration: "",
         lines: [

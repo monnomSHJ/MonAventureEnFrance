@@ -1,5 +1,5 @@
 import { state } from "../../script.js";
-import { getLyon1bbScene } from "./lyon1ab.js";
+import { getLyon1bbScene } from "./lyon1bb.js";
 
 export function getLyon1baScene() {
 
