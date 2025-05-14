@@ -16,6 +16,8 @@ export const state = {
   selectedDish: 'null',
   selectedCafe: 'null',
   viewedArtworks: new Set(),
+  nextScene: 'null',
+  visitedLyonSpots: new Set()
 };
 
 // 단어장 기능

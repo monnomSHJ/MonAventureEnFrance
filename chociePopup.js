@@ -2,11 +2,11 @@ import { state } from "./script.js";
 import { renderStatusBar } from "./statusBar.js";
 import { updateDialogue, currentScene, incrementLineIndex, currentLineIndex, loadScene } from "./sceneManager.js";
 
-let previousChoiceData = null;
-
 export function showChoicePopup(choices) {
-    const { prompt, options } = choices;
-    previousChoiceData = choices;
+    const { prompt } = choices;
+    const options = typeof choices.options === "function"
+    ? choices.options()
+    : choices.options;
 
     const popup = document.createElement("div");
     popup.className = "popup choice-popup";
