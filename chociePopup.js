@@ -22,12 +22,23 @@ export function showChoicePopup(choices) {
     const btnGroup = popup.querySelector(".popup-content-btn-group");
 
     options.forEach((opt) => {
+
+        if (opt.hidden) {
+                return;
+        }
+
         const btn = document.createElement("div");
         btn.className = "popup-content-btn";
         btn.textContent = opt.label;
         btn.dataset.label = opt.label;
 
+        if (opt.disabled) {
+            btn.style.pointerEvents = "none";
+            btn.style.opacity = "0.4";
+        }
+
         btn.onclick = () => {
+            if (opt.disabled) return;
             document.body.removeChild(popup);
             document.querySelector('.overlay')?.classList.remove('show');
 
@@ -57,8 +68,21 @@ export function showChoicePopup(choices) {
 }
 
 export function maybeShowChoiceAgain(line) {
-    if (line.showChoiceAgain && previousChoiceData) {
-        showChoicePopup(previousChoiceData);
+    if (line.showChoiceAgain && line.choices) {
+        const options = 
+            typeof line.choices.options === 'function'
+            ? line.choices.options()
+            : line.choices.options;
+
+        if (!Array.isArray(options)) {
+            console.warn("⚠️ choices.options가 배열이 아닙니다:", options);
+            return false;
+        }
+        showChoicePopup({
+            prompt: line.choices.prompt,
+            options: options
+
+        });
         return true;
     }
     return false;

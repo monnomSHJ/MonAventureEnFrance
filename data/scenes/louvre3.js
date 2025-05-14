@@ -4,8 +4,6 @@ import { getToilet1Scene } from "./toilet1.js";
 
 export function getLouvre3Scene() {
 
-    const viewedChoices = new Set();
-
     const artworks = {
         "La Joconde": [
             { speaker: `📢`, text: "모나리자(La Joconde)는 레오나르도 다 빈치가 1503년경에 그린 대표적인 르네상스 초상화입니다.", overlayImg: "assets/images/monaLisa.jpg" },
@@ -34,17 +32,34 @@ export function getLouvre3Scene() {
     };
 
     function makeChoice(label) {
-        viewedChoices.add(label);
+        state.viewedArtworks.add(label);
 
         const lines = artworks[label].map(line => ({ ...line }));
 
-        if (viewedChoices.size < 4) {
-            lines.push({ speaker: "", text: "", showChoiceAgain: true });
+        if (state.viewedArtworks.size < 4) {
+            lines.push({
+                speaker: "",
+                text: "",
+                showChoiceAgain: true,
+                choices: {
+                    prompt: "어떤 작품을 감상해볼까요?",
+                    options: () => makeOptions()
+                }
+            });
         } else {
             lines.push({ speaker: "📢", text: "모든 작품을 감상했습니다. 이제 다음으로 넘어가볼까요?" });
         }
         
         return lines;
+    };
+
+    function makeOptions() {
+        return Object.keys(artworks).map(label => ({
+            label,
+            scoreDelta: 0,
+            insertLines: () => makeChoice(label),
+            disabled: state.viewedArtworks.has(label)
+        }));
     }
 
     return {
@@ -56,29 +71,9 @@ export function getLouvre3Scene() {
             { speaker: ``, text: ``,
                 choices: {
                     prompt: "어떤 작품을 감상해볼까요?",
-                    options: [
-                        {
-                            label: "La Joconde",
-                            scoreDelta: 0,
-                            insertLines: () => makeChoice("La Joconde"),
-                        },
-                        {
-                            label: "La Vénus de Milo",
-                            scoreDelta: 0,
-                            insertLines: () => makeChoice("La Vénus de Milo"),
-                        },
-                        {
-                            label: "La Liberté guidant le peuple",
-                            scoreDelta: 0,
-                            insertLines: () => makeChoice("La Liberté guidant le peuple"),
-                        },
-                        {
-                            label: "Les Noces de Cana",
-                            scoreDelta: 0,
-                            insertLines: () => makeChoice("Les Noces de Cana"),
-                        },
-
-                    ]
+                    get options() {
+                        return makeOptions();
+                    }
                 }
              }
         ],

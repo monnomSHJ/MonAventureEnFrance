@@ -55,7 +55,7 @@ export function getAirport4Scene() {
         ],
         
         nextScene: () => {
-            state.currentQuest = "";
+            state.currentQuest = "숙소 입장";
             renderQuest();
             return getHotel1Scene();
         }

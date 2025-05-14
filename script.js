@@ -15,6 +15,7 @@ export const state = {
   selectedHotelName: '',
   selectedDish: 'null',
   selectedCafe: 'null',
+  viewedArtworks: new Set(),
 };
 
 // 단어장 기능

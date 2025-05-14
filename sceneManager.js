@@ -181,16 +181,18 @@ export async function updateDialogue() {
         return;
     }
 
+    
+    if (maybeShowChoiceAgain(line)) {
+        overlay.classList.add("show");
+        return;
+    } 
+
     if (line.choices) {
         showChoicePopup(line.choices);
         overlay.classList.add("show");
         return;
     }
 
-   if (maybeShowChoiceAgain(line)) {
-        overlay.classList.add("show");
-        return;
-    } 
 
     overlay.classList.remove("show");
   
