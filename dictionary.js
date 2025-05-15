@@ -1,6 +1,7 @@
 console.log("dictionary.js 로드됨");
 
 let dictionaryData = [];
+let showingAllWords = true;
 
 export async function loadDictionary() {
   console.log("loadDictionary() 호출됨");
@@ -9,7 +10,9 @@ export async function loadDictionary() {
     const res = await fetch('./data/dictionary.json');
     if (!res.ok) throw new Error('dictionary.json fetch 실패!');
 
-    dictionaryData = await res.json();
+    dictionaryData = await res.json().then(data =>
+      data.map(entry => ({ ...entry, saved: false }))
+    );
     console.log("불러온 dictionaryData:", dictionaryData);
 
     renderDictionaryCards(dictionaryData);
@@ -26,13 +29,27 @@ export function renderDictionaryCards(data) {
   data.forEach(entry => {
     const card = document.createElement("div");
     card.className = "card";
-    card.textContent = entry.french;
-    let flipped = false;
+    card.innerHTML = `
+      <span class = "word">${entry.french}</span>
+      <button class="save-btn ${entry.saved ? 'save-filled' : 'save-empty'}"></button>
+    `;
 
-    card.addEventListener("click", () => {
+    let flipped = false;
+    const wordElement = card.querySelector('.word');
+    const saveButton = card.querySelector('.save-btn');
+
+    wordElement.addEventListener("click", () => {
       flipped = !flipped;
-      card.textContent = flipped ? entry.korean : entry.french;
+      wordElement.textContent = flipped ? entry.korean : entry.french;
     });
+
+    saveButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      entry.saved = !entry.saved;
+      saveButton.className = `save-btn ${entry.saved ? 'save-filled' : 'save-empty'}`;
+      console.log(`단어 "${entry.french}"이(가) 저장되었습니다.`);
+      updateDictionaryView();
+    })
 
     list.appendChild(card);
   });
@@ -42,12 +59,40 @@ export function setupDictionarySearch() {
   const input = document.getElementById("dictionary-search");
   input.addEventListener("input", () => {
     const keyword = input.value.toLowerCase();
-    const filtered = dictionaryData.filter(entry =>
+    const searchTarget = showingAllWords ? dictionaryData : dictionaryData.filter(entry => entry.saved);
+    const filtered = searchTarget.filter(entry =>
       entry.french.toLowerCase().includes(keyword)
     );
     renderDictionaryCards(filtered);
   });
 }
 
+const savedList = document.getElementById('dictionary-saved-list');
+const toggleButton = document.getElementById('toggle-saved-words');
+
+function updateDictionaryView() {
+  if (showingAllWords) {
+    renderDictionaryCards(dictionaryData);
+  } else {
+    renderDictionaryCards(dictionaryData.filter(entry => entry.saved));
+  }
+
+  updateToggleButtonAppearance();
+}
+
+function updateToggleButtonAppearance() {
+  toggleButton.className = showingAllWords ? 'show-saved-btn' : 'show-all-btn';
+}
+
+function setupToggleSavedWordsButton() {
+  toggleButton.addEventListener('click', () => {
+    showingAllWords = !showingAllWords;
+    updateDictionaryView();
+  });
+}
+
 // 시작 시 실행
-loadDictionary();
+loadDictionary().then(() => {
+    setupToggleSavedWordsButton();
+    updateDictionaryView();
+});

@@ -53,6 +53,10 @@ import { getBordeaux1aScene } from "./data/scenes/bordeaux1a.js";
 import { getBordeaux1bScene } from "./data/scenes/bordeaux1b.js";
 import { getBordeaux1cScene } from "./data/scenes/bordeaux1c.js";
 import { getLyon2Scene } from "./data/scenes/lyon2.js";
+import { getMarseille2Scene } from "./data/scenes/marseille2.js";
+import { getStrasbourg2Scene } from "./data/scenes/strasbourg2.js";
+import { getBordeaux2Scene } from "./data/scenes/bordeaux2.js";
+import { getEnd1Scene } from "./data/scenes/end1.js";
 
 // State
 export let currentScene = null;
@@ -300,7 +304,11 @@ export function setupDebugMenu() {
         bordeaux1a: () => loadScene(getBordeaux1aScene()),
         bordaeux1b: () => loadScene(getBordeaux1bScene()),
         bordeaux1c: () => loadScene(getBordeaux1cScene()),
-        lyon2: () => loadScene(getLyon2Scene())
+        lyon2: () => loadScene(getLyon2Scene()),
+        marseille2: () => loadScene(getMarseille2Scene()),
+        strasbourg2: () => loadScene(getStrasbourg2Scene()),
+        bordeaux2: () => loadScene(getBordeaux2Scene()),
+        end1: () => loadScene(getEnd1Scene())
         };
 
         if (sceneMap[sceneId]) {

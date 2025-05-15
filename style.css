@@ -556,9 +556,47 @@ body {
     overflow: hidden;
 }
 
+.dictionary-panel-content-upside {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#toggle-saved-words {
+    width: 32px;
+    height: 32px;
+    margin-left: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+#toggle-saved-words:hover {
+    transform: scale(1.05);
+    filter: brightness(90%);
+}
+
+#toggle-saved-words:active {
+    transform: scale(0.95);
+}
+
+.show-saved-btn {
+    border: 8px solid transparent;
+    border-image: url('assets/images/dictionaryAllList.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+}
+
+.show-all-btn {
+    border: 8px solid transparent;
+    border-image: url('assets/images/dictionarySavedList.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+}
+
 #dictionary-search {
     background: transparent;
-    width: 100%;
+    width: calc(100% - 56px);
     padding: 8px 8px;
     margin-bottom: 12px;
     border: 8px solid transparent;
@@ -589,7 +627,53 @@ body {
     padding: 4px 12px;
     cursor: pointer;
     user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
+
+.card:hover {
+    filter: brightness(90%);
+}
+
+.card:active {
+    transform: scale(0.98);
+}
+
+.word {
+    flex: 1;
+}
+
+.save-btn {
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    margin-left: 12px;
+    background-color: transparent;
+    image-rendering: pixelated;
+}
+
+.save-btn:hover {
+    transform: scale(1.1);
+}
+
+.save-btn:active {
+    transform: scale(0.9);
+}
+
+.save-empty {
+    background-image: url('assets/images/wordUnsaved.png');
+}
+
+.save-filled {
+    background-image: url('assets/images/wordSaved.png');
+}
+
 
 .dictionary-overlay {
     position: fixed;

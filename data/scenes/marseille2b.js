@@ -14,7 +14,7 @@ export function getMarseille2bScene() {
             { speaker: ``, text: `Vous pouvez voir une belle vue sur la ville de Marseille.`, overlayImg: "assets/images/deLaGardeOverlay1.png" },
             { speaker: ``, text: `L'entrée est gratuite pour tous les visiteurs.`, overlayImg: "assets/images/deLaGardeOverlay1.png" },
             { speaker: ``, text: `Merci de garder le silence pendant la visite.`, overlayImg: "assets/images/deLaGardeOverlay1.png" },
-            { speaker: `👤 ${state.userName}`, text: `푸르비에르 대성당의 멋진 모습을 눈에 잔뜩 담았다.` },
+            { speaker: `👤 ${state.userName}`, text: `노트르담 드 라 가르드 대성당의 멋진 모습을 눈에 잔뜩 담았다.` },
         ],
 
         nextScene: () => {
