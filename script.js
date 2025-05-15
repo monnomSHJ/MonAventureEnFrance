@@ -18,7 +18,10 @@ export const state = {
   viewedArtworks: new Set(),
   nextScene: 'null',
   visitedLyonSpots: new Set(),
-  viewedLyonArtworks: new Set()
+  viewedLyonArtworks: new Set(),
+  viewedMarseilleArtworks: new Set(),
+  viewedStrasbourgArtworks: new Set(),
+  viewedBordeauxArtworks: new Set()
 };
 
 // 단어장 기능

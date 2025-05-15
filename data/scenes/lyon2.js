@@ -39,7 +39,6 @@ export function getLyon2Scene() {
                 { speaker: `👤 ${state.userName}`, text: `열심히 프랑스어를 공부한 보람이 있는 듯. 하하하.` },
                 { speaker: `👤 ${state.userName}`, text: `(꼬르륵)` },
                 { speaker: `👤 ${state.userName}`, text: `아 진짜 배고프다. 밥 먹으러 가야지.` },
-                { speaker: `📢`, text: `` },
             ];
                 
         }
