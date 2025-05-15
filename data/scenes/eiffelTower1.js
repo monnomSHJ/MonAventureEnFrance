@@ -30,7 +30,30 @@ export function getEiffelTower1Scene() {
                                 { speaker: `👤 ???`, text: "... Pardon ?", personImg: "assets/images/eiffelTowerPerson1.png" },
                                 { speaker: `📢`, text: "맥락에 더 적합한 표현을 사용하는 것이 좋겠습니다.", personImg: "assets/images/eiffelTowerPerson1.png" },
                                 { speaker: `📢`, text: "1점이 차감되었습니다.", personImg: "assets/images/eiffelTowerPerson1.png" },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
+                                { speaker: ``, text: ``, showChoiceAgain: true,
+                                    choices: {
+                                        prompt: "뭐라고 답할까?",
+                                        options: [
+                                            {
+                                                label: "Si, il fait très beau.",
+                                                scoreDelta: 3,
+                                                insertLines: [
+                                                    { speaker: `👤 ${state.userName}`, text: "Si, il fait très beau.", personImg: "assets/images/eiffelTowerPerson1.png" },
+                                                    { speaker: `📢`, text: "좋아요! 맥락에도 적합하고, 문법적으로도 적절한 표현입니다.", personImg: "assets/images/eiffelTowerPerson1.png" },
+                                                    { speaker: `📢`, text: "3점이 추가되었습니다.", personImg: "assets/images/eiffelTowerPerson1.png" },
+                                                ],
+                                            },
+                                            {
+                                                label: "Oui, il fait très beau.",
+                                                scoreDelta: 0,
+                                                insertLines: [
+                                                    { speaker: `👤 ${state.userName}`, text: "Oui, il fait très beau.", personImg: "assets/images/eiffelTowerPerson1.png" },
+                                                    { speaker: `📢`, text: "좋아요! 하지만 문법적으로, 부정의문문에 대한 긍정 답변은 'si'를 사용하는 것이 좋습니다.", personImg: "assets/images/eiffelTowerPerson1.png" },
+                                                ],
+                                            }
+                                        ]
+                                    }
+                                 }
                             ],
                         },
                         {

@@ -86,7 +86,9 @@ function setupReservationUI() {
             ${transport.descriptionLines.map(line => `<p>${line}</p>`).join("")}
         `
 
+        btn1.classList.remove('hidden');
         btn1.textContent = "뒤로 가기";
+        btn2.classList.remove('hidden');
         btn2.textContent = "교통편 확정하기";
         btn3.classList.add('hidden');
 

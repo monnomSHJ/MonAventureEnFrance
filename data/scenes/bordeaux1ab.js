@@ -3,6 +3,37 @@ import { getBordeaux1acScene } from "./bordeaux1ac.js";
 
 export function getBordeaux1abScene() {
 
+    function makePlatformOptions() {
+        const wrongPlatform = (label) => ({
+            label,
+            scoreDelta: -1,
+            insertLines: [
+                { speaker: `📢`, text: "길을 잘못 든 것 같습니다. 다시 처음 위치로 되돌아 와야 했습니다." },
+                { speaker: `📢`, text: "1점이 차감되었습니다." },
+                { speaker: "", text: " ", showChoiceAgain: true, 
+                    choices: {
+                        prompt: "어디로 가야 하지?",
+                        options: () => makePlatformOptions()
+                    }
+                }
+            ]
+        });
+
+        return [
+            wrongPlatform("11번 플랫폼"),
+            {
+                label: "12번 플랫폼",
+                scoreDelta: 3,
+                insertLines: [
+                    { speaker: `📢`, text: "올바른 플랫폼에 찾아왔습니다!" },
+                    { speaker: `📢`, text: "3점이 추가되었습니다." },
+                ]
+            },
+            wrongPlatform("13번 플랫폼"),
+            wrongPlatform("20번 플랫폼"),
+        ]
+    }
+
     return {
         id: "bordeaux1ab",
         background_img: "assets/images/parisGareMontparnasse.jpg",
@@ -19,43 +50,7 @@ export function getBordeaux1abScene() {
             { speaker: ``, text: ``, 
                 choices: {
                     prompt: "어디로 가야 하지?",
-                    options: [
-                       {
-                            label: "11번 플랫폼",
-                            scoreDelta: -1,
-                            insertLines: [
-                                { speaker: `📢`, text: "길을 잘못 든 것 같습니다. 다시 처음 위치로 되돌아 와야 했습니다." },
-                                { speaker: `📢`, text: "1점이 차감되었습니다." },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
-                            ],
-                        },
-                                               {
-                            label: "12번 플랫폼",
-                            scoreDelta: 3,
-                            insertLines: [
-                                { speaker: `📢`, text: "올바른 플랫폼에 찾아왔습니다!" },
-                                { speaker: `📢`, text: "3점이 추가되었습니다." },
-                            ],
-                        },
-                                               {
-                            label: "13번 플랫폼",
-                            scoreDelta: -1,
-                            insertLines: [
-                                { speaker: `📢`, text: "길을 잘못 든 것 같습니다. 다시 처음 위치로 되돌아 와야 했습니다." },
-                                { speaker: `📢`, text: "1점이 차감되었습니다." },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
-                            ],
-                        },
-                                               {
-                            label: "20번 플랫폼",
-                            scoreDelta: -1,
-                            insertLines: [
-                                { speaker: `📢`, text: "길을 잘못 든 것 같습니다. 다시 처음 위치로 되돌아 와야 했습니다." },
-                                { speaker: `📢`, text: "1점이 차감되었습니다." },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
-                            ],
-                        },
-                    ]
+                    options: () => makePlatformOptions()
                 }
             },
             { speaker: `👤 ${state.userName}`, text: `기차가 올 때까지 조금만 기다리자.` },

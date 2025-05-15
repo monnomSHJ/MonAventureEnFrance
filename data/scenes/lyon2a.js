@@ -4,6 +4,39 @@ import { getLyon2a2Scene } from "./lyon2a2.js";
 
 export function getLyon2aScene() {
 
+    function makeTicketOptions() {
+        const wrongAnswer = (label) => ({
+            label,
+            scoreDelta: -1,
+            insertLines: [
+                { speaker: `📢`, text: `잘못된 가격인 것 같습니다. 다시 시도해봅시다.` },
+                { speaker: ``, text: ``, showChoiceAgain: true,
+                    choices: {
+                        prompt: "얼마를 지불해야 할까?",
+                        options: () => makeTicketOptions()
+                    }
+                 }
+            ]
+        });
+
+        return [
+            {
+                label: "20 유로",
+                scoreDelta: 1,
+                insertLines: [
+                    { speaker: `📢`, text: `성공적으로 티켓을 예매했습니다. 20 유로가 차감되고 1점이 추가되었습니다.` },
+                ],
+                customAction: () => {
+                    state.balance -= 20;
+                    renderStatusBar();
+                }
+            },
+            wrongAnswer("30 유로"),
+            wrongAnswer("40 유로"),
+            wrongAnswer("50 유로")
+        ]   
+    }
+
     return {
         id: "lyon2a",
         background_img: "assets/images/miniatureBg.jpg",
@@ -16,43 +49,7 @@ export function getLyon2aScene() {
             { speaker: ``, text: ``,
                 choices: {
                     prompt: "얼마를 지불해야 할까?",
-                    options: [
-                        {
-                            label: "20 유로",
-                            scoreDelta: 1,
-                            insertLines: [
-                                { speaker: `📢`, text: `성공적으로 티켓을 예매했습니다. 20 유로가 차감되고 1점이 추가되었습니다.` },
-                            ],
-                            customAction: () => {
-                                state.balance -= 20;
-                                renderStatusBar();
-                            }
-                        },
-                        {
-                            label: "30 유로",
-                            scoreDelta: -1,
-                            insertLines: [
-                                { speaker: `📢`, text: `잘못된 가격인 것 같습니다. 다시 시도해봅시다.` },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
-                            ]
-                        },
-                                                {
-                            label: "30 유로",
-                            scoreDelta: -1,
-                            insertLines: [
-                                { speaker: `📢`, text: `잘못된 가격인 것 같습니다. 다시 시도해봅시다.` },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
-                            ]
-                        },
-                        {
-                            label: "50 유로",
-                            scoreDelta: -1,
-                            insertLines: [
-                                { speaker: `📢`, text: `잘못된 가격인 것 같습니다. 다시 시도해봅시다.` },
-                                { speaker: ``, text: ``, showChoiceAgain: true }
-                            ]
-                        },
-                    ]
+                    options: () => makeTicketOptions()
                 }
             },
             { speaker: `📱`, text: `Vous recevrez votre confirmation dans quelques minutes.`},
