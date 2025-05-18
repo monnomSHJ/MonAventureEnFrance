@@ -1338,7 +1338,7 @@ body {
     .text-box {
         width: 85%;
         padding: 16px;
-        font-size: 18px;
+        font-size: 20px;
         border-image-slice: 24 fill;
         border-image-width: 10px;
     }
@@ -1358,11 +1358,12 @@ body {
     }
 
     .speaker {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .text {
-        font-size: 16px;
+        font-size: 18px;
+        line-height: 20px;  
     }
 
     #next-btn {
@@ -1387,7 +1388,7 @@ body {
     }
     
     .popup-header-title {
-        font-size: 18px;
+        font-size: 20px;
     }
       
     .popup-header-close-btn {  
@@ -1397,11 +1398,11 @@ body {
     .popup-content {
         padding: 12px 24px;
         height: 100%;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .popup-content p {
-        font-size: 16px;
+        font-size: 18px;
         margin-top: 8px;
         margin-bottom: 8px;
     }
