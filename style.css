@@ -14,6 +14,8 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 body {
@@ -481,6 +483,15 @@ body {
     margin: 8px;
     margin-top: 0;
     z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.quest.highlighted-quest {
+    border: 8px solid transparent;
+    border-image: url('assets/images/hotelCardSelected.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+    transition: all 0.3s ease;
 }
 
 .quest-title {

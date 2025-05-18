@@ -15,6 +15,7 @@ export function getCafe1Scene() {
             { speaker: `👩‍🍳 Serveuse`, text: `Dans notre café, nous proposons du café, des croissants, du chocolat chaud, des sandwichs au jambon, et bien plus encore.`, personImg: `assets/images/cafePerson1.png`, overlayImg: `assets/images/cafeMenu.png` },
             { speaker: `👩‍🍳 Serveuse`, text: `Et vous, qu'est-ce que vous voulez ?`, personImg: `assets/images/cafePerson1.png`, overlayImg: `assets/images/cafeMenu.png` },
             { speaker: `👤 ${state.userName}`, text: `Je voudrais ... `, personImg: `assets/images/cafePerson1.png`, overlayImg: `assets/images/cafeMenu.png` },
+            { speaker: ``, text: `음... 배부르니까 하나만 먹어야지.`, personImg: `assets/images/cafePerson1.png`, overlayImg: `assets/images/cafeMenu.png` },
             { speaker: ``, text: `뭘 먹어볼까?`, personImg: `assets/images/cafePerson1.png`, overlayImg: `assets/images/cafeMenu.png` },
             { speaker: ``, text: ``,
                 choices: {

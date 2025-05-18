@@ -1,4 +1,5 @@
 import { state } from "../../script.js";
+import { getEnd2Scene } from "./end2.js";
 
 export function getEnd1Scene() {
 
@@ -31,7 +32,7 @@ export function getEnd1Scene() {
         ],
 
         nextScene: () => {
-            console.log('dd');
+            return getEnd2Scene();
         }
     }
 }

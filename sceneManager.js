@@ -197,6 +197,10 @@ export async function updateDialogue() {
         return;
     }
 
+    if (typeof line.customAction === "function") {
+        line.customAction();
+    }
+
 
     overlay.classList.remove("show");
   

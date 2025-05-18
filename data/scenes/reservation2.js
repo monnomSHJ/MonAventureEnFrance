@@ -22,6 +22,7 @@ export function getReservation2Scene() {
             { speaker: `📢`, text: "그런 여러분을 위해 제가 선물을 준비했습니다."},
             { speaker: `📢`, text: "이미 확인하셨을 수도 있겠지만... 아래에 보시면 단어장이 있습니다."},
             { speaker: `📢`, text: "단어장을 열어서 프랑스어 단어를 클릭하시면 한국어로 뜻이 나와요."},
+            { speaker: `📢`, text: "각 단어의 옆에 있는 별 모양을 클릭하시면 '즐겨찾기'로 저장할 수도 있습니다."},
             { speaker: `📢`, text: "혁신적이죠?"},
             { speaker: `📢`, text: "높은 점수를 위해 단어장을 잘 활용하시길 바랍니다."},
             { speaker: `📢`, text: "그러면 이제 본격적으로 시작!"},

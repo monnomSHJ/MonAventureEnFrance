@@ -16,8 +16,22 @@ export function getIntro2Scene() {
             { speaker: `📢`, text: "그러면... 비행기 표는 제가 이미 예약을 해두었으니," },
             { speaker: `📢`, text: "숙소를 예약하실 차례네요!" },
             { speaker: `📢`, text: "숙소만 예약하고 바로 프랑스로 떠나봅시다!" },
-            { speaker: `📢`, text: "참고로, 앞으로 주어지는 모든 퀘스트들에 대한 정보는 아래에서 확인하실 수 있습니다." },
-            { speaker: `📢`, text: "어떤 숙소를 예약해야 하는지 꼭 확인한 후에 예약해주세요! 😀" }
+            { speaker: `📢`, text: "참고로, 앞으로 주어지는 모든 퀘스트들에 대한 정보는 아래에서 확인하실 수 있습니다.",
+                customAction: () => {
+                    const questEl = document.querySelector(".quest");
+                    if (questEl) {
+                        questEl.classList.add("highlighted-quest");
+                    }
+                }
+            },
+            { speaker: `📢`, text: "어떤 숙소를 예약해야 하는지 꼭 확인한 후에 예약해주세요! 😀",
+                customAction: () => {
+                    const questEl = document.querySelector(".quest");
+                    if (questEl) {
+                        questEl.classList.remove("highlighted-quest");
+                    }
+                }
+            }
         ],
         
         nextScene: () => {
