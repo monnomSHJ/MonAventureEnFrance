@@ -34,6 +34,7 @@ const dictionaryPanelArrow = document.querySelector('.dictionary-panel-header-ar
 const dictionaryOverlay = document.querySelector('.dictionary-overlay');
 
 dictionaryPanelHeader.addEventListener('click', () => {
+
   dictionaryPanel.classList.toggle('open');
   dictionaryOverlay.classList.toggle('show');
 
@@ -60,7 +61,9 @@ function init() {
   setupDebugMenu();
 }
 
-init();
+if (document.getElementById("dialogue-box")) {
+  init();
+}
 
 // 안전 저장 방지
 window.addEventListener("beforeunload", function (e) {

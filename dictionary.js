@@ -71,6 +71,7 @@ export function renderDictionaryCards(data) {
 
 export function setupDictionarySearch() {
   const input = document.getElementById("dictionary-search");
+  if (!input) return;
   input.addEventListener("input", () => {
     const keyword = input.value.toLowerCase();
     const searchTarget = showingAllWords ? dictionaryData : dictionaryData.filter(entry => entry.saved);
