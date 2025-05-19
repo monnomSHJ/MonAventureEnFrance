@@ -132,34 +132,67 @@ hr {
     padding: 4px 12px;
 }
 
-.scene-summary-block {
+.scene {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    gap: 36px;
 
     border: 8px solid transparent;
     border-image: url('assets/images/inputBoxBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
-    padding: 4px 12px;
-    gap: 24px;
 
+    padding: 12px 12px;
     margin-bottom: 8px;
 }
 
-.scene-description {
+.scene-text {
     flex: 5;
+    margin-left: 8px;
 }
 
-.scene-description .dialogue {
-    color: rgb(64, 64, 176);
+.scene-text h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.scene-text p {
+    font-size: 14px;
+}
+
+.scene-text ul {
+    padding-left: 28px;
+}
+
+.scene .dialogueList {
+    color: rgb(66, 66, 152);
+}
+
+.scene .dialogueList li {
+    list-style-type: '💬 ';
+}
+
+.scene .goalList li {
+    list-style-type: '💡 ';
 }
 
 .scene-image {
     background: #ccc;
-    flex: 2;
-    height: 200px;
+    flex: 3;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+}
+
+.scene-image img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 #notes {
@@ -214,14 +247,7 @@ button:active {
 
 @media print {
 
-    .container {
-        width: 100%;
-        padding: 0;
-        box-sizing: border-box;
-        page-break-after: always;
-    }
-
-    .scene-summary-block {
+    .scene {
         page-break-inside: avoid;
         break-inside: avoid;
     }
@@ -229,8 +255,6 @@ button:active {
     button {
         display: none !important;
     }
-
-    
 
     #notes {
         page-break-inside: avoid;

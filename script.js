@@ -75,4 +75,15 @@ window.addEventListener("beforeunload", function (e) {
   e.returnValue = "";
 });
 
+if (location.pathname.includes("result")) {
+  state.selectedHotelId = localStorage.getItem("selectedHotelId") || "";
+  try {
+    state.selectedDish = JSON.parse(localStorage.getItem("selectedDish")) || {};
+    state.selectedCafe = JSON.parse(localStorage.getItem("selectedCafe")) || {};
+  } catch {
+    state.selectedDish = {};
+    state.selectedCafe = {};
+  }
+}
+
 window.state = state;

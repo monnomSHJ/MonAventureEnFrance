@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const vocabList = JSON.parse(localStorage.getItem("savedVocabList") || "[]");
 
-    const finalScore = Math.round(score + balance * 0.5);
+    const finalScore = parseInt(score) + Math.floor(parseInt(balance) / 2);
 
     document.getElementById("user-name").textContent = userName;
     document.getElementById("user-balance").textContent = balance
@@ -28,40 +28,48 @@ window.addEventListener("DOMContentLoaded", () => {
         const sceneElement = document.createElement("div");
         sceneElement.classList.add("scene")
 
+        const textContainer = document.createElement("div");
+        textContainer.classList.add("scene-text");
+
         const title = document.createElement("h3");
         title.textContent = scene.sceneTitle;
-        sceneElement.appendChild(title);
+        textContainer.appendChild(title);
 
         const description = document.createElement("p");
         description.textContent = scene.description;
-        sceneElement.appendChild(description);
+        textContainer.appendChild(description);
 
         if (scene.dialogues && scene.dialogues.length > 0) {
             const dialogueList = document.createElement("ul");
+            dialogueList.classList.add("dialogueList");
             scene.dialogues.forEach(d => {
                 const li = document.createElement("li");
                 li.textContent = d;
                 dialogueList.appendChild(li);
             });
-            sceneElement.appendChild(dialogueList);
+            textContainer.appendChild(dialogueList);
         }
 
         if (scene.goals && scene.goals.length > 0) {
             const goalList = document.createElement("ul");
+            goalList.classList.add("goalList");
             scene.goals.forEach(g => {
                 const li = document.createElement("li");
                 li.textContent = g;
                 goalList.appendChild(li);
             });
-            sceneElement.appendChild(goalList);
+            textContainer.appendChild(goalList);
         }
 
-        if (scene.sceneImage) {
-            const img = document.createElement("img");
-            img.src = scene.sceneImage;
-            img.alt = scene.sceneTitle;
-            sceneElement.appendChild(img);
-        }
+        sceneElement.appendChild(textContainer);
+
+        const imageContainer = document.createElement("div");
+        imageContainer.classList.add("scene-image");
+        const img = document.createElement("img");
+        img.src = scene.sceneImage;
+        img.alt = scene.sceneTitle;
+        imageContainer.appendChild(img);
+        sceneElement.appendChild(imageContainer);
 
         sceneContainer.appendChild(sceneElement);
     });

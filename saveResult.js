@@ -7,6 +7,10 @@ export function saveResultToLocalStorage() {
         localStorage.setItem("score", state.score || "0");
         localStorage.setItem("savedVocabList", JSON.stringify(state.savedVocabList || []));
 
+        localStorage.setItem("selectedHotelId", state.selectedHotelId || "");
+        localStorage.setItem("selectedDish", JSON.stringify(state.selectedDish || {}));
+        localStorage.setItem("selectedCafe", JSON.stringify(state.selectedCafe || {}));
+
     } catch (err) {
         console.error("오류")
     }
