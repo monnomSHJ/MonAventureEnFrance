@@ -185,7 +185,6 @@ export async function updateDialogue() {
         return;
     }
 
-    
     if (maybeShowChoiceAgain(line)) {
         overlay.classList.add("show");
         return;
@@ -242,7 +241,11 @@ export function setupDialogueClick() {
     window.addEventListener("keydown", async (e) => {
         if (e.code === "Space") {
             const dialogueBox = document.getElementById("dialogue-box");
-            if (!dialogueBox || dialogueBox.classList.contains("hidden")) return;
+
+            if (!dialogueBox ||
+                dialogueBox.classList.contains("hidden") ||
+                overlay.classList.contains("show")
+            ) return;
 
             e.preventDefault();
 

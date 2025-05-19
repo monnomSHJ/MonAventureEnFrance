@@ -1049,6 +1049,8 @@ body {
     text-align: left;
     width: 100%;
     max-width: 256px;
+    text-indent: -24px;
+    margin-left: 24px;
 }
 
 .mini-map-controls {
@@ -1371,7 +1373,7 @@ body {
     }
 
     .overlay-image {
-        width: 50%;
+        width: 53%;
     }
 
     .popup {
@@ -1609,7 +1611,7 @@ body {
     }
     
     .popup-production-meaning {
-        font-size: 15px;
+        font-size: 18px;
         margin-top: 24px;
     }
     
@@ -1631,8 +1633,11 @@ body {
     }
     
     .popup.mini-map-popup .popup-content-text {
-        max-width: 90%;
-        font-size: 16px;
+        max-width: 85%;
+        font-size: 18px;
+        text-indent: -32px;
+        margin-left: 40px;
+        line-height: 24px;
     }
 
     .mini-map {
@@ -1682,7 +1687,7 @@ body {
     }
 
     .transport-card-title {
-        font-size: 14px;
+        font-size: 18px;
         text-align: center;
         font-weight: 500;
         margin-bottom: 6px;
@@ -1690,7 +1695,7 @@ body {
     }
 
     .transport-card-discription {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 10;
         line-height: 16px;
         margin-left: 32px;
@@ -1701,7 +1706,7 @@ body {
 
     .transport-card-select {
         width: 100%;
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .transport-confirm-wrap {
