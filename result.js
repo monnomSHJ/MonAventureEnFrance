@@ -1,3 +1,5 @@
+import { sceneSummaries as predefinedScenes } from "./sceneSummary.js";
+
 window.addEventListener("DOMContentLoaded", () => {
 
     const userName = localStorage.getItem("userName") || "-";
@@ -5,8 +7,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const score = localStorage.getItem("score") || "0";
 
     const vocabList = JSON.parse(localStorage.getItem("savedVocabList") || "[]");
-    const travelPath = JSON.parse(localStorage.getItem("travelPath") || "[]");
-    const sceneSummaries = JSON.parse(localStorage.getItem("sceneSummaries") || "[]");
 
     const finalScore = Math.round(score + balance * 0.5);
 
@@ -22,23 +22,21 @@ window.addEventListener("DOMContentLoaded", () => {
         vocabContainer.appendChild(li);
     });
 
-    const travelContainer = document.getElementById("travel-steps");
-    travelPath.forEach(step => {
-        const li = document.createElement("li");
-        li.textContent = step;
-        travelContainer.appendChild(li);
-    });
+    const sceneContainer = document.getElementById("scenes");
+    predefinedScenes.forEach(scene => {
+        const block = document.createElement("div");
+        block.className = "scene-summary-block";
 
-    const scenesContainer = document.getElementById("scenes");
-    sceneSummaries.forEach(scene => {
-        const div = document.createElement("div");
-        div.className = "scene-summary-block";
-        div.innerHTML = `
-        <h3>${scene.title || "Scène"}</h3>
-        <p><strong>🗣 대화:</strong> ${scene.dialogue || "-"}</p>
-        <p><strong>🎎 문화 요소:</strong> ${scene.culture || "-"}</p>
-        <p><strong>💬 표현:</strong> ${scene.expressions || "-"}</p>
+        block.innerHTML = `
+            <div class="scene-description">
+                <h3>${scene.sceneTitle}</h3>
+                <p>${scene.description}</p>
+                ${scene.dialogues ? `<p><strong>🗨️ </strong> ${scene.dialogues.join(", ")}</p>` : ""}
+                ${scene.goals ? `<ul>${scene.goals.map(g => `<li>${g}</li>`).join("")}</ul>` : ""}
+            </div>
+            <div class="scene-image" style="background-image: url('${scene.sceneImage}')"></div>
         `;
-        scenesContainer.appendChild(div);
+
+        sceneContainer.appendChild(block);
     });
 });

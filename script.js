@@ -23,6 +23,7 @@ export const state = {
   viewedMarseilleArtworks: new Set(),
   viewedStrasbourgArtworks: new Set(),
   viewedBordeauxArtworks: new Set(),
+  sceneSummaries: []
 };
 
 // 단어장 기능
