@@ -65,7 +65,7 @@ function setupReservationUI() {
             btn3.classList.add('hidden');
 
             popup.classList.remove("hidden");
-            overlay.classList.toggle("show");
+            overlay.classList.add("show");
 
             btn2.onclick = () => {
                 selectedHotelID = id;
@@ -137,7 +137,7 @@ function setupReservationUI() {
         }
 
         popup.classList.remove("hidden");
-        overlay.classList.toggle("show");
+        overlay.classList.add("show");
 
         return;
     });

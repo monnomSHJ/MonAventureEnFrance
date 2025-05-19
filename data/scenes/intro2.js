@@ -9,7 +9,7 @@ export function getIntro2Scene() {
         background_img: "assets/images/intro2Scene.jpg",
         narration: "",
         lines: [
-            { speaker: `📢`, text: "안녕하세요! Mon Aventure en France에 오신 걸 환영합니다." },
+            { speaker: `📢`, text: "안녕하세요! Mon Aventure en France에 오신 걸 환영합니다. (다음 버튼을 클릭하거나 스페이스바를 입력하세요.)" },
             { speaker: `📢`, text: "여러분은 이제 곧 가상의 프랑스로 떠나..." },
             { speaker: `📢`, text: "주어진 퀘스트들을 수행하며 여러분이 배운 프랑스어를 복습하는 시간을 가지게 될 예정입니다." },
             { speaker: `📢`, text: "기대되시나요?" },

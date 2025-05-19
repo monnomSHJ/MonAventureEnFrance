@@ -33,6 +33,7 @@ export function getIntro1Scene() {
 };
 
 export function setupIntroEvents() {
+  let isKeyHandlerActive = false;
 
   const popup = document.getElementById("popup");
   const popupHeaderTitle = document.querySelector(".popup-header-title");
@@ -40,71 +41,103 @@ export function setupIntroEvents() {
   const btn1 = document.getElementById("popup-content-btn1");
   const btn2 = document.getElementById("popup-content-btn2");
   const btn3 = document.getElementById("popup-content-btn3");
+  const startBtn = document.getElementById("start-btn");
+  const nameInput = document.getElementById("userName");
 
-  setTimeout(() => {
-    const startBtn = document.getElementById("start-btn");
-    const nameInput = document.getElementById("userName");
+  const keyHandler = function (e) {
+    if (popup.classList.contains("hidden")) return;
 
-    function handleStart() {
-      const input = nameInput.value.trim();
+    const currentInput = nameInput.value.trim();
 
-      if (!input) {
-        popupHeaderTitle.textContent = "오류 발생!";
-        popupContentText.innerHTML = "이름을 입력해주세요.";
-
-        btn1.textContent = "확인";
-        btn2.classList.add('hidden');
-        btn3.classList.add('hidden');
-
-        popup.classList.remove('hidden');
-        overlay.classList.toggle('show');
-
-        btn1.onclick = () => {
-          popup.classList.add("hidden");
-          overlay.classList.remove("show"); 
-        };
-        return;
+    if (!currentInput && (e.key === "Escape" || e.key === "Enter")) {
+      closePopup();
+    } else if (currentInput) {
+      if (e.key === "Escape") {
+        btn1.click();
+      } else if (e.key === "Enter") {
+        btn2.click();
       }
+    }
+  };
 
-      state.userName = input;
+  function closePopup() {
+    popup.classList.add("hidden");
+    overlay.classList.remove("show");
+    
+    if (isKeyHandlerActive) {
+      window.removeEventListener("keydown", keyHandler);
+      isKeyHandlerActive = false;
+    }
+  }
 
-      popupHeaderTitle.textContent = "정보 확인";
-      popupContentText.innerHTML = `
-      <p>아래 이름이 맞습니까?</p>
-      <h3>>  ${state.userName}  <</h3>
-      `
+  function handleStart() {
+    if (!popup.classList.contains("hidden")) return;
 
-      btn1.textContent = "아니요";
-      btn1.classList.remove('hidden');
-      btn2.textContent = "예";
-      btn2.classList.remove('hidden');
+    const input = nameInput.value.trim();
+
+    if (!input) {
+      popupHeaderTitle.textContent = "오류 발생!";
+      popupContentText.innerHTML = "이름을 입력해주세요.";
+
+      btn1.textContent = "확인";
+      btn2.classList.add('hidden');
       btn3.classList.add('hidden');
 
       popup.classList.remove('hidden');
-      overlay.classList.toggle('show');
+      overlay.classList.add('show');
 
+      btn1.onclick = closePopup;
 
-      btn1.onclick = () => {
-        popup.classList.add("hidden");
-        overlay.classList.remove("show");
-      };
+      if (!isKeyHandlerActive) {
+        setTimeout(() => {
+          window.addEventListener("keydown", keyHandler);
+          isKeyHandlerActive = true;
+        }, 0);
+      }
 
-      btn2.onclick = () => {
-        popup.classList.add("hidden");
-        overlay.classList.remove("show");
-        renderStatusBar();
-        loadScene(getIntro2Scene());
-        console.log("loadScene 호출");
-      };
-     }
+      return;
+    }
+
+    state.userName = input;
+
+    popupHeaderTitle.textContent = "정보 확인";
+    popupContentText.innerHTML = `
+    <p>아래 이름이 맞습니까?</p>
+    <h3>>  ${state.userName}  <</h3>
+    `
+
+    btn1.textContent = "아니요";
+    btn1.classList.remove('hidden');
+    btn2.textContent = "예";
+    btn2.classList.remove('hidden');
+    btn3.classList.add('hidden');
+
+    popup.classList.remove('hidden');
+    overlay.classList.add('show');
+
+    btn1.onclick = closePopup;
+
+    btn2.onclick = () => {
+      closePopup();
+      renderStatusBar();
+      loadScene(getIntro2Scene());
+      console.log("loadScene 호출");
+    };
+
+    if (!isKeyHandlerActive) {
+      setTimeout(() => {
+        window.addEventListener("keydown", keyHandler);
+        isKeyHandlerActive = true;
+      }, 0);
+    }
+  }
 
   if (startBtn && nameInput) {
     startBtn.addEventListener("click", handleStart);
     nameInput.addEventListener("keydown", (e) => {
-      if (e.key === 'Enter') {
+      if (e.key === "Enter" && popup.classList.contains("hidden")) {
         handleStart();
       }
     });
   }
-  }, 0);
 }

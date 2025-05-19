@@ -235,25 +235,40 @@ export async function updateDialogue() {
 export function setupDialogueClick() {
     contentMain.addEventListener("click", async (e) => {
         if (e.target.id === "next-btn") {
-            if (isTyping) {
-                skipTyping = true;
-                return;
-            }
-      
-            currentLineIndex++;
-
-            if (currentScene && currentLineIndex < currentScene.lines.length) {
-                await updateDialogue();
-            } else {
-                if (typeof currentScene.nextScene === "function") {
-                    const next = currentScene.nextScene();
-                    loadScene(next);
-                    renderQuest(state.currentQuest);
-                }
-            }
+            await handleNextLine();
         }
     });
-} 
+
+    window.addEventListener("keydown", async (e) => {
+        if (e.code === "Space") {
+            const dialogueBox = document.getElementById("dialogue-box");
+            if (!dialogueBox || dialogueBox.classList.contains("hidden")) return;
+
+            e.preventDefault();
+
+            await handleNextLine();
+        }
+    });
+}
+
+async function handleNextLine() {
+    if (isTyping) {
+        skipTyping = true;
+        return;
+    }
+
+    currentLineIndex++;
+
+    if (currentScene && currentLineIndex < currentScene.lines.length) {
+        await updateDialogue();
+    } else {
+        if (typeof currentScene.nextScene === "function") {
+            const next = currentScene.nextScene();
+            loadScene(next);
+            renderQuest(state.currentQuest);
+        }
+    }
+}
 
 
 
