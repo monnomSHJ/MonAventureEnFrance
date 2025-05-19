@@ -8,6 +8,7 @@ export function getToilet3Scene() {
         background_img: "assets/images/parisMainStreet.jpg",
         narration: "",
         lines: [
+            { speaker: `📢`, text: `1 유로가 차감되었습니다.`},
             { speaker: `👤 ${state.userName}`, text: `휴... 개운하다.` },
             { speaker: `👤 ${state.userName}`, text: `파리에서의 하루를 아주 알차게 보낸 것 같아.` },
             { speaker: `👤 ${state.userName}`, text: `이제 숙소로 돌아가서... 내일의 계획을 정리해보자.` },
