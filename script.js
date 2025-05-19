@@ -11,6 +11,7 @@ export const state = {
   userName: "-",
   balance: 500,
   score: 0,
+  savedVocabList: [],
   currentQuest: '',
   selectedHotelName: '',
   selectedDish: 'null',
@@ -21,7 +22,7 @@ export const state = {
   viewedLyonArtworks: new Set(),
   viewedMarseilleArtworks: new Set(),
   viewedStrasbourgArtworks: new Set(),
-  viewedBordeauxArtworks: new Set()
+  viewedBordeauxArtworks: new Set(),
 };
 
 // 단어장 기능
@@ -64,3 +65,5 @@ window.addEventListener("beforeunload", function (e) {
   e.preventDefault();
   e.returnValue = "";
 });
+
+window.state = state;

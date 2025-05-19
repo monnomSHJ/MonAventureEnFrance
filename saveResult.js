@@ -5,13 +5,8 @@ export function saveResultToLocalStorage() {
         localStorage.setItem("userName", state.userName || "-");
         localStorage.setItem("balance", state.balance || "0");
         localStorage.setItem("score", state.score || "0");
+        localStorage.setItem("savedVocabList", JSON.stringify(state.savedVocabList || []));
 
-        if (window.dictionary?.entry?.saved) {
-            localStorage.setItem("savedVocabList", JSON.stringify(dictionary.entry.saved));
-        } else {
-            localStorage.setItem("savedVocabList", "[]");
-        }
-    
     } catch (err) {
         console.error("오류")
     }

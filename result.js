@@ -1,8 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
 
     const userName = localStorage.getItem("userName") || "-";
-    const balance = parseFloat(localStorage.getItem("balance")) || 0;
-    const score = parseFloat(localStorage.getItem("score")) || 0;
+    const balance = localStorage.getItem("balance") || "0";
+    const score = localStorage.getItem("score") || "0";
+
     const vocabList = JSON.parse(localStorage.getItem("savedVocabList") || "[]");
     const travelPath = JSON.parse(localStorage.getItem("travelPath") || "[]");
     const sceneSummaries = JSON.parse(localStorage.getItem("sceneSummaries") || "[]");
@@ -10,8 +11,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const finalScore = Math.round(score + balance * 0.5);
 
     document.getElementById("user-name").textContent = userName;
-    document.getElementById("user-balance").textContent = balance.toFixed(2);
-    document.getElementById("user-score").textContent = score.toFixed(1);
+    document.getElementById("user-balance").textContent = balance
+    document.getElementById("user-score").textContent = score;
     document.getElementById("total-score").textContent = finalScore;
 
     const vocabContainer = document.getElementById("vocab-items");

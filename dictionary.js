@@ -1,3 +1,5 @@
+import { state } from "./script.js";
+
 console.log("dictionary.js 로드됨");
 
 let dictionaryData = [];
@@ -46,6 +48,16 @@ export function renderDictionaryCards(data) {
     saveButton.addEventListener('click', (event) => {
       event.stopPropagation();
       entry.saved = !entry.saved;
+
+      const formatted = `${entry.french} - ${entry.korean}`;
+      if (entry.saved) {
+        if (!state.savedVocabList.includes(formatted)) {
+          state.savedVocabList.push(formatted);
+        }
+      } else {
+        state.savedVocabList = state.savedVocabList.filter(item => item !== formatted);
+      }
+
       saveButton.className = `save-btn ${entry.saved ? 'save-filled' : 'save-empty'}`;
       console.log(`단어 "${entry.french}"이(가) 저장되었습니다.`);
       updateDictionaryView();
@@ -96,3 +108,4 @@ loadDictionary().then(() => {
     setupToggleSavedWordsButton();
     updateDictionaryView();
 });
+
