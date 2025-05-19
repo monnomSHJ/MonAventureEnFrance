@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>Résultat de Mon Aventure en France</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style_result.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🎉 나의 프랑스 여행기 🎉</h1>
+
+      <!-- 유저 정보 -->
+      <section id="user-info">
+        <h2>👤 내 정보</h2>
+        <p><strong>이름 :</strong> <span id="user-name"></span></p>
+        <p><strong>잔고 :</strong> <span id="user-balance"></span> €</p>
+        <p><strong>점수 :</strong> <span id="user-score"></span> pts</p>
+      </section>
+
+      <!-- 최종 점수 -->
+      <section id="final-score">
+        <h2>🧮 최종 점수</h2>
+        <p><strong>점수 결산: </strong> <span id="total-score"></span> / 100</p>
+      </section>
+
+      <!-- 단어장 -->
+      <section id="vocab-list">
+        <h2>📚 저장한 어휘 목록</h2>
+        <ul id="vocab-items"></ul>
+      </section>
+
+      <!-- 여행 경로 -->
+      <section id="travel-path">
+        <h2>🗺️ 여행 경로</h2>
+        <ol id="travel-steps"></ol>
+      </section>
+
+      <!-- 씬 요약 -->
+      <section id="scene-summary">
+        <h2>🎭 모험 일지</h2>
+        <div id="scenes"></div>
+      </section>
+
+      <!-- 자유 필기 -->
+      <section id="notes">
+        <h2>📝 필기 노트</h2>
+        <textarea placeholder="기록하고 싶은 내용을 정리해보세요!" rows="8" style="width:100%;"></textarea>
+      </section>
+
+      <div style="margin-top: 20px; text-align: center;">
+        <button onclick="window.print()">📄 Imprimer en PDF</button>
+      </div>
+    </div>
+
+    <script type="module" src="result.js"></script>
+  </body>
+</html>
