@@ -1,4 +1,4 @@
-import { sceneSummaries as predefinedScenes } from "./sceneSummary.js";
+import { getSceneSummaries } from './sceneSummary.js';
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -23,20 +23,46 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     const sceneContainer = document.getElementById("scenes");
-    predefinedScenes.forEach(scene => {
-        const block = document.createElement("div");
-        block.className = "scene-summary-block";
+    const sceneSummaries = getSceneSummaries();
+    sceneSummaries.forEach(scene => {
+        const sceneElement = document.createElement("div");
+        sceneElement.classList.add("scene")
 
-        block.innerHTML = `
-            <div class="scene-description">
-                <h3>${scene.sceneTitle}</h3>
-                <p>${scene.description}</p>
-                ${scene.dialogues ? `<p><strong>🗨️ </strong> ${scene.dialogues.join(", ")}</p>` : ""}
-                ${scene.goals ? `<ul>${scene.goals.map(g => `<li>${g}</li>`).join("")}</ul>` : ""}
-            </div>
-            <div class="scene-image" style="background-image: url('${scene.sceneImage}')"></div>
-        `;
+        const title = document.createElement("h3");
+        title.textContent = scene.sceneTitle;
+        sceneElement.appendChild(title);
 
-        sceneContainer.appendChild(block);
+        const description = document.createElement("p");
+        description.textContent = scene.description;
+        sceneElement.appendChild(description);
+
+        if (scene.dialogues && scene.dialogues.length > 0) {
+            const dialogueList = document.createElement("ul");
+            scene.dialogues.forEach(d => {
+                const li = document.createElement("li");
+                li.textContent = d;
+                dialogueList.appendChild(li);
+            });
+            sceneElement.appendChild(dialogueList);
+        }
+
+        if (scene.goals && scene.goals.length > 0) {
+            const goalList = document.createElement("ul");
+            scene.goals.forEach(g => {
+                const li = document.createElement("li");
+                li.textContent = g;
+                goalList.appendChild(li);
+            });
+            sceneElement.appendChild(goalList);
+        }
+
+        if (scene.sceneImage) {
+            const img = document.createElement("img");
+            img.src = scene.sceneImage;
+            img.alt = scene.sceneTitle;
+            sceneElement.appendChild(img);
+        }
+
+        sceneContainer.appendChild(sceneElement);
     });
 });

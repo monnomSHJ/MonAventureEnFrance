@@ -112,6 +112,7 @@ function setupReservationUI() {
         const isBreakfastNotOk = breakfastInfo.includes("non");
 
         state.selectedHotelName = hotelName;
+        state.selectedHotelId = hotel.id;
 
         popupContentText.innerHTML = `
             <p>${hotelName} 예약이 완료되었습니다.</p>

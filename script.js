@@ -13,6 +13,7 @@ export const state = {
   score: 0,
   savedVocabList: [],
   currentQuest: '',
+  selectedHotelId: '',
   selectedHotelName: '',
   selectedDish: 'null',
   selectedCafe: 'null',

@@ -152,6 +152,10 @@ hr {
     flex: 5;
 }
 
+.scene-description .dialogue {
+    color: rgb(64, 64, 176);
+}
+
 .scene-image {
     background: #ccc;
     flex: 2;

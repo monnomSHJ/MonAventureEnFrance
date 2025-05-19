@@ -26,6 +26,8 @@ export async function loadDictionary() {
 
 export function renderDictionaryCards(data) {
   const list = document.getElementById("dictionary-list");
+  if (!list) return;
+
   list.innerHTML = "";
 
   data.forEach(entry => {
@@ -93,10 +95,13 @@ function updateDictionaryView() {
 }
 
 function updateToggleButtonAppearance() {
+  if (!toggleButton) return;
   toggleButton.className = showingAllWords ? 'show-saved-btn' : 'show-all-btn';
 }
 
 function setupToggleSavedWordsButton() {
+  if (!toggleButton) return;
+
   toggleButton.addEventListener('click', () => {
     showingAllWords = !showingAllWords;
     updateDictionaryView();
