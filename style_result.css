@@ -7,12 +7,9 @@
 }
 @import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
 
-@page {
+*, *::before, *::after {
+    box-sizing: border-box;
 }
-
-@media print {
-}
-
 body {
     font-family: 'Jersey 25', 'DungGeunMo', sans-serif;
     margin: 0;
@@ -38,12 +35,15 @@ body {
     margin: auto;
     padding: 16px;
 
-    border: 10px solid transparent;
+    display: flex;
+    flex-direction: column;
+
+    border: 8px solid transparent;
     border-image: url('assets/images/contentMainBg.png');
     border-image-slice: 20 fill;
-    border-image-width: 10px;
+    border-image-width: 8px;
 
-    gap: 8px;
+    gap: 12px;
 }
 
 h1, h2, h3 {
@@ -77,7 +77,6 @@ hr {
     flex-direction: row;
     width: 100%;
     gap: 8px;
-    margin-bottom: 12px;
 }
 
 #user-container {
@@ -90,7 +89,7 @@ hr {
 
 #user-info {
     border: 8px solid transparent;
-    border-image: url('assets/images/statusItemBg.png');
+    border-image: url('assets/images/inputBoxBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
 
@@ -103,7 +102,7 @@ hr {
 
 #final-score {
     border: 8px solid transparent;
-    border-image: url('assets/images/statusItemBg.png');
+    border-image: url('assets/images/inputBoxBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
 
@@ -112,7 +111,7 @@ hr {
 
 #vocab-list {
     border: 8px solid transparent;
-    border-image: url('assets/images/statusItemBg.png');
+    border-image: url('assets/images/inputBoxBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
 
@@ -137,23 +136,46 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
 
     border: 8px solid transparent;
     border-image: url('assets/images/inputBoxBg.png');
     border-image-slice: 20 fill;
     border-image-width: 8px;
-    margin-bottom: 8px;
-
     padding: 4px 12px;
+    gap: 24px;
+
+    margin-bottom: 8px;
 }
 
 .scene-description {
-    flex: 4;
+    flex: 5;
 }
 
 .scene-image {
     background: #ccc;
-    flex: 1;
+    flex: 2;
+    height: 200px;
+}
+
+#notes {
+    border: 8px solid transparent;
+    border-image: url('assets/images/inputBoxBg.png');
+    border-image-slice: 20 fill;
+    border-image-width: 8px;
+
+    padding: 4px 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+#notes textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    margin-bottom: 8px;
 }
 
 button {
@@ -165,7 +187,49 @@ button {
 
     width: 100%;
 
-    padding: 8x 24px;
+    padding: 8px 24px;
     font-size: 16px;
     font-family: 'Jersey 25', 'DungGeunMo', sans-serif;
+
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.02);
+    filter: brightness(90%);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+@page {
+    size: A4;
+    margin: 20mm;
+}
+
+@media print {
+
+    .container {
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+        page-break-after: always;
+    }
+
+    .scene-summary-block {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    button {
+        display: none !important;
+    }
+
+    
+
+    #notes {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
 }

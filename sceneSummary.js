@@ -2,7 +2,7 @@ export const sceneSummaries = [
     {
         sceneTitle: "🏨 숙소 예약",
         description: `파리에 가기 전, 파리에서 묵을 숙소를 예약했다. 내가 예약한 숙소는...`,
-        sceneImage: ""
+        sceneImage: ``
         // 예약한 숙소 이름 및 숙소 정보 가져오기
         // 각 Scene마다 이미지 하나씩 할당(다이어리 처럼)
     },
