@@ -82,7 +82,7 @@ hr {
 #user-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 8px;
     flex: 2;
 }

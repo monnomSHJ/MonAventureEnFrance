@@ -33,7 +33,9 @@ const dictionaryPanelHeader = document.getElementById('dictionary-panel-header')
 const dictionaryPanelArrow = document.querySelector('.dictionary-panel-header-arrow');
 const dictionaryOverlay = document.querySelector('.dictionary-overlay');
 
-dictionaryPanelHeader.addEventListener('click', () => {
+
+if (!document.getElementById("user-container")) {
+  dictionaryPanelHeader.addEventListener('click', () => {
 
   dictionaryPanel.classList.toggle('open');
   dictionaryOverlay.classList.toggle('show');
@@ -50,6 +52,8 @@ dictionaryOverlay.addEventListener('click', () => {
   dictionaryOverlay.classList.remove('show');
   dictionaryPanelArrow.textContent = '▲';
 });
+}
+
 
 // 초기화
 function init() {
@@ -61,7 +65,7 @@ function init() {
   setupDebugMenu();
 }
 
-if (document.getElementById("dialogue-box")) {
+if (!document.getElementById("user-container")) {
   init();
 }
 
