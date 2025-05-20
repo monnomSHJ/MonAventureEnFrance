@@ -12,6 +12,14 @@
     "korean": "11시"
   },
   {
+    "french": "17 heures",
+    "korean": "17시"
+  },
+  {
+    "french": "18 heures",
+    "korean": "18시"
+  },
+  {
     "french": "200 mètres",
     "korean": "200 미터"
   },
@@ -32,8 +40,16 @@
     "korean": "이곳에서 10분 거리에"
   },
   {
+    "french": "à cause de",
+    "korean": "~ 때문에"
+  },
+  {
     "french": "à côté de ~",
     "korean": "~의 옆에"
+  },
+  {
+    "french": "acheter",
+    "korean": "사다"
   },
   {
     "french": "à deux rues d'ici",
@@ -48,6 +64,10 @@
     "korean": "포장하기"
   },
   {
+    "french": "à l'entrée",
+    "korean": "입구에서"
+  },
+  {
     "french": "à l'intérieur",
     "korean": "실내에서"
   },
@@ -60,6 +80,10 @@
     "korean": "계산서"
   },
   {
+    "french": "aimé par des célébrités",
+    "korean": "유명인들에게 사랑 받는"
+  },
+  {
     "french": "agréable",
     "korean": "쾌적한"
   },
@@ -70,6 +94,10 @@
   {
     "french": "animaux",
     "korean": "동물"
+  },
+  {
+    "french": "animaux ne sont pas autorisés",
+    "korean": "동물들은 허용되지 않는다"
   },
   {
     "french": "après",
@@ -96,8 +124,16 @@
     "korean": "향"
   },
   {
+    "french": "assez de ~",
+    "korean": "충분한 ~"
+  },
+  {
     "french": "attendez",
     "korean": "기다려주세요"
+  },
+  {
+    "french": "au coucher du soleil",
+    "korean": "해질 때"
   },
   {
     "french": "au cinquième étage",
@@ -106,6 +142,10 @@
   {
     "french": "au moment du départ",
     "korean": "떠날 때"
+  },
+  {
+    "french": "Au musée",
+    "korean": "박물관에서"
   },
   {
     "french": "au revoir",
@@ -124,6 +164,10 @@
     "korean": "전에"
   },
   {
+    "french": "Avant de partir",
+    "korean": "출발 전"
+  },
+  {
     "french": "avec ~",
     "korean": "~을 가지고"
   },
@@ -134,6 +178,10 @@
   {
     "french": "aventure",
     "korean": "모험"
+  },
+  {
+    "french": "Avez-vous fini de ~",
+    "korean": "~을 끝내셨나요?"
   },
   {
     "french": "avez-vous une réservation ?",
@@ -172,8 +220,16 @@
     "korean": "~에 오신 것을 환영합니다"
   },
   {
+    "french": "billet",
+    "korean": "티켓"
+  },
+  {
     "french": "billet électronique",
     "korean": "전자 티켓"
+  },
+  {
+    "french": "boire",
+    "korean": "마시다"
   },
   {
     "french": "bois",
@@ -184,12 +240,20 @@
     "korean": "맛있는"
   },
   {
+    "french": "Bonne visite !",
+    "korean": "즐거운 관람 되세요!"
+  },
+  {
     "french": "bon voyage",
     "korean": "재밌는 여행 되세요!"
   },
   {
     "french": "Bonjour",
     "korean": "안녕하세요"
+  },
+  {
+    "french": "Bordeaux",
+    "korean": "보르도"
   },
   {
     "french": "Bordeaux Mérignac Aéroport",
@@ -216,6 +280,22 @@
     "korean": "빵집"
   },
   {
+    "french": "bouteille",
+    "korean": "한 병"
+  },
+  {
+    "french": "Ce",
+    "korean": "이"
+  },
+  {
+    "french": "Ce musée n'est pas intéressant que pour les adultes",
+    "korean": "이 박물관은 어른들에게만 흥미로운 것이 아니다"
+  },
+  {
+    "french": "ce sera",
+    "korean": "그것은 ~일 것이다"
+  },
+  {
     "french": "c'est à gauche de ~",
     "korean": "~의 왼쪽에 있다"
   },
@@ -240,8 +320,16 @@
     "korean": "운하"
   },
   {
+    "french": "Ça ne fait rien !",
+    "korean": "괜찮아요!"
+  },
+  {
     "french": "carte d'étudiant",
     "korean": "학생증"
+  },
+  {
+    "french": "cathédrale",
+    "korean": "대성당"
   },
   {
     "french": "Cathédrale Notre-dame de Strasbourg",
@@ -256,6 +344,10 @@
     "korean": "~가 처음이다"
   },
   {
+    "french": "c'est qui ?",
+    "korean": "그게 누구에요?"
+  },
+  {
     "french": "cela fait 12 euros",
     "korean": "이건 12유로입니다"
   },
@@ -266,6 +358,10 @@
   {
     "french": "celui que vous préférez",
     "korean": "당신의 마음에 드는 것"
+  },
+  {
+    "french": "C'est pas grave !",
+    "korean": "별 일 아니에요!"
   },
   {
     "french": "Charles de Gaulle",
@@ -280,6 +376,22 @@
     "korean": "고르다"
   },
   {
+    "french": "cigarette",
+    "korean": "담배"
+  },
+  {
+    "french": "colline",
+    "korean": "언덕"
+  },
+  {
+    "french": "comme",
+    "korean": "~와 같은"
+  },
+  {
+    "french": "commencent à s'allumer",
+    "korean": "켜지기 시작해요"
+  },
+  {
     "french": "comment",
     "korean": "어떻게"
   },
@@ -288,12 +400,24 @@
     "korean": "이해하다"
   },
   {
+    "french": "Comme vous parlez français",
+    "korean": "당신은 프랑스어를 할 수 있기 때문에"
+  },
+  {
+    "french": "confirmation",
+    "korean": "확인 메시지"
+  },
+  {
     "french": "confort",
     "korean": "쾌적함"
   },
   {
     "french": "consignes pour les visiteurs",
     "korean": "방문자 수칙"
+  },
+  {
+    "french": "Connaissez-vous ~ ?",
+    "korean": "~를 알고 계신가요?"
   },
   {
     "french": "continuez tout droit",
@@ -324,6 +448,18 @@
     "korean": "~에서"
   },
   {
+    "french": "dans tout le métro",
+    "korean": "지하철 전체 내에서"
+  },
+  {
+    "french": "dans une minute",
+    "korean": "1분 후에"
+  },
+  {
+    "french": "dans quelques minutes",
+    "korean": "몇 분 후에"
+  },
+  {
     "french": "date",
     "korean": "날짜"
   },
@@ -332,8 +468,20 @@
     "korean": "~의"
   },
   {
+    "french": "dégustation",
+    "korean": "시음"
+  },
+  {
     "french": "de 6h30 à 22h30",
     "korean": "6시 30분부터 22시 30분까지"
+  },
+  {
+    "french": "délicieux",
+    "korean": "맛있는"
+  },
+  {
+    "french": "des vêtements de films",
+    "korean": "영화 의상들"
   },
   {
     "french": "départ",
@@ -392,6 +540,10 @@
     "korean": "그것은 12세기와 14세기 사이에 지어졌습니다"
   },
   {
+    "french": "en ce moment",
+    "korean": "지금"
+  },
+  {
     "french": "encore une fois",
     "korean": "한 번 더"
   },
@@ -408,6 +560,10 @@
     "korean": "프랑스에서"
   },
   {
+    "french": "en plus",
+    "korean": "추가로"
+  },
+  {
     "french": "en taxi",
     "korean": "택시로"
   },
@@ -420,6 +576,10 @@
     "korean": "약"
   },
   {
+    "french": "Est-ce que vous aimez ~",
+    "korean": "당신은 ~를 좋아하시나요?"
+  },
+  {
     "french": "est servi",
     "korean": "제공되다"
   },
@@ -430,6 +590,10 @@
   {
     "french": "être à ~",
     "korean": "~에 있다"
+  },
+  {
+    "french": "Et vous ?",
+    "korean": "그럼 당신은요?"
   },
   {
     "french": "Eugène Delacroix",
@@ -472,12 +636,24 @@
     "korean": "꽃"
   },
   {
+    "french": "Fourvière",
+    "korean": "푸르비에르"
+  },
+  {
     "french": "français",
     "korean": "프랑스의"
   },
   {
     "french": "fruits",
     "korean": "과일"
+  },
+  {
+    "french": "fumer",
+    "korean": "흡연하다"
+  },
+  {
+    "french": "fumer non plus",
+    "korean": "담배 역시 허용되지 않는다"
   },
   {
     "french": "garder le silence",
@@ -492,8 +668,16 @@
     "korean": "맛보다"
   },
   {
+    "french": "grève",
+    "korean": "파업"
+  },
+  {
     "french": "guichetière",
     "korean": "창구 직원"
+  },
+  {
+    "french": "guide employé",
+    "korean": "고용된 가이드"
   },
   {
     "french": "historique",
@@ -520,8 +704,20 @@
     "korean": "날씨가 좋다"
   },
   {
+    "french": "il fait très beau !",
+    "korean": "날씨가 매우 좋네요!"
+  },
+  {
     "french": "Il faut ~",
     "korean": "~해야 한다"
+  },
+  {
+    "french": "il ne rester plus que la sortie possible",
+    "korean": "출구만 이용 가능하다"
+  },
+  {
+    "french": "Il ne fait pas beau aujourd'hui ?",
+    "korean": "~를 제게 추천해주실 수 있나요?"
   },
   {
     "french": "il sera remboursé",
@@ -548,16 +744,44 @@
     "korean": "(영화)아이언맨"
   },
   {
+    "french": "J'ai du mal à ~",
+    "korean": "저는 ~ 하는 데에 어려움을 겪고 있어요"
+  },
+  {
+    "french": "J'ai oublié ~",
+    "korean": "나는 ~을 잃어버렸다"
+  },
+  {
     "french": "James Bond",
     "korean": "(영화 007 등장인물명)제임스 본드"
+  },
+  {
+    "french": "Jean-Paul Sartre",
+    "korean": "장 폴 사르트르"
+  },
+  {
+    "french": "Je crois que ~",
+    "korean": "저는 ~라고 생각해요"
   },
   {
     "french": "je déteste le soleil",
     "korean": "저는 햇빛을 매우 싫어해요"
   },
   {
+    "french": "je le savais déjà",
+    "korean": "나는 그것을 이미 알고 있어요"
+  },
+  {
     "french": "je m'appelle ~",
     "korean": "제 이름은 ~입니다"
+  },
+  {
+    "french": "je ne le savais pas",
+    "korean": "저는 그것을 몰랐어요"
+  },
+  {
+    "french": "Je suis désolé pour ~",
+    "korean": "~에 관해 사과 말씀을 드립니다"
   },
   {
     "french": "je suis là pour vous aider",
@@ -572,6 +796,14 @@
     "korean": "제가 한 번 확인해보겠습니다"
   },
   {
+    "french": "Je vais vous apporter un peu de pain en plus",
+    "korean": "곧 빵 조금을 추가로 가져다 드리겠습니다"
+  },
+  {
+    "french": "je viens de ~",
+    "korean": "방금 ~ 했어요"
+  },
+  {
     "french": "je viens de Corée",
     "korean": "한국에서 왔습니다"
   },
@@ -584,8 +816,16 @@
     "korean": "천만에요"
   },
   {
+    "french": "Je vous invite à ~",
+    "korean": "~에 초대합니다"
+  },
+  {
     "french": "Jean-Baptiste Kléber",
     "korean": "(프랑스의 장군)장-밥티스트 클레베르"
+  },
+  {
+    "french": "J'habite en Corée du Sud",
+    "korean": "저는 대한민국에 살아요"
   },
   {
     "french": "jusqu'à",
@@ -598,6 +838,10 @@
   {
     "french": "L'entrée est gratuite pour tous les visiteurs",
     "korean": "모든 방문자는 무료로 입장할 수 있습니다"
+  },
+  {
+    "french": "Le train a été retardé",
+    "korean": "기차가 지연되었습니다."
   },
   {
     "french": "l'entrée gratuite",
@@ -635,13 +879,33 @@
     "french": "là-bas",
     "korean": "저기에"
   },
+    {
+    "french": "le Café de Flore",
+    "korean": "카페 드 플로르"
+  },
   {
     "french": "Le Vieux-Port de Marseille",
     "korean": "마르세유 구 항구"
   },
   {
+    "french": "le vin de Bordeaux",
+    "korean": "보르도 와인"
+  },
+  {
     "french": "Léonard de Vinci",
     "korean": "레오나르도 다 빈치"
+  },
+    {
+    "french": "le meilleur café de Paris",
+    "korean": "파리 최고의 카페"
+  },
+  {
+    "french": "Le saviez-vous ?",
+    "korean": "알고 계셨나요?"
+  },
+  {
+    "french": "Les lumières de la tour Eiffel",
+    "korean": "에펠탑의 조명들"
   },
   {
     "french": "les moins de 18 ans",
@@ -652,7 +916,7 @@
     "korean": "가나의 결혼식"
   },
   {
-    "french": "Les photos sont autorisées",
+    "french": "Les photos sont autorisées",
     "korean": "사진 촬영도 허용됩니다"
   },
   {
@@ -692,6 +956,10 @@
     "korean": "환상적인"
   },
   {
+    "french": "mais",
+    "korean": "그러나"
+  },
+  {
     "french": "maison",
     "korean": "집"
   },
@@ -702,6 +970,10 @@
   {
     "french": "manger",
     "korean": "먹다"
+  },
+  {
+    "french": "manquer",
+    "korean": "놓치다"
   },
   {
     "french": "marchés",
@@ -724,6 +996,10 @@
     "korean": "망치"
   },
   {
+    "french": "Même si ~",
+    "korean": "~ 하더라도"
+  },
+  {
     "french": "menu",
     "korean": "메뉴"
   },
@@ -740,12 +1016,28 @@
     "korean": "~에 감사드립니다"
   },
   {
+    "french": "Merci de me l'avoir dit",
+    "korean": "제게 그것을 말해줘서 고마워요"
+  },
+  {
+    "french": "merci de ne pas utiliser le flash",
+    "korean": "플래시를 사용하지 않아 주셔서 감사합니다"
+  },
+  {
+    "french": "mettre votre ceinture",
+    "korean": "안전벨트 착용"
+  },
+  {
     "french": "minutes",
     "korean": "(시간) 분"
   },
   {
     "french": "Miroir d'eau",
     "korean": "(보르도의 유명 관광지)물의 거울"
+  },
+  {
+    "french": "Moi aussi",
+    "korean": "저도"
   },
   {
     "french": "mon",
@@ -756,7 +1048,7 @@
     "korean": "(남성에 대한 존칭)남성 분"
   },
   {
-    "french": "montre",
+    "french": "montrer",
     "korean": "보여주다"
   },
   {
@@ -780,6 +1072,10 @@
     "korean": "그렇지 않아?"
   },
   {
+    "french": "n'est plus ouvert",
+    "korean": "더 이상 열려 있지 않다"
+  },
+  {
     "french": "n'oubliez pas",
     "korean": "잊지 마세요"
   },
@@ -792,6 +1088,18 @@
     "korean": "작품을 만지지 않다"
   },
   {
+    "french": "ne ... que ~",
+    "korean": "~대해서만"
+  },
+  {
+    "french": "ne vous pressez pas",
+    "korean": "서두르지 마세요"
+  },
+  {
+    "french": "ni ... ni ...",
+    "korean": "~도 아니고 ~도 아니다"
+  },
+  {
     "french": "non",
     "korean": "아니요"
   },
@@ -800,8 +1108,20 @@
     "korean": "미포함"
   },
   {
+    "french": "non plus",
+    "korean": "~도 아니다"
+  },
+  {
     "french": "note",
     "korean": "점수"
+  },
+  {
+    "french": "n'oubliez jamais de ~",
+    "korean": "절대 ~을 잊지 마세요"
+  },
+  {
+    "french": "Nous avons le temps de choisir",
+    "korean": "우리는 고를 시간이 있어요."
   },
   {
     "french": "nous avons trois types !",
@@ -812,8 +1132,16 @@
     "korean": "~번"
   },
   {
+    "french": "occuper",
+    "korean": "시간을 보내다"
+  },
+  {
     "french": "odeurs",
     "korean": "냄새"
+  },
+  {
+    "french": "oeuvre",
+    "korean": "작품"
   },
   {
     "french": "offre",
@@ -822,6 +1150,14 @@
   {
     "french": "On",
     "korean": "우리"
+  },
+  {
+    "french": "on ne peut plus entrer",
+    "korean": "더 이상 입장할 수 없다"
+  },
+  {
+    "french": "on peut voir",
+    "korean": "우리는 볼 수 있어요"
   },
   {
     "french": "onze",
@@ -868,6 +1204,10 @@
     "korean": "카드로 결제하다"
   },
   {
+    "french": "par contre",
+    "korean": "반면에"
+  },
+  {
     "french": "par nuit",
     "korean": "1박에"
   },
@@ -882,6 +1222,10 @@
   {
     "french": "Parc de la Tête d'Or",
     "korean": "떼뜨 도흐 공원"
+  },
+  {
+    "french": "parce que ~",
+    "korean": "왜냐하면 ~"
   },
   {
     "french": "parfait",
@@ -902,6 +1246,14 @@
   {
     "french": "Paris Gare Montparnasse",
     "korean": "파리 몽파르나스역"
+  },
+  {
+    "french": "part",
+    "korean": "출발하다"
+  },
+  {
+    "french": "participer à ~",
+    "korean": "~에 참여하다"
   },
   {
     "french": "pas de bruit",
@@ -940,6 +1292,10 @@
     "korean": "조식"
   },
   {
+    "french": "peut-être que ~",
+    "korean": "어쩌면 ~일지도 모른다"
+  },
+  {
     "french": "pharmacie",
     "korean": "약국"
   },
@@ -960,8 +1316,16 @@
     "korean": "심다"
   },
   {
+    "french": "plat",
+    "korean": "요리"
+  },
+  {
     "french": "plein tarif",
     "korean": "보통 운임"
+  },
+  {
+    "french": "plus facile",
+    "korean": "더 쉬운"
   },
   {
     "french": "porte le nom de ~",
@@ -980,12 +1344,20 @@
     "korean": "카페에 가려면"
   },
   {
+    "french": "Pourquoi pas !",
+    "korean": "좋아요!"
+  },
+  {
     "french": "pour y aller",
     "korean": "거기에 가려면"
   },
   {
     "french": "pouvez-vous me prendre en photo, s'il vous plaît ?",
     "korean": "혹시 사진 좀 찍어주실 수 있으실까요?"
+  },
+  {
+    "french": "prendre des photos",
+    "korean": "사진을 찍다"
   },
   {
     "french": "prenez la ligne 1 du métro",
@@ -1008,8 +1380,16 @@
     "korean": "~에서 가까운"
   },
   {
+    "french": "près d'ici",
+    "korean": "여기 근처에"
+  },
+  {
     "french": "Prix",
     "korean": "가격"
+  },
+  {
+    "french": "produit",
+    "korean": "생산하다"
   },
   {
     "french": "puis",
@@ -1018,6 +1398,14 @@
   {
     "french": "puis-je",
     "korean": "'je peux'의 의문형"
+  },
+  {
+    "french": "qu'est-ce que",
+    "korean": "무엇을"
+  },
+  {
+    "french": "qu'est-ce que c'est ?",
+    "korean": "이건 무엇인가요?"
   },
   {
     "french": "qu'est-ce que vous voulez ?",
@@ -1036,8 +1424,24 @@
     "korean": 4
   },
   {
+    "french": "quel",
+    "korean": "어떤"
+  },
+  {
     "french": "quels types de billets avez-vous ?",
     "korean": "어떤 종류의 티켓이 있나요?"
+  },
+  {
+    "french": "quelque chose",
+    "korean": "무언가"
+  },
+  {
+    "french": "quelqu'un l'a pris",
+    "korean": "누군가 그것을 가져갔다"
+  },
+  {
+    "french": "quelqu'un",
+    "korean": "누군가"
   },
   {
     "french": "raisin",
@@ -1064,12 +1468,28 @@
     "korean": "이것을 봐주세요"
   },
   {
+    "french": "région",
+    "korean": "지역"
+  },
+  {
     "french": "respecter",
     "korean": "존중하다"
   },
   {
     "french": "restaurant",
     "korean": "식당"
+  },
+  {
+    "french": "retard du train",
+    "korean": "기차의 지연"
+  },
+  {
+    "french": "Rien n'est là",
+    "korean": "여기엔 아무것도 없다"
+  },
+  {
+    "french": "Paris Gare Montparnasse",
+    "korean": "파리 몽파르나스역"
   },
   {
     "french": "s'il vous plaît",
@@ -1092,12 +1512,20 @@
     "korean": "햄치즈 샌드위치"
   },
   {
+    "french": "sans",
+    "korean": "~ 없이"
+  },
+  {
     "french": "santé !",
     "korean": "건배!"
   },
   {
     "french": "savoir",
     "korean": "알다"
+  },
+  {
+    "french": "sera",
+    "korean": "être 3인칭 단수 미래형"
   },
   {
     "french": "se trouve",
@@ -1110,6 +1538,14 @@
   {
     "french": "ses",
     "korean": "(복수 소유형용사)그의, 그녀의, 그것의"
+  },
+  {
+    "french": "Si",
+    "korean": "(부정 의문문에 대한 긍정 응답)"
+  },
+  {
+    "french": "Simone de Beauvoir",
+    "korean": "시몬 드 보부아르"
   },
   {
     "french": "site",
@@ -1212,6 +1648,14 @@
     "korean": "매일"
   },
   {
+    "french": "Tout d'abord",
+    "korean": "우선"
+  },
+  {
+    "french": "toute la journée",
+    "korean": "하루 종일"
+  },
+  {
     "french": "toute l'année",
     "korean": "매년"
   },
@@ -1256,6 +1700,14 @@
     "korean": "사용하다"
   },
   {
+    "french": "vapoteuse",
+    "korean": "전자담배"
+  },
+  {
+    "french": "vaut",
+    "korean": "유효하다"
+  },
+  {
     "french": "Véronèse",
     "korean": "파올로 베로네세(이탈리아의 화가)"
   },
@@ -1288,6 +1740,10 @@
     "korean": "방문"
   },
   {
+    "french": "visiter",
+    "korean": "방문하다"
+  },
+  {
     "french": "voici",
     "korean": "여기"
   },
@@ -1312,6 +1768,18 @@
     "korean": "도움이 필요하신가요?"
   },
   {
+    "french": "vous avez oublié quoi ?",
+    "korean": "무엇을 잃어버리셨나요?"
+  },
+  {
+    "french": "vous continuez tout droit",
+    "korean": "계속 직진하세요"
+  },
+  {
+    "french": "Vous devez ~",
+    "korean": "당신은 ~ 해야 합니다"
+  },
+  {
     "french": "vous devez absolument visiter ~",
     "korean": "당신은 반드시 ~을 방문해야 해요"
   },
@@ -1328,12 +1796,36 @@
     "korean": "305호에서 묵으시면 됩니다"
   },
   {
+    "french": "vous n'avez pas l'habitude de ~",
+    "korean": "당신은 ~ 하는 데에 익숙하지 않다"
+  },
+  {
+    "french": "Vous ne devez pas ~",
+    "korean": "~ 하지 말아야 합니다"
+  },
+  {
+    "french": "Vous ne pouvez pas ~",
+    "korean": "~은 할 수 없습니다"
+  },
+  {
+    "french": "Vous passez devant ~",
+    "korean": "~ 앞을 지나가세요"
+  },
+  {
     "french": "vous payez comment ?",
     "korean": "결제는 어떻게 하시겠습니까?"
   },
   {
+    "french": "vous pouvez ~",
+    "korean": "~을 할 수 있습니다"
+  },
+  {
     "french": "vous pouvez me recommander ~",
     "korean": "~를 제게 추천해주실 수 있나요?"
+  },
+  {
+    "french": "Vous recevrez",
+    "korean": "당신은 받게 될 것입니다"
   },
   {
     "french": "vous souhaitez un billet ?",
@@ -1342,6 +1834,14 @@
   {
     "french": "vous venez d'où",
     "korean": "어디서 오셨나요?"
+  },
+  {
+    "french": "vraiment",
+    "korean": "정말"
+  },
+  {
+    "french": "Vous travaillez ici ?",
+    "korean": "여기에서 일하시나요?"
   },
   {
     "french": "vue",
