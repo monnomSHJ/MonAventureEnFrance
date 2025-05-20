@@ -82,22 +82,22 @@ export function getSceneSummaries() {
             train: {
                 sceneTitle: "✈️ 리옹 제대로 즐기기",
                 description: `리옹행 기차를 타고 리옹에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 리옹에서는 "영화와 미니어처 박물관", "푸르비에르 대성당", "떼뜨 도흐 공원"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le train a été retardé à cause de la grève.", "Quand est-ce que le train va arriver ?", "Le train part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "리옹 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 작품 관람하기"],
                 sceneImage: `assets/images/lyonStreet.jpg`
             },
             bus: {
                 sceneTitle: "✈️ 리옹 제대로 즐기기",
                 description: `리옹행 버스를 타고 리옹으로 이동했다. 리옹에서는 "영화와 미니어처 박물관", "푸르비에르 대성당", "떼뜨 도흐 공원"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le bus part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "리옹 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 작품 관람하기"],
                 sceneImage: `assets/images/lyonStreet.jpg`
             },
             airport: {
                 sceneTitle: "✈️ 리옹 제대로 즐기기",
                 description: `리옹행 비행기를 타고 리옹으로 이동했다. 리옹에서는 "영화와 미니어처 박물관", "푸르비에르 대성당", "떼뜨 도흐 공원"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller à la porte numéro douze."],
+                goals: ["교통편 정보 읽고 이해하기", "리옹 문화 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 작품 관람하기"],
                 sceneImage: `assets/images/lyonStreet.jpg`
             }
         },
@@ -106,22 +106,22 @@ export function getSceneSummaries() {
             train: {
                 sceneTitle: "✈️ 마르세유 제대로 즐기기",
                 description: `마르세유행 기차를 타고 마르세유에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 마르세유에서는 "유럽 지중해 박물관", "노트르담 드 라 가르드 대성당", "마르세유 구 항구"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le train a été retardé à cause de la grève.", "Quand est-ce que le train va arriver ?", "Le train part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "마르세유 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 작품 관람하기"],
                 sceneImage: `assets/images/marseilleStreet.jpg`
             },
             bus: {
                 sceneTitle: "✈️ 마르세유 제대로 즐기기",
                 description: `마르세유행 버스를 타고 마르세유로 이동했다. 마르세유에서는 "유럽 지중해 박물관", "노트르담 드 라 가르드 대성당", "마르세유 구 항구"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le bus part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "마르세유 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 작품 관람하기"],
                 sceneImage: `assets/images/marseilleStreet.jpg`
             },
             airport: {
                 sceneTitle: "✈️ 마르세유 제대로 즐기기",
                 description: `마르세유행 비행기를 타고 마르세유로 이동했다. 마르세유에서는 "유럽 지중해 박물관", "노트르담 드 라 가르드 대성당", "마르세유 구 항구"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller à la porte numéro douze."],
+                goals: ["교통편 정보 읽고 이해하기", "마르세유 문화 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 작품 관람하기"],
                 sceneImage: `assets/images/marseilleStreet.jpg`
             }
         },
@@ -130,22 +130,22 @@ export function getSceneSummaries() {
             train: {
                 sceneTitle: "✈️ 스트라스부르 제대로 즐기기",
                 description: `스트라스부르행 기차를 타고 스트라스부르에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 스트라스부르에서는 "클레베르 광장", "스트라스부르 노트르담 대성당", "쁘띠 프랑스"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le train a été retardé à cause de la grève.", "Quand est-ce que le train va arriver ?", "Le train part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "스트라스부르 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기"],
                 sceneImage: `assets/images/strasbourgStreet.jpg`
             },
             bus: {
                 sceneTitle: "✈️ 스트라스부르 제대로 즐기기",
                 description: `스트라스부르행 버스를 타고 스트라스부르로 이동했다. 스트라스부르에서는 "클레베르 광장", "스트라스부르 노트르담 대성당", "쁘띠 프랑스"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le bus part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "스트라스부르 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기"],
                 sceneImage: `assets/images/strasbourgStreet.jpg`
             },
             airport: {
                 sceneTitle: "✈️ 스트라스부르 제대로 즐기기",
                 description: `스트라스부르행 비행기를 타고 스트라스부르로 이동했다. 스트라스부르에서는 "클레베르 광장", "스트라스부르 노트르담 대성당", "쁘띠 프랑스"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller à la porte numéro douze."],
+                goals: ["교통편 정보 읽고 이해하기", "스트라스부르 문화 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기"],
                 sceneImage: `assets/images/strasbourgStreet.jpg`
             }
         },
@@ -154,22 +154,22 @@ export function getSceneSummaries() {
             train: {
                 sceneTitle: "✈️ 보르도 제대로 즐기기",
                 description: `보르도행 기차를 타고 보르도에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 보르도에서는 "보르도 대성당", "부르스 광장", "보르도 와인 체험 박물관"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le train a été retardé à cause de la grève.", "Quand est-ce que le train va arriver ?", "Le train part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "보르도 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 프로그램 참여하기"],
                 sceneImage: `assets/images/bordeauxStreet.jpg`
             },
             bus: {
                 sceneTitle: "✈️ 보르도 제대로 즐기기",
                 description: `보르도행 버스를 타고 보르도로 이동했다. 보르도에서는 "보르도 대성당", "부르스 광장", "보르도 와인 체험 박물관"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller au quai numéro douze.", "Le bus part dans une minute.", "Il ne faut fumer ni cigarette ni vapoteuse."],
+                goals: ["교통편 정보 읽고 이해하기", "보르도 문화 이해하기", "안내 방송 듣고 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 프로그램 참여하기"],
                 sceneImage: `assets/images/bordeauxStreet.jpg`
             },
             airport: {
                 sceneTitle: "✈️ 보르도 제대로 즐기기",
                 description: `보르도행 비행기를 타고 보르도로 이동했다. 보르도에서는 "보르도 대성당", "부르스 광장", "보르도 와인 체험 박물관"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
-                dialogues: [""],
-                goals: [""],
+                dialogues: ["Vous devez aller à la porte numéro douze."],
+                goals: ["교통편 정보 읽고 이해하기", "보르도 문화 이해하기", "가격 표현 이해하기", "각 장소의 소개글 읽고 이해하기", "박물관 프로그램 참여하기"],
                 sceneImage: `assets/images/bordeauxStreet.jpg`
             }
         },
