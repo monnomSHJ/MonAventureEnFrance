@@ -36,8 +36,8 @@ export function getToilet1Scene() {
                             insertLines: [
                                 { speaker: `👤 ${state.userName}`, text: `Bonjour, mademoiselle. Je voudrais savoir...` },
                                 { speaker: `👩 Madame`, text: `Oui ?`, personImg: `assets/images/streetPersonFemale.png` },
-                                { speaker: `👤 ${state.userName}`, text: `Où est la toilette, s'il vous plaît ?`, personImg: `assets/images/streetPersonFemale.png` },
-                                { speaker: `👩 Madame`, text: `La toilette ?`, personImg: `assets/images/streetPersonFemale.png` },
+                                { speaker: `👤 ${state.userName}`, text: `Où sont les toilettes, s'il vous plaît ?`, personImg: `assets/images/streetPersonFemale.png` },
+                                { speaker: `👩 Madame`, text: `Les toilettes ?`, personImg: `assets/images/streetPersonFemale.png` },
                                 { speaker: `👩 Madame`, text: `Vous passez devant ce bâtiment là-bas, puis vous continuez tout droit.`, personImg: `assets/images/streetPersonFemale.png` },
                                 { speaker: `👤 ${state.userName}`, text: `Merci beaucoup !`, personImg: `assets/images/streetPersonFemale.png` },
                                 { speaker: `👩 Madame`, text: `Avec plaisir !`, personImg: `assets/images/streetPersonFemale.png` },

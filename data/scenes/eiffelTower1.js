@@ -103,10 +103,10 @@ export function getEiffelTower1Scene() {
             { speaker: ``, text: "어떻게 부탁드리면 되지?", personImg: "assets/images/eiffelTowerPerson1.png" },
             { speaker: ``, text: "", personImg: "assets/images/eiffelTowerPerson1.png",
                 production: {
-                    prompt: "Pouvez-vous _ _ _ _, s'il vous plaît ?",
+                    prompt: "Pouvez-vous _ _ en photo, s'il vous plaît ?",
                     meaning: "제 사진 좀 찍어 주실래요?",
-                    words: ["prendre", "photo", "un", "en", "me", "vous"],
-                    answer: ["me", "prendre", "en", "photo"]
+                    words: ["prendre", "un", "me", "vous"],
+                    answer: ["me", "prendre"]
                 }
              },
             { speaker: `👤 ${state.userName}`, text: "Pouvez-vous me prendre en photo, s'il vous plaît ?", personImg: "assets/images/eiffelTowerPerson1.png" },
