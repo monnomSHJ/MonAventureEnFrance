@@ -33,6 +33,7 @@ export function getToilet4Scene() {
                             
                             customAction: () => { 
                                 selectedScene = getLyon1Scene();
+                                state.selectedCity = "lyon";
                             }
                         },
                         {
@@ -45,6 +46,7 @@ export function getToilet4Scene() {
 
                             customAction: () => { 
                                 selectedScene = getMarseille1Scene();
+                                state.selectedCity = "marseille";
                             }
                         },
                         {
@@ -57,6 +59,7 @@ export function getToilet4Scene() {
 
                             customAction: () => { 
                                 selectedScene = getStrasbourg1Scene();
+                                state.selectedCity = "strasbourg";
                             }
                         },
                         {
@@ -69,6 +72,7 @@ export function getToilet4Scene() {
                                                         
                             customAction: () => { 
                                 selectedScene = getBordeaux1Scene();
+                                state.selectedCity = "bordeaux";
                             }
                         },
                     ]

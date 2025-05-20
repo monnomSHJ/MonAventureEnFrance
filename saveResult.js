@@ -10,6 +10,8 @@ export function saveResultToLocalStorage() {
         localStorage.setItem("selectedHotelId", state.selectedHotelId || "");
         localStorage.setItem("selectedDish", JSON.stringify(state.selectedDish || {}));
         localStorage.setItem("selectedCafe", JSON.stringify(state.selectedCafe || {}));
+        localStorage.setItem("selectedCity", state.selectedCity || "");
+        localStorage.setItem("selectedTransport", state.selectedTransport || "");
 
     } catch (err) {
         console.error("오류")

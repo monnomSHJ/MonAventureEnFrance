@@ -4,7 +4,7 @@ import { state } from "./script.js";
 export function getSceneSummaries() {
     const hotel = hotelData.find(h => h.id === state.selectedHotelId);
 
-    return [
+    const summaries = [
         {
             sceneTitle: "🏨 숙소 예약",
             description: hotel
@@ -73,7 +73,115 @@ export function getSceneSummaries() {
             description: `프랑스의 공중화장실을 처음으로 이용해보았다. 이전에 인스타그램에서 프랑스의 유료 공중화장실에 대한 게시물을 본 적이 있었는데, 실제로 돈을 내고 공중화장실을 이용하는 것은 정말 색다른 경험이었다.`,
             dialogues: ["Où sont les toilettes, s'il vous plaît ?", "Vous passez devant ce bâtiment là-bas.", "puis vous continuez tout droit."],
             goals: ["프랑스 공중화장실 이용 관련 설명 이해하기"],
-            sceneImage: `assets/images/museeDuLouvre.jpg`
+            sceneImage: `assets/images/toiletsOverlay.png`
         },
-    ]
+    ];
+
+    const cityScenes = {
+        lyon: {
+            train: {
+                sceneTitle: "✈️ 리옹 제대로 즐기기",
+                description: `리옹행 기차를 타고 리옹에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 리옹에서는 "영화와 미니어처 박물관", "푸르비에르 대성당", "떼뜨 도흐 공원"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/lyonStreet.jpg`
+            },
+            bus: {
+                sceneTitle: "✈️ 리옹 제대로 즐기기",
+                description: `리옹행 버스를 타고 리옹으로 이동했다. 리옹에서는 "영화와 미니어처 박물관", "푸르비에르 대성당", "떼뜨 도흐 공원"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/lyonStreet.jpg`
+            },
+            airport: {
+                sceneTitle: "✈️ 리옹 제대로 즐기기",
+                description: `리옹행 비행기를 타고 리옹으로 이동했다. 리옹에서는 "영화와 미니어처 박물관", "푸르비에르 대성당", "떼뜨 도흐 공원"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/lyonStreet.jpg`
+            }
+        },
+
+        marseille: {
+            train: {
+                sceneTitle: "✈️ 마르세유 제대로 즐기기",
+                description: `마르세유행 기차를 타고 마르세유에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 마르세유에서는 "유럽 지중해 박물관", "노트르담 드 라 가르드 대성당", "마르세유 구 항구"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/marseilleStreet.jpg`
+            },
+            bus: {
+                sceneTitle: "✈️ 마르세유 제대로 즐기기",
+                description: `마르세유행 버스를 타고 마르세유로 이동했다. 마르세유에서는 "유럽 지중해 박물관", "노트르담 드 라 가르드 대성당", "마르세유 구 항구"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/marseilleStreet.jpg`
+            },
+            airport: {
+                sceneTitle: "✈️ 마르세유 제대로 즐기기",
+                description: `마르세유행 비행기를 타고 마르세유로 이동했다. 마르세유에서는 "유럽 지중해 박물관", "노트르담 드 라 가르드 대성당", "마르세유 구 항구"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/marseilleStreet.jpg`
+            }
+        },
+
+        strasbourg: {
+            train: {
+                sceneTitle: "✈️ 스트라스부르 제대로 즐기기",
+                description: `스트라스부르행 기차를 타고 스트라스부르에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 스트라스부르에서는 "클레베르 광장", "스트라스부르 노트르담 대성당", "쁘띠 프랑스"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/strasbourgStreet.jpg`
+            },
+            bus: {
+                sceneTitle: "✈️ 스트라스부르 제대로 즐기기",
+                description: `스트라스부르행 버스를 타고 스트라스부르로 이동했다. 스트라스부르에서는 "클레베르 광장", "스트라스부르 노트르담 대성당", "쁘띠 프랑스"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/strasbourgStreet.jpg`
+            },
+            airport: {
+                sceneTitle: "✈️ 스트라스부르 제대로 즐기기",
+                description: `스트라스부르행 비행기를 타고 스트라스부르로 이동했다. 스트라스부르에서는 "클레베르 광장", "스트라스부르 노트르담 대성당", "쁘띠 프랑스"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/strasbourgStreet.jpg`
+            }
+        },
+
+        bordeaux: {
+            train: {
+                sceneTitle: "✈️ 보르도 제대로 즐기기",
+                description: `보르도행 기차를 타고 보르도에 가려는데... 기차 파업으로 인해 기차가 10분 늦게 출발했다. 다행히 큰 문제가 되지는 않았고, 나름? 신선한 경험이었다. 보르도에서는 "보르도 대성당", "부르스 광장", "보르도 와인 체험 박물관"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/bordeauxStreet.jpg`
+            },
+            bus: {
+                sceneTitle: "✈️ 보르도 제대로 즐기기",
+                description: `보르도행 버스를 타고 보르도로 이동했다. 보르도에서는 "보르도 대성당", "부르스 광장", "보르도 와인 체험 박물관"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/bordeauxStreet.jpg`
+            },
+            airport: {
+                sceneTitle: "✈️ 보르도 제대로 즐기기",
+                description: `보르도행 비행기를 타고 보르도로 이동했다. 보르도에서는 "보르도 대성당", "부르스 광장", "보르도 와인 체험 박물관"를 둘러보았다. 파리와는 색다른 매력을 가진 아름다운 도시였다.`,
+                dialogues: [""],
+                goals: [""],
+                sceneImage: `assets/images/bordeauxStreet.jpg`
+            }
+        },
+    };
+
+    const city = state.selectedCity;
+    const transport = state.selectedTransport;
+    const extra = cityScenes[city]?.[transport];
+
+    if (extra) {
+        summaries.push(extra);
+    }
+
+    return summaries;
 }

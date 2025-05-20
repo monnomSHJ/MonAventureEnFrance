@@ -105,6 +105,8 @@ function setupReservationUI() {
             state.balance -= deductedAmount;
             state.score += addedScore;
 
+            state.selectedTransport = selectedTransportID;
+
             if (typeof renderStatusBar === 'function') {
                 renderStatusBar();
             }

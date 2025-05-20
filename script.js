@@ -17,6 +17,8 @@ export const state = {
   selectedHotelName: '',
   selectedDish: 'null',
   selectedCafe: 'null',
+  selectedCity: "lyon" | "marseille" | "strasbourg" | "bordeaux",
+  selectedTransport: "train" | "bus" | "airplane",
   viewedArtworks: new Set(),
   nextScene: 'null',
   visitedLyonSpots: new Set(),
@@ -80,9 +82,13 @@ if (location.pathname.includes("result")) {
   try {
     state.selectedDish = JSON.parse(localStorage.getItem("selectedDish")) || {};
     state.selectedCafe = JSON.parse(localStorage.getItem("selectedCafe")) || {};
+    state.selectedCity = localStorage.getItem("selectedCity") || "";
+    state.selectedTransport = localStorage.getItem("selectedTransport") || "";
   } catch {
     state.selectedDish = {};
     state.selectedCafe = {};
+    state.selectedCity = "lyon";
+    state.selectedTransport = "train";
   }
 }
 
