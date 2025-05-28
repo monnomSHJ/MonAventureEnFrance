@@ -65,6 +65,7 @@ export let currentLineIndex = 0;
 let isTyping = false;
 let skipTyping = false;
 let lastProductionData = null;
+let currentAudio = null;
 
 export const overlay = document.querySelector('.overlay');
 const contentMain = document.getElementById("content-main");
@@ -127,6 +128,10 @@ export function loadScene(scene) {
   
         if (typeof scene.onMount === "function") scene.onMount();
         
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
   
         setTimeout(() => {
             overlayEl.classList.remove("show");
@@ -177,23 +182,43 @@ export async function updateDialogue() {
         lastProductionData = line.production;
         showProductionPopup(line.production);
         overlay.classList.add("show");
+
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
         return;
     }
     
     if (line.miniGame) {
         showMiniMapGame(currentScene);
         overlay.classList.add("show");
+
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
         return;
     }
 
     if (maybeShowChoiceAgain(line)) {
         overlay.classList.add("show");
+
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
         return;
     } 
 
     if (line.choices) {
         showChoicePopup(line.choices);
         overlay.classList.add("show");
+
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
         return;
     }
 
@@ -201,6 +226,20 @@ export async function updateDialogue() {
         line.customAction();
     }
 
+    if (line.sound) {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        currentAudio = new Audio(line.sound);
+        currentAudio.play().catch(e => console.error("오디오 재생 실패:", e));
+    } else {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
+        }
+    }
 
     overlay.classList.remove("show");
   
@@ -266,6 +305,11 @@ async function handleNextLine() {
     if (currentScene && currentLineIndex < currentScene.lines.length) {
         await updateDialogue();
     } else {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        
         if (typeof currentScene.nextScene === "function") {
             const next = currentScene.nextScene();
             loadScene(next);
